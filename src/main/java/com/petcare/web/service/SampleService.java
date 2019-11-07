@@ -8,7 +8,6 @@ import com.petcare.web.mapper.TimeMapper;
 @Service
 public class SampleService {
 
-
     @Autowired
     private TimeMapper timeMapper;
 
