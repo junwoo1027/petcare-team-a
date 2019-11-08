@@ -20,5 +20,9 @@ public class SampleController {
     public String hi() {
         return "hi " +sampleService.getName() + " : " + sampleService.now();
     }
+
+    @GetMapping("/sampleview")
+    public String sampleView() {
+        return "sampleView";
     }
 }
