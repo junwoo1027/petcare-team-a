@@ -1,6 +1,7 @@
 package com.petcare.web.config;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -10,7 +11,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.petcare.web.interceptor.SampleInterceptor;
 
 @EnableWebMvc
-@ComponentScan(basePackages = "package com.petcare.web.controller")
+@ComponentScan(basePackages = "com.petcare.web.controller")
+@Configuration
 public class ServletConfig implements WebMvcConfigurer {
 
     @Override
