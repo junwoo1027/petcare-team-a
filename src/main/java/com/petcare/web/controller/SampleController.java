@@ -32,6 +32,6 @@ public class SampleController {
     public String main() {
 
     	System.out.println("test");
-         return "main";
+         return "main/main";
     }    
 }
