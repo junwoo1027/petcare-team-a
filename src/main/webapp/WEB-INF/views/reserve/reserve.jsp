@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset='utf-8' />
+<meta charset='utf-8'/>
 <link href='${pageContext.request.contextPath}/resources/assets/fullcalendar/packages/core/main.css' rel='stylesheet' />
 <link href='${pageContext.request.contextPath}/resources/assets/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
 <link href='${pageContext.request.contextPath}/resources/assets/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
