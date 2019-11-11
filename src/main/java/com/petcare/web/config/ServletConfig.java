@@ -22,13 +22,9 @@ public class ServletConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources/**")
+        		.addResourceLocations("/resources/");
     }
-    
-	/*
-	 * @Override public void configureViewResolvers(ViewResolverRegistry registry) {
-	 * registry.jsp("/WEB-INF/views/", ".jsp"); }
-	 */
     
     @Bean 
     public ViewResolver viewResolver(){
