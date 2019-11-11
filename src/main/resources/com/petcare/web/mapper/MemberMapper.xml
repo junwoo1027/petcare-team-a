@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.petcare.web.mapper.MemberMapper">
+	<insert id="register" parameterType="MemberVO">
+		<selectKey keyProperty="userNo" order="BEFORE" resultType="int">
+			SELECT IFNULL(MAX(user_no),0)+1 AS user_no FROM USER
+		</selectKey>
+		INSERT INTO USER( user_no
+										, user_id
+										, password
+										, user_name
+										, address
+										, tel
+										, user_email
+										, last_date
+										, role
+										)
+					VALUES ( #{userNo}
+										, #{userId}
+										, #{password}
+										, #{userName}
+										, #{address}
+										, #{tel}
+										, #{userEmail}
+										, NOW()
+										, 'USER'
+										)
+	</insert>
+</mapper>
