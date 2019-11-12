@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.petcare.web.service.SampleService;
 
 @Controller
+@RequestMapping("/sample")
 public class SampleController {
 
     @Autowired

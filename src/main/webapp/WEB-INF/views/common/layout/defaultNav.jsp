@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="index.html" class="logo">
-                    <img src="resources/img/logos/logo.png" alt="logo">
+                    <img src="/resources/img/logos/logo.png" alt="logo">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
