@@ -11,7 +11,6 @@
 <script src='<spring:url value="/resources/js/userJoin.js"/>'></script>
 </head>
 <body>
-<%@ include file="includes/header.jsp"%>
 <div>
 	<div class="page-title">
 		<div>
@@ -50,6 +49,5 @@
 	</form>
 	<div class="col-2"></div>
 </div>
-<%@ include file="includes/footer.jsp"%>
 </body>
 </html>
