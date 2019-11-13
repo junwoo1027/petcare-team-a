@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -13,15 +16,14 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/fullcalendar/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/fullcalendar/vendor/css/select2.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/fullcalendar/vendor/css/bootstrap-datetimepicker.min.css" />
-
    <!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/fullcalendar/css/main.css">
-
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
+
     <div class="container">
 
         <!-- 일자 클릭시 메뉴오픈 -->
@@ -53,60 +55,52 @@
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-allDay">하루종일</label>
-                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label>
+                                <!-- <label class="col-xs-4" for="edit-allDay">하루종일</label> -->
+                                <!-- <input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label> -->
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-title">일정명</label>
-                                <input class="inputModal" type="text" name="edit-title" id="edit-title"
+                                <label class="col-xs-4" for="edit-title">진료내용</label>
+                                <input class="inputModal" type="text" name="mediContent" id="mediContent"
                                     required="required" />
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-start">시작</label>
+                                <label class="col-xs-4" for="edit-start">예약시간(예약은 30분 단위로 가능합니다.)</label>
                                 <input class="inputModal" type="text" name="edit-start" id="edit-start" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-end">끝</label>
-                                <input class="inputModal" type="text" name="edit-end" id="edit-end" />
+                                <input class="inputModal" type="text" name="edit-end" id="edit-end" disabled="disabled"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-type">구분</label>
-                                <select class="inputModal" type="text" name="edit-type" id="edit-type">
-                                    <option value="카테고리1">카테고리1</option>
-                                    <option value="카테고리2">카테고리2</option>
-                                    <option value="카테고리3">카테고리3</option>
-                                    <option value="카테고리4">카테고리4</option>
+                                <label class="col-xs-4" for="edit-type">진료받으실 반려동물을 선택해주세요</label>
+                                <select class="inputModal" type="text" name="petName" id="petName">
+                                	<c:forEach items="${userAnims}" var="list" varStatus="status">
+                                    	<option value="카테고리1"> ${list}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-color">색상</label>
+                            <!-- <div class="col-xs-12">
+                                <label class="col-xs-4" for="edit-color">원장님 성함</label>
                                 <select class="inputModal" name="color" id="edit-color">
-                                    <option value="#D25565" style="color:#D25565;">빨간색</option>
-                                    <option value="#9775fa" style="color:#9775fa;">보라색</option>
-                                    <option value="#ffa94d" style="color:#ffa94d;">주황색</option>
-                                    <option value="#74c0fc" style="color:#74c0fc;">파란색</option>
-                                    <option value="#f06595" style="color:#f06595;">핑크색</option>
-                                    <option value="#63e6be" style="color:#63e6be;">연두색</option>
-                                    <option value="#a9e34b" style="color:#a9e34b;">초록색</option>
-                                    <option value="#4d638c" style="color:#4d638c;">남색</option>
-                                    <option value="#495057" style="color:#495057;">검정색</option>
+                                    <option value="#ffa94d" style="color:#ffa94d;">김원장님</option>
+                                    <option value="#74c0fc" style="color:#74c0fc;">임원장님</option>
                                 </select>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <label class="col-xs-4" for="edit-desc">설명</label>
+                                <label class="col-xs-4" for="edit-desc">진료내용</label>
                                 <textarea rows="4" cols="50" class="inputModal" name="edit-desc"
                                     id="edit-desc"></textarea>
                             </div>
@@ -114,7 +108,7 @@
                     </div>
                     <div class="modal-footer modalBtnContainer-addEvent">
                         <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                        <button type="button" class="btn btn-primary" id="save-event">저장</button>
+                        <button type="button" class="btn btn-primary" id="save-event" onclick="saveOnClick();">저장</button>
                     </div>
                     <div class="modal-footer modalBtnContainer-modifyEvent">
                         <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
@@ -128,44 +122,70 @@
         <div class="panel panel-default">
 
             <div class="panel-heading">
-                <h3 class="panel-title">필터</h3>
+                <h3 class="panel-title">예약 안내 사항</h3>
             </div>
 
             <div class="panel-body">
 
                 <div class="col-lg-6">
-                    <label for="calendar_view">구분별</label>
-                    <div class="input-group">
-                        <select class="filter" id="type_filter" multiple="multiple">
-                            <option value="카테고리1">카테고리1</option>
-                            <option value="카테고리2">카테고리2</option>
-                            <option value="카테고리3">카테고리3</option>
-                            <option value="카테고리4">카테고리4</option>
-                        </select>
-                    </div>
+                    <h1>예약은 30분 단위로 가능합니다.</h1>
                 </div>
-
-                <div class="col-lg-6">
-                    <label for="calendar_view">등록자별</label>
+<!-- 특이사항 메모는 모달창에 -->
+               <!--  <div class="col-lg-6">
+                    <label for="calendar_view">특이사항 메모</label>
                     <div class="input-group">
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="정연"
-                                checked>정연</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="다현"
-                                checked>다현</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="사나"
-                                checked>사나</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="나연"
-                                checked>나연</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="지효"
-                                checked>지효</label>
+                       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
         <!-- /.filter panel -->
     </div>
 <%@ include file="/WEB-INF/views/commons/CoreJS.jsp" %>
-</body>
+<script type="text/javascript">
+$(document).ready(function() {
+	console.log("hello")
+	var loginUser = "${sessionScope.loginUser.id}";
+	var userAnims = "${sessionScope.userAnims}";
+	console.log("loginUser : " + loginUser);
+	console.log("userAnims : " + userAnims);
+	
+	
+	
+	
+	
+});
+function saveOnClick() {
+	var id = "${sessionScope.loginUser.id}";
+	var rDate = document.getElementById("edit-start").value;
+	var hNo = '1'
+	var note = document.getElementById("edit-desc").value;
+	
+	$.ajax({
+        type: 'post'
+        ,url: '/reserve/insertReserv'
+        ,contentType: 'application/json'
+        ,data: JSON.stringify({
+            'id':id
+//            ,'hNo':hNo
+           ,'rDate':rDate
+//           ,'rTime':rdate	//삭제예정
+            ,'note' : note
+        })
+        ,success: function (data) {
+        	alert("성공"+rDate);
+            //DB연동시 중복이벤트 방지를 위한
+            //$('#calendar').fullCalendar('removeEvents');
+            //$('#calendar').fullCalendar('refetchEvents');
+        },
+        error : function(xhr, ajaxOption, thrownError) {
+        	alert(xhr.status);
+            alert(thrownError);
+        }
+    });
+}
 
+</script>
+</body>
 </html>
