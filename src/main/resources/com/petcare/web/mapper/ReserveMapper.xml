@@ -4,4 +4,17 @@
     <select id="getTime" resultType="java.lang.String">
         select now()
     </select>
+    
+    <select id="getAniList" resultType="com.petcare.web.dto.AnimalDTO">
+    	select a.ano as ano, a.a_name as aName, a.a_type as aType from user_table u, animal_table a where a.id = u.id
+    </select>
+    
+    <insert id="insertReserv" parameterType="com.petcare.web.dto.ReserveDTO">
+    	insert into reserve_table (ano,id,hno,rdate,rtime,note) values (#{aNo}, #{id}, #{hNo},now(),now(),#{note})
+    </insert>
+    
+    <select id="getReserv" resultType="com.petcare.web.dto.ReserveDTO">
+    	select * from reserve_table
+    </select>
+    
 </mapper>
