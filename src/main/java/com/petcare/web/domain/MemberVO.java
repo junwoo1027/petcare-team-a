@@ -3,25 +3,16 @@ package com.petcare.web.domain;
 import java.util.Date;
 
 public class MemberVO {
-	private int userNo;
 	private String userId;
 	private String password;
 	private String userName;
 	private String address;
-	private String tel;
-	private String userEmail;
+	private String phone;
+	private String email;
 	private Date joinDate;
 	private Date lastDate;
 	private String role;
-	
-	public int getUserNo() {
-		return userNo;
-	}
-	
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
-	
+
 	public String getUserId() {
 		return userId;
 	}
@@ -41,11 +32,11 @@ public class MemberVO {
 	public String getUserName() {
 		return userName;
 	}
-
+	
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+	
 	public String getAddress() {
 		return address;
 	}
@@ -54,20 +45,20 @@ public class MemberVO {
 		this.address = address;
 	}
 	
-	public String getTel() {
-		return tel;
+	public String getPhone() {
+		return phone;
 	}
 	
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
 	
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	public Date getJoinDate() {
@@ -96,8 +87,8 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [userNo=" + userNo + ", userId=" + userId + ", password=" + password + ", userName=" + userName
-				+ ", address=" + address + ", tel=" + tel + ", userEmail=" + userEmail + ", joinDate=" + joinDate
-				+ ", lastDate=" + lastDate + ", role=" + role + "]";
-	}	
+		return "MemberVO [userId=" + userId + ", password=" + password + ", userName=" + userName + ", address="
+				+ address + ", phone=" + phone + ", email=" + email + ", joinDate=" + joinDate + ", lastDate="
+				+ lastDate + ", role=" + role + "]";
+	}
 }

@@ -3,15 +3,12 @@ package com.petcare.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
-import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import com.petcare.web.interceptor.SampleInterceptor;
@@ -20,12 +17,6 @@ import com.petcare.web.interceptor.SampleInterceptor;
 @EnableWebMvc
 @ComponentScan(basePackages = "package com.petcare.web.controller")
 public class ServletConfig implements WebMvcConfigurer {
-	
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.jsp("/WEB-INF/views/", ".jsp");
-    }
-
     //리소스경로 정하는 설정
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -38,19 +29,6 @@ public class ServletConfig implements WebMvcConfigurer {
         registry.addInterceptor(new SampleInterceptor());
     }
     
-    @Bean 
-    public ViewResolver viewResolver(){
-        return new TilesViewResolver();
-    }
-    
-    @Bean
-    public UrlBasedViewResolver tilesViewResolver() {
-        UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
-        viewResolver.setViewClass(TilesView.class);
-        viewResolver.setOrder(1);
-        return viewResolver;
-    }
-    
     /**
      * Configure TilesConfigurer.
      */
@@ -61,4 +39,10 @@ public class ServletConfig implements WebMvcConfigurer {
         tilesConfigurer.setCheckRefresh(true);
         return tilesConfigurer;
     }
+
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		TilesViewResolver viewResolver = new TilesViewResolver();
+		registry.viewResolver(viewResolver);
+	}
 }

@@ -5,15 +5,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.petcare.web.config.RootConfig;
 import com.petcare.web.domain.MemberVO;
 
-import lombok.extern.slf4j.Slf4j;
-
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 @ContextConfiguration(classes = RootConfig.class)
-@Slf4j
 public class MemberMapperTest {
 	
 	@Autowired
@@ -22,13 +21,14 @@ public class MemberMapperTest {
 	@Test
 	public void joinTest() {
 		MemberVO member = new MemberVO();
-		member.setUserId("soul01");
+		member.setUserId("soul09");
 		member.setPassword("1234");
 		member.setUserName("홍길동");
-		member.setAddress("서울 동작구");
-		member.setTel("010-1234-1234");
-		member.setUserEmail("soul01@naver.com");
+		member.setAddress("서울시 동작구");
+		member.setPhone("010-1234-1234");
+		member.setEmail("soul09@naver.com");
 		
 		memberMapper.register(member);
 	}
+	
 }
