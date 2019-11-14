@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.petcare.web.interceptor.LoginInterceptor;
 import com.petcare.web.interceptor.SampleInterceptor;
 
 @EnableWebMvc
@@ -26,5 +27,6 @@ public class ServletConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SampleInterceptor());
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/loginProcess");
     }
 }
