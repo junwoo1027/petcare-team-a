@@ -24,6 +24,16 @@ public class MemberController {
 	@Autowired
 	private MemberService MemberService;
 	
+	@GetMapping("/login")
+	public String login() {
+		return "loginForm";
+	}
+	
+	@GetMapping("/select")
+	public String registerS() {
+		return "registerSelect";
+	}
+	
 	@GetMapping("/normal")
 	public String normal() {
 		return "normalRegister";
@@ -33,6 +43,11 @@ public class MemberController {
 	public String register(MemberVO memberVO) {
 		MemberService.register(memberVO);
 		return "redirect:/index";
+	}
+	
+	@GetMapping("/hospital")
+	public String hospital() {
+		return "hospitalRegister";
 	}
 	
 	@PostMapping("/check_id")

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>유저 회원가입</title>
 <link href='<spring:url value="/resources/css/custom.css"/>' rel="stylesheet" />
 <script src='<spring:url value="/resources/js/jquery-3.1.1.js"/>'></script>
 <script src='<spring:url value="/resources/js/userJoin.js"/>'></script>

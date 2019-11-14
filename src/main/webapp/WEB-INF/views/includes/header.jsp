@@ -20,7 +20,8 @@
   	</button>
 	<div class="collapse navbar-collapse" id="collapsibleNavbar" style="font-weight: bold;">
 		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" href="/member/normal" style="color: #ffc107;">sign</a></li>
+			<li class="nav-item"><a class="nav-link" href="/member/login" style="color: #ffc107;">login</a></li>
+			<li class="nav-item"><a class="nav-link" href="/member/select" style="color: #ffc107;">sign</a></li>
 		</ul>
 	</div>
 </nav>

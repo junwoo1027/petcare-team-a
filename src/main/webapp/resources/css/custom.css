@@ -19,3 +19,5 @@ html, body {
 .page-title p { margin-top: 15px; font-size: 1.071rem; }
 
 label.error { color: red; }
+
+.classWithPad { margin:20px; padding:30px; }
