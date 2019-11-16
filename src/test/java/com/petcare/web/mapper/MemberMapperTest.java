@@ -8,20 +8,27 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.petcare.web.config.RootConfig;
-
-import lombok.extern.slf4j.Slf4j;
+import com.petcare.web.domain.MemberVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = RootConfig.class)
-@Slf4j
-public class TimeMapperTest {
-
+public class MemberMapperTest {
+	
 	@Autowired
-	private TimeMapper mapper;
+	private MemberMapper memberMapper;
 	
 	@Test
-	public void get_time_test() {
-		log.info(mapper.getTime());
+	public void joinTest() {
+		MemberVO member = new MemberVO();
+		member.setUserId("soul09");
+		member.setPassword("1234");
+		member.setUserName("홍길동");
+		member.setAddress("서울시 동작구");
+		member.setPhone("010-1234-1234");
+		member.setEmail("soul09@naver.com");
+		
+		memberMapper.register(member);
 	}
+	
 }
