@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>유저 회원가입</title>
 <link href='<spring:url value="/resources/css/custom.css"/>' rel="stylesheet" />
-<script src='<spring:url value="/resources/js/jquery-3.1.1.js"/>'></script>
 <script src='<spring:url value="/resources/js/userJoin.js"/>'></script>
 </head>
 <body>
@@ -19,7 +18,7 @@
 		</div>
 	</div>
 </div>
-<div class="row">
+<div>
 	<div class="col-2"></div>
 	<form id="userJoin" action="/member/user" method="post" class="col-8">
 		<div class="form-group">
@@ -49,5 +48,7 @@
 	</form>
 	<div class="col-2"></div>
 </div>
+<!--validate JQuery  -->
+<script src='<spring:url value="/resources/js/jquery.validate.js"/>'></script>
 </body>
 </html>
