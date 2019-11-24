@@ -10,5 +10,8 @@
 	<typeAliases>
 		<!-- 회원  -->
 		<typeAlias alias="MemberVO" type="com.petcare.web.domain.MemberVO"/>
+		
+		<!-- 병원 -->
+		<typeAlias alias="HospitalVO" type="com.petcare.web.domain.HospitalVO"/>
 	</typeAliases>
 </configuration>
