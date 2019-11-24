@@ -22,11 +22,11 @@ public class MemberMapperTest {
 	public void joinTest() {
 		MemberVO member = new MemberVO();
 		member.setUserId("soul09");
-		member.setPassword("1234");
+		member.setUserPw("1234");
 		member.setUserName("홍길동");
-		member.setAddress("서울시 동작구");
-		member.setPhone("010-1234-1234");
-		member.setEmail("soul09@naver.com");
+		member.setUserAddress("서울시 동작구");
+		member.setUserPhone("010-1234-1234");
+		member.setUserEmail("soul09@naver.com");
 		
 		memberMapper.register(member);
 	}

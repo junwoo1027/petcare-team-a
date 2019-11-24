@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class MemberVO {
 	private String userId;
-	private String password;
+	private String userPw;
 	private String userName;
-	private String address;
-	private String phone;
-	private String email;
-	private Date joinDate;
-	private Date lastDate;
-	private String role;
-
+	private String userAddress;
+	private String userPhone;
+	private String userEmail;
+	private Date userJoindate;
+	private Date userlastLogin;
+	private String userAuthority;
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -21,12 +21,12 @@ public class MemberVO {
 		this.userId = userId;
 	}
 	
-	public String getPassword() {
-		return password;
+	public String getUserPw() {
+		return userPw;
 	}
 	
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserPw(String userPw) {
+		this.userPw = userPw;
 	}
 	
 	public String getUserName() {
@@ -37,58 +37,58 @@ public class MemberVO {
 		this.userName = userName;
 	}
 	
-	public String getAddress() {
-		return address;
+	public String getUserAddress() {
+		return userAddress;
 	}
 	
-	public void setAddress(String address) {
-		this.address = address;
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 	
-	public String getPhone() {
-		return phone;
+	public String getUserPhone() {
+		return userPhone;
 	}
 	
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
 	}
 	
-	public String getEmail() {
-		return email;
+	public String getUserEmail() {
+		return userEmail;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	
-	public Date getJoinDate() {
-		return joinDate;
+	public Date getUserJoindate() {
+		return userJoindate;
 	}
 	
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
+	public void setUserJoindate(Date userJoindate) {
+		this.userJoindate = userJoindate;
 	}
 	
-	public Date getLastDate() {
-		return lastDate;
+	public Date getUserlastLogin() {
+		return userlastLogin;
 	}
 	
-	public void setLastDate(Date lastDate) {
-		this.lastDate = lastDate;
+	public void setUserlastLogin(Date userlastLogin) {
+		this.userlastLogin = userlastLogin;
 	}
 	
-	public String getRole() {
-		return role;
+	public String getUserAuthority() {
+		return userAuthority;
 	}
 	
-	public void setRole(String role) {
-		this.role = role;
+	public void setUserAuthority(String userAuthority) {
+		this.userAuthority = userAuthority;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberVO [userId=" + userId + ", password=" + password + ", userName=" + userName + ", address="
-				+ address + ", phone=" + phone + ", email=" + email + ", joinDate=" + joinDate + ", lastDate="
-				+ lastDate + ", role=" + role + "]";
+		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userAddress="
+				+ userAddress + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoindate="
+				+ userJoindate + ", userlastLogin=" + userlastLogin + ", userAuthority=" + userAuthority + "]";
 	}
 }

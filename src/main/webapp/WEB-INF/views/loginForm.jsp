@@ -176,21 +176,25 @@ h4 {
 </head>
 <body>
 <section>
-<div class="title">
-	<h1>Login</h1>
-</div>
-<div class="login_div">
-	<div class="left"></div>
-	<div class="right">
-		<div class="formBox">
-			<form id="login_form">
-				<p>ID</p>
-				<input type="text" name="id" class="id" placeholder="Your ID" maxlength="15">
-				<p>Password</p>
-				<input type="password" name="password" class="password" placeholder="●●●●●●" maxlength="15">
-			</form>
-			<button class="login_btn">로그인</button>
-			<a href="#" class="help_btn">ID 또는 비밀번호를 잊으셨나요?</a>
+<div class="container">
+	<div class="title">
+		<h1>Login</h1>
+	</div>
+	<div class="jumbotron" style="padding-top: 20px;">
+		<div class="login_div" style="padding-top: 20px;">
+			<div class="left"></div>
+			<div class="right">
+				<div class="formBox">
+					<form id="login_form">
+						<p>ID</p>
+						<input type="text" name="id" class="id" placeholder="Your ID" maxlength="15">
+						<p>Password</p>
+						<input type="password" name="password" class="password" placeholder="●●●●●●" maxlength="15">
+					</form>
+					<button class="login_btn">로그인</button>
+					<a href="#" class="help_btn">ID 또는 비밀번호를 잊으셨나요?</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

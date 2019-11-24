@@ -31,12 +31,12 @@ public class MemberController {
 	
 	@GetMapping("/select")
 	public String registerS() {
-		return "registerSelect";
+		return "user/registerSelect";
 	}
 	
 	@GetMapping("/normal")
 	public String normal() {
-		return "normalRegister";
+		return "user/normalRegister";
 	}
 	
 	@PostMapping("/user")
