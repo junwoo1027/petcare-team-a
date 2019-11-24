@@ -3,20 +3,20 @@
 <mapper namespace="com.petcare.web.mapper.MemberMapper">
 	<insert id="register" parameterType="MemberVO">
 		INSERT INTO USER(user_id
-										, password
+										, user_pw
 										, user_name
-										, address
-										, phone
-										, email
-										, last_date
-										, role
+										, user_address
+										, user_phone
+										, user_email
+										, user_lastdate
+										, user_authority
 										)
 					VALUES (#{userId}
-										, #{password}
+										, #{userPw}
 										, #{userName}
-										, #{address}
-										, #{phone}
-										, #{email}
+										, #{userAddress}
+										, #{userPhone}
+										, #{userEmail}
 										, NOW()
 										, 'USER'
 										)
@@ -29,12 +29,12 @@
 	<select id="selectEmail" resultType="String">
 		SELECT email
 		FROM USER
-		WHERE email = #{email}
+		WHERE user_email = #{email}
 	</select>
 	<select id="loginPro" resultType="MemberVO">
 		SELECT *
 		FROM USER
 		WHERE user_id = #{userId}
-		AND password = #{password}
+		AND user_pw = #{password}
 	</select>
 </mapper>
