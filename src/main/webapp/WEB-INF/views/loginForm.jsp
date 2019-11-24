@@ -192,7 +192,7 @@ h4 {
 						<p>Password</p>
 						<form:password path="userPw" class="password" placeholder="●●●●●●"/>
 						<form:errors path="userPw"/>
-						<button class="login_btn">로그인</button>
+						<button type="submit" class="login_btn">로그인</button>
 					</form:form>
 					<a href="#" class="help_btn">ID 또는 비밀번호를 잊으셨나요?</a>
 				</div>

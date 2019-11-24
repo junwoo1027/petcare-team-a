@@ -51,7 +51,7 @@ public class MemberController {
 			model.addAttribute("user", saved);
 			return "redirect:/index";
 		}
-		return "redirect:/login";
+		return "redirect:/member/login";
 	}
 	
 	@GetMapping("/logout")
