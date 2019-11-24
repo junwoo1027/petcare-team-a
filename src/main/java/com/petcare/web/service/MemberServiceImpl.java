@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petcare.web.domain.MemberVO;
-import com.petcare.web.domain.UserVO;
 import com.petcare.web.mapper.MemberMapper;
 
 
@@ -39,22 +38,5 @@ public class MemberServiceImpl implements MemberService {
 		}else {
 			return 1;
 		}
-	}
-	
-	//로그인
-	@Override
-	public UserVO getUser(String userId) {
-		return memberMapper.getUser(userId);
-	}
-
-	//이메일 중복체크
-	@Override
-	public UserVO getEmail(String userEmail) {
-		return memberMapper.getEmail(userEmail);
-	}
-
-	@Override
-	public UserVO loginPro(UserVO user) {
-		return memberMapper.loginPro(user);
 	}
 }

@@ -3,9 +3,6 @@ package com.petcare.web.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.validation.Validator;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -14,21 +11,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
-import com.petcare.web.interceptor.LoginIntercepter;
-import com.petcare.web.interceptor.LogoutInterceptor;
 import com.petcare.web.interceptor.SampleInterceptor;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "package com.petcare.web.controller")
 public class ServletConfig implements WebMvcConfigurer {
-    
-	@Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
-	
-	//리소스경로 정하는 설정
+    //리소스경로 정하는 설정
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
@@ -38,8 +27,6 @@ public class ServletConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SampleInterceptor());
-        registry.addInterceptor(new LoginIntercepter()).addPathPatterns("/member/loginPro");
-        registry.addInterceptor(new LogoutInterceptor()).addPathPatterns("/member/logout");
     }
     
     /**
@@ -58,17 +45,4 @@ public class ServletConfig implements WebMvcConfigurer {
 		TilesViewResolver viewResolver = new TilesViewResolver();
 		registry.viewResolver(viewResolver);
 	}
-	
-    /**
-     * Configure Spring Validator.
-     */
-    @Bean
-    public Validator validator() {
-        return new LocalValidatorFactoryBean();
-    }
-
-    @Override
-    public Validator getValidator() {
-        return validator();
-    }
 }

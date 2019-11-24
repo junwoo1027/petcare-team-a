@@ -10,6 +10,5 @@
 	<typeAliases>
 		<!-- 회원  -->
 		<typeAlias alias="MemberVO" type="com.petcare.web.domain.MemberVO"/>
-		<typeAlias alias="UserVO" type="com.petcare.web.domain.UserVO"/>
 	</typeAliases>
 </configuration>
