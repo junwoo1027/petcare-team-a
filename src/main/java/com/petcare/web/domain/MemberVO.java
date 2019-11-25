@@ -16,7 +16,6 @@ public class MemberVO {
 	public String getUserId() {
 		return userId;
 	}
-	
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
@@ -28,11 +27,9 @@ public class MemberVO {
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
 	}
-	
 	public String getUserName() {
 		return userName;
 	}
-	
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -84,11 +81,12 @@ public class MemberVO {
 	public void setUserAuthority(String userAuthority) {
 		this.userAuthority = userAuthority;
 	}
-
 	@Override
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userAddress="
 				+ userAddress + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoindate="
 				+ userJoindate + ", userlastLogin=" + userlastLogin + ", userAuthority=" + userAuthority + "]";
 	}
+
+	
 }

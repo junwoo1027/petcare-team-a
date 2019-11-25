@@ -11,5 +11,11 @@
 		<!-- 회원  -->
 		<typeAlias alias="MemberVO" type="com.petcare.web.domain.MemberVO"/>
 		<typeAlias alias="UserVO" type="com.petcare.web.domain.UserVO"/>
+		<!-- 병원 -->
+		<typeAlias alias="HospitalVO" type="com.petcare.web.domain.HospitalVO"/>
+		<!-- 예약 -->
+		<typeAlias alias="ReservVO" type="com.petcare.web.domain.ReservVO"/>
+		<!-- 동물VO -->
+		<typeAlias alias="PetVO" type="com.petcare.web.domain.PetVO"/>
 	</typeAliases>
 </configuration>
