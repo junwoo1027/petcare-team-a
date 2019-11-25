@@ -11,9 +11,9 @@ public interface ReviewMapper {
 
 	public int insert(ReviewVo review);
 	
-	public List<ReviewVo> getList(@Param("cri") Criteria cri, @Param("hospitalid") String hospitalid);
+	public List<ReviewVo> getList(@Param("cri") Criteria cri, @Param("hospitalId") String hospitalId);
 	
-	public int getCountByHospitalid(@Param("hospitalid") String hospitalid);
+	public int getCountByHospitalId(@Param("hospitalId") String hospitalId);
 	
 	public int delete(int reviewNo);
 }

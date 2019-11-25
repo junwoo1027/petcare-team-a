@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<form id="actionForm" action="/animal/list" method="get">
+<form id="actionForm" action="/pet/list" method="get">
 	<input type='hidden' name='pageNum' value = '${pageMaker.cri.pageNum}'>
 	<input type='hidden' name='amount' value = '${pageMaker.cri.amount}'>
 </form>
@@ -34,20 +34,13 @@
 			<tr class="top">
 				<th class="col1">등록일</th>
 				<th class="col2">이름</th>
-				<th class="col3">최근진료일</th>
 			</tr>
 			
 			<!-- 로그인 했을 시 --> 
-			<c:forEach items="${list}" var="animal">
+			<c:forEach items="${list}" var="pet">
 			<tr>
-				<td><fmt:formatDate value="${animal.regdate}" pattern="yyyy/MM/dd"/></td>
-				<td><a class='move' href='<c:out value="${animal.ano}"/>'>${animal.name}</a></td>
-			<c:if test="${!empty animal.lastcare}">
-				<td><fmt:formatDate value="${animal.lastcare}" pattern="yyyy/MM/dd"/></td>
-			</c:if>
-			<c:if test="${empty animal.lastcare}">
-				<td>없음</td>
-			</c:if>
+				<td><fmt:formatDate value="${pet.petRegdate}" pattern="yyyy/MM/dd"/></td>
+				<td><a class='move' href='<c:out value="${pet.petNo}"/>'>${pet.petName}</a></td>
 			</tr>	
 			</c:forEach>
 
@@ -136,7 +129,7 @@ $(document).ready(function(){
 	
 	//동물 등록 페이지 이동 버튼 이벤트
 	$("#regBtn").on("click", function(){
-		self.location = "/animal/register";
+		self.location = "/pet/register";
 	});
 
 	var actionForm = $("#actionForm");
@@ -153,8 +146,8 @@ $(document).ready(function(){
 	//게시글 조회 시 pageNum, amount 파라미터 값 추가
 	$(".move").on("click", function(e){
 		e.preventDefault();
-		actionForm.append("<input type='hidden' name='ano' value='"+ $(this).attr("href")+"'>");
-		actionForm.attr("action", "/animal/get");
+		actionForm.append("<input type='hidden' name='petNo' value='"+ $(this).attr("href")+"'>");
+		actionForm.attr("action", "/pet/get");
 		actionForm.submit();
 	});
 

@@ -4,5 +4,5 @@ import com.petcare.web.domain.HospitalVo;
 
 public interface HospitalService {
 	
-	public HospitalVo get(String hospitalid);
+	public HospitalVo get(String hospitalId);
 }

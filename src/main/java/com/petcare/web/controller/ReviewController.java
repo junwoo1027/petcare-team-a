@@ -40,9 +40,9 @@ public class ReviewController {
 			produces = {
 					MediaType.APPLICATION_XML_VALUE,
 					MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ReviewPageDto> getList(@PathVariable("page") int page, @PathVariable("hospitalid") String hospitalid){
+	public ResponseEntity<ReviewPageDto> getList(@PathVariable("page") int page, @PathVariable("hospitalid") String hospitalId){
 		Criteria cri = new Criteria(page, 10);
-		return new ResponseEntity<>(service.getList(cri, hospitalid), HttpStatus.OK);
+		return new ResponseEntity<>(service.getList(cri, hospitalId), HttpStatus.OK);
 	}
 	
 	//리뷰삭제

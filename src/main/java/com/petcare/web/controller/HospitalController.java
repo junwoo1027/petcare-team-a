@@ -21,7 +21,7 @@ public class HospitalController {
 	private HospitalService service;
 	
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalid") String hospitalid, Model model) {
-		model.addAttribute("hospital", service.get(hospitalid));
+	public void get(@RequestParam("hospitalid") String hospitalId, Model model) {
+		model.addAttribute("hospital", service.get(hospitalId));
 	}
 }

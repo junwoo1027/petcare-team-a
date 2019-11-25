@@ -13,8 +13,8 @@ public class HospitalServiceImpl implements HospitalService {
 	private HospitalMapper mapper;
 	
 	@Override
-	public HospitalVo get(String hospitalid) {
-		return mapper.read(hospitalid);
+	public HospitalVo get(String hospitalId) {
+		return mapper.read(hospitalId);
 	}
 
 }

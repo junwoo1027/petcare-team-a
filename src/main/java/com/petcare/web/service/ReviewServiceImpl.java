@@ -21,7 +21,7 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	public ReviewPageDto getList(Criteria cri, String hospitalid) {
-		return new ReviewPageDto(mapper.getCountByHospitalid(hospitalid), mapper.getList(cri, hospitalid));
+		return new ReviewPageDto(mapper.getCountByHospitalId(hospitalid), mapper.getList(cri, hospitalid));
 	}
 
 	@Override

@@ -67,15 +67,15 @@
 					<label>평점</label>
 					<span class="star-input">
 						<span class="input">
-    						<input type="radio" name="rating" value="1" id="p1">
+    						<input type="radio" name="reviewRating" value="1" id="p1">
     						<label for="p1">1</label>
-    						<input type="radio" name="rating" value="2" id="p2">
+    						<input type="radio" name="reviewRating" value="2" id="p2">
     						<label for="p2">2</label>
-    						<input type="radio" name="rating" value="3" id="p3">
+    						<input type="radio" name="reviewRating" value="3" id="p3">
     						<label for="p3">3</label>
-    						<input type="radio" name="rating" value="4" id="p4">
+    						<input type="radio" name="reviewRating" value="4" id="p4">
    					 		<label for="p4">4</label>
-    						<input type="radio" name="rating" value="5" id="p5">
+    						<input type="radio" name="reviewRating" value="5" id="p5">
     						<label for="p5">5</label>
   						</span>
   						<output for="star-input"><b>0</b>점</output>
@@ -83,11 +83,11 @@
 				</div>
     			<div class = "form-group">
      				<label>아이디</label>
-     				<input class = "form-control" name ='userid' value='userid'> 
+     				<input class = "form-control" name ='userId' value='userId'> 
     			</div>
     			<div class ="form-group">
      				<label>내용</label>
-     				<textarea class ="form-control" name='content' rows="3" style="resize: none;"></textarea>
+     				<textarea class ="form-control" name='reviewContent' rows="3" style="resize: none;"></textarea>
    				</div>
    			</div>
    
@@ -106,7 +106,7 @@
 $(document).ready(function(){
 	
 	//병원아이디
-	var hospital = '<c:out value="${hospital.hospitalid}"/>'
+	var hospital = '<c:out value="${hospital.hospitalId}"/>'
 	var reviewUL = $(".chat");
 	
 	console.log(hospital);
@@ -118,7 +118,7 @@ $(document).ready(function(){
 		
 		console.log("show list " + page);
 		
-		reviewService.getList({hospitalid:hospital,page: page|| 1 }, function(reviewCnt, list) {
+		reviewService.getList({hospitalId:hospital,page: page|| 1 }, function(reviewCnt, list) {
 			
 			console.log("reviewCnt: " + reviewCnt);
 			
@@ -138,22 +138,22 @@ $(document).ready(function(){
 			for (var i = 0, len = list.length || 0; i < len; i++) {
 			      
 				str +="<li class='left clearfix'>";
-			       if(list[i].rating == 1){
+			       if(list[i].reviewRating == 1){
 			    	   str+="<div id='review_bottom'><div id='top'><strong id='red_rating'>★</strong><strong id='gray_rating'>★★★★</strong>";
-			       }else if(list[i].rating == 2){
+			       }else if(list[i].reviewRating == 2){
 			    	   str+="<div id='review_bottom'><div id='top'><strong id='red_rating'>★★</strong><strong id='gray_rating'>★★★</strong>";
-			       }else if(list[i].rating == 3){
+			       }else if(list[i].reviewRating == 3){
 			    	   str+="<div id='review_bottom'><div id='top'><strong id='red_rating'>★★★</strong><strong id='gray_rating'>★★</strong>";
-			       }else if(list[i].rating == 4){
+			       }else if(list[i].reviewRating == 4){
 			    	   str+="<div id='review_bottom'><div id='top'><strong id='red_rating'>★★★★</strong><strong id='gray_rating'>★</strong>";
-			       }else if(list[i].rating == 5){
+			       }else if(list[i].reviewRating == 5){
 			    	   str+="<div id='review_bottom'><div id='top'><strong id='red_rating'>★★★★★</strong>";
 			       }
 
-			       str += "<strong id='rating'>"+list[i].rating+"</strong>"
-			       str +="<sapn id='content'>"+list[i].content+"</span><span><a href=javascript:void(0) id='del_review' class='delete' data-no="+list[i].reviewNo+"><i class='fa fa-trash'></i></a></span></div>";
-			       str +=" <span id='userid' class='primary-font'>"+list[i].userid+"  |  ";
-			       str +=" <small>"+reviewService.displayTime(list[i].regdate)+"</small></span>";
+			       str += "<strong id='rating'>"+list[i].reviewRating+"</strong>"
+			       str +="<sapn id='content'>"+list[i].reviewContent+"</span><span><a href=javascript:void(0) id='del_review' class='delete' data-no="+list[i].reviewNo+"><i class='fa fa-trash'></i></a></span></div>";
+			       str +=" <span id='userid' class='primary-font'>"+list[i].userId+"  |  ";
+			       str +=" <small>"+reviewService.displayTime(list[i].reviewRegdate)+"</small></span>";
 			       str +="</div></li>";
 			}
 			reviewUL.html(str);
@@ -221,9 +221,9 @@ $(document).ready(function(){
 
 	var modal = $(".modal");
 	//모달 아이디값
-	var modalInputUserid = modal.find("input[name='userid']");
+	var modalInputUserid = modal.find("input[name='userId']");
 	//모달 내용 입력값
-	var modalInputContent = modal.find("textarea[name='content']");
+	var modalInputContent = modal.find("textarea[name='reviewContent']");
 
 	//리뷰 삭제버튼
 	var modalRemoveBtn = $("#modalRemoveBtn");
@@ -239,9 +239,9 @@ $(document).ready(function(){
 	//리뷰작성 버튼
 	$("#addReviewBtn").on("click", function(e){
 	        
-	 	modal.find("input[name='userid']").val("");
+	 	modal.find("input[name='userId']").val("");
 	 	modal.find("output>b").text(0);
-	 	$("input:radio[name='rating']").prop('checked', false);
+	 	$("input:radio[name='reviewRating']").prop('checked', false);
 		modal.find("textarea").val("");	
 	 	modal.find("button[id !='modalCloseBtn']").hide();  
 	    modalRegisterBtn.show();
@@ -252,13 +252,13 @@ $(document).ready(function(){
 	
     //리뷰 등록 이벤트 처리
     modalRegisterBtn.on("click", function(e){
-    	var rating = modal.find("input[name=rating]:checked").val();
+    	var rating = modal.find("input[name=reviewRating]:checked").val();
     	
     	var review = {
-    			userid : modalInputUserid.val(),
-    			content : modalInputContent.val(),
-    			rating : rating,
-    			hospitalid:hospital
+    			userId : modalInputUserid.val(),
+    			reviewContent : modalInputContent.val(),
+    			reviewRating : rating,
+    			hospitalId:hospital
     	};
     	
     	

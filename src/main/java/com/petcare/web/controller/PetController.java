@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.petcare.web.domain.AnimalVo;
+import com.petcare.web.domain.PetVo;
 import com.petcare.web.domain.Criteria;
 import com.petcare.web.domain.PageDto;
-import com.petcare.web.service.AnimalService;
+import com.petcare.web.service.PetService;
 
 @Controller
-@RequestMapping("/animal")
-public class AnimalController {
+@RequestMapping("/pet")
+public class PetController {
 
 	@Autowired
-	private AnimalService service;
+	private PetService service;
 	
 
 	//동물 리스트
@@ -38,59 +38,59 @@ public class AnimalController {
 	
 	//동물 등록페이지 이동
 	@GetMapping("/register")
-	public void register(@ModelAttribute("animal") AnimalVo animal) {
+	public void register(@ModelAttribute("pet") PetVo pet) {
 		
 	}
 	
 	//동물 등록
 	@PostMapping("/register")
-	public String register(@Validated @ModelAttribute("animal") AnimalVo animal, BindingResult bindingResult, RedirectAttributes rttr) {
+	public String register(@Validated @ModelAttribute("pet") PetVo pet, BindingResult bindingResult, RedirectAttributes rttr) {
 		
 		if(bindingResult.hasErrors()) {
-			return "/animal/register";
+			return "/pet/register";
 		}
 
-		service.register(animal);
-		rttr.addFlashAttribute("regist", animal.getAge());
+		service.register(pet);
+		rttr.addFlashAttribute("regist", pet.getPetAge());
 		
-		return "redirect:/animal/list";
+		return "redirect:/pet/list";
 	}
 	
 	//동물 정보 조회/수정 페이지 이동
 	@GetMapping({"/get", "/modify"})
-	public void get(@RequestParam("ano") int ano, @ModelAttribute("cri") Criteria cri, Model model) {
-		model.addAttribute("animal", service.get(ano));
+	public void get(@RequestParam("petNo") int petNo, @ModelAttribute("cri") Criteria cri, Model model) {
+		model.addAttribute("pet", service.get(petNo));
 		
 	}
 	
 	//둥물 정보 수정
 	@PostMapping("/modify")
-	public String modify(@Validated @ModelAttribute("animal") AnimalVo animal, BindingResult bindingResult, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+	public String modify(@Validated @ModelAttribute("pet") PetVo pet, BindingResult bindingResult, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		
 		if(bindingResult.hasErrors()) {
-			return "/animal/modify";
+			return "/pet/modify";
 		}
 		
-		if(service.modify(animal)) {
-			rttr.addFlashAttribute("modify", animal.getAno());
+		if(service.modify(pet)) {
+			rttr.addFlashAttribute("modify", pet.getPetNo());
 		}
 
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		
-		return "redirect:/animal/list";
+		return "redirect:/pet/list";
 	}
 	
 	//동물 정보 삭제
 	@PostMapping("/remove")
-	public String remove(@RequestParam("ano") int ano, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-		if(service.remove(ano)) {
-			rttr.addFlashAttribute("remove", ano);
+	public String remove(@RequestParam("petNo") int petNo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		if(service.remove(petNo)) {
+			rttr.addFlashAttribute("remove", petNo);
 		}
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		
-		return "redirect:/animal/list";
+		return "redirect:/pet/list";
 	}
 }

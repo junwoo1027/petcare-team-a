@@ -1,25 +1,28 @@
 package com.petcare.web.domain;
 
+import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import lombok.Data;
+
+@Data
 public class HospitalVo {
 
-	private String hospitalid;
-	private String name;
-	
-	public String getHospitalid() {
-		return hospitalid;
-	}
-	public void setHospitalid(String hospitalid) {
-		this.hospitalid = hospitalid;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	@Override
-	public String toString() {
-		return "HospitalVo [hospitalid=" + hospitalid + ", name=" + name + "]";
-	}
-	
+	private String hospitalId;
+	private String hospitalPw;
+	private String hospitalName;
+	private String hospitalAddress;
+	private String hospitalPhone;
+	private String hospitalEmail;
+	private String hospitalOpne;
+	private String hospitalClose;
+	private int hospitalNightcare;
+	private int hospitalEmergency;
+	private int hospitalSpecial;
+	private int hospitalHotel;
+	private String hospitalSpecies;
+	private MultipartFile hospitalPhoto;
+	private String hospitalIntro;
+	private Date hospitalJoindate;
 }

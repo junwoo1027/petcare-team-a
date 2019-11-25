@@ -25,7 +25,7 @@ var reviewService = (function() {
 	
 	
 	function getList(param, callback, error) {
-		var hospitalid = param.hospitalid;
+		var hospitalid = param.hospitalId;
 		var page = param.page || 1;
 
 		$.getJSON("/review/pages/" + hospitalid + "/" + page + ".json", function (data) {
