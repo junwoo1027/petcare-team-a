@@ -3,7 +3,6 @@ package com.petcare.web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.petcare.web.domain.MemberVO;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.mapper.MemberMapper;
 
@@ -15,8 +14,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	//회원가입
 	@Override
-	public void register(MemberVO memberVO) {
-		memberMapper.register(memberVO);
+	public void register(UserVO user) {
+		memberMapper.register(user);
 	}
 	
 	//아이디 중복체크

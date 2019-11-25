@@ -15,15 +15,15 @@
                 		<c:when test="${not empty sessionScope.user}">
                 			<li>
                 				${sessionScope.user.userName}님 환영합니다.
-                				<a href="/member/logout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                				<a href="/logout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                 			</li>
                 		</c:when>
                 		<c:otherwise>
                 			<li>
-                        		<a href="/member/login" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
+                        		<a href="/login" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
                     		</li>
                     		<li>
-                        		<a href="/member/select" class="sign-in"><i class="fa fa-user"></i> Register</a>
+                        		<a href="/select" class="sign-in"><i class="fa fa-user"></i> Register</a>
                     		</li>
                 		</c:otherwise>
                 	</c:choose>

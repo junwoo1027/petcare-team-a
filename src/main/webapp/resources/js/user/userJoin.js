@@ -11,7 +11,7 @@ $(document).ready(function() {
             },
             // required는 필수, rangelength는 글자 개수(5~10개 사이)
             userPw:{required:true, rangelength:[8,16]},
-            password2:{required:true, equalTo:"#password"},
+            userPw2:{required:true, equalTo:"#userPw"},
             // equalTo : id가 password인 값과 같아야함
             userName:"required", // 검증값이 하나일 경우 이와 같이도 가능
             userEmail:{
@@ -37,7 +37,7 @@ $(document).ready(function() {
                 required:"비밀번호를 입력하세요.",
                 rangelength:"8글자 이상, 16글자 이하여야 합니다."
             },
-            password2:{
+            userPw2:{
                 required:"비밀번호를 다시 입력하세요.",
                 equalTo:"비밀번호가 서로 일치하지 않습니다."
             },
