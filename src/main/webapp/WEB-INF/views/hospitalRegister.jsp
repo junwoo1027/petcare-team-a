@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>병원 회원가입</title>
 <link href='<spring:url value="/resources/css/custom.css"/>' rel="stylesheet" />
-
+<script src='<spring:url value="/resources/js/user/Join.js"/>'></script>
 </head>
 <body>
 <div>
@@ -83,26 +83,26 @@
 					<p style="font-weight: bold;">특성을 골라주세요.</p>
 					<div class="form-check form-check-inline col-md-3">
 						<label class="form-check-label" for="cCode1">
-							<input type="checkbox" class="form-check-input" name="cCode1" id="cCode1" value="1">야간진료
+							<input type="checkbox" class="form-check-input" name="cCode" id="cCode1" value="1">야간진료
 						</label>
 					</div>
 					<div class="form-check form-check-inline col-md-3">
 						<label class="form-check-label" for="cCode2">
-							<input type="checkbox" class="form-check-input" name="cCode2" id="cCode2" value="2">특수동물취급
+							<input type="checkbox" class="form-check-input" name="cCode" id="cCode2" value="2">특수동물취급
 						</label>
 					</div>
 					<div class="form-check form-check-inline col-md-3">
 						<label class="form-check-label" for="cCode3">
-							<input type="checkbox" class="form-check-input" name="cCode3" id="cCode3" value="3">응급실
+							<input type="checkbox" class="form-check-input" name="cCode" id="cCode3" value="3">응급실
 						</label>
 					</div>	
 					<div class="form-check form-check-inline col-md-3">
 						<label class="form-check-label" for="cCode4">
-							<input type="checkbox" class="form-check-input" name="cCode4" id="cCode4" value="4">수술전문
+							<input type="checkbox" class="form-check-input" name="cCode" id="cCode4" value="4">수술전문
 						</label>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<label style="font-weight: bold;">세부사항</label>
 					<textarea class="form-control" placeholder="병원에 대해서 간단한 소개를 적어주세요." name="hospitalIntro" id="hospitalIntro" maxlength="2048" style="height: 350px;" ></textarea>

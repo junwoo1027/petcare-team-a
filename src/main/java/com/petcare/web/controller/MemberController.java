@@ -1,10 +1,7 @@
 package com.petcare.web.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +15,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.service.MemberService;
@@ -63,34 +58,5 @@ public class MemberController {
 		return "redirect:/index";
 	}
 	
-	@GetMapping("/hospital")
-	public String hospital() {
-		return "hospitalRegister";
-	}
-	
-	@PostMapping("/check_id")
-	@ResponseBody
-	public void selectUserID(@RequestParam("userId") String userId, HttpServletResponse response) throws IOException
-	{
-		PrintWriter out = response.getWriter();
-		int count = MemberService.selectUserID(userId);
-		if(count == 0) {
-			out.print(true);
-		}else if(count == 1) {
-			out.print(false);
-		}
-	}
-	
-	@PostMapping("/check_email")
-	@ResponseBody
-	public void selectEmail(@RequestParam("userEmail") String email, HttpServletResponse response) throws IOException
-	{
-		PrintWriter out = response.getWriter();
-		int count = MemberService.selectEmail(email);
-		if(count == 0) {
-			out.print(true);
-		}else if(count == 1) {
-			out.print(false);
-		}
-	}
+
 }

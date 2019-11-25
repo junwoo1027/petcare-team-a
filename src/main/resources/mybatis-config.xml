@@ -18,6 +18,8 @@
 		<!-- 동물VO -->
 		<typeAlias alias="PetVO" type="com.petcare.web.domain.PetVO"/>
 		<!-- 병원VO -->
-		<typeAlias alias="Hospita" type="com.petcare.web.domain.Hospital"/>
+		<typeAlias alias="Hospital" type="com.petcare.web.domain.Hospital"/>
+		<!-- 특성 -->
+		<typeAlias alias="Character" type="com.petcare.web.domain.Character"/>
 	</typeAliases>
 </configuration>

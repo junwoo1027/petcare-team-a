@@ -31,7 +31,7 @@
 				</div>
 				<div class="col-md-5">
 					<div class="classWithPad">
-						<a href="/member/hospital">
+						<a href="/hospital/register">
 							<img width="300" height="300" src='<spring:url value="/resources/images/join2.png"/>'>
 						</a>
 					</div>

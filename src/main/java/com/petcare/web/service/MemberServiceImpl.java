@@ -22,28 +22,6 @@ public class MemberServiceImpl implements MemberService {
 	
 	//아이디 중복체크
 	@Override
-	public int selectUserID(String userId) {
-		String id = memberMapper.selectUserID(userId);
-		if(id == null) {
-			return 0;
-		}else {
-			return 1;
-		}
-	}
-	
-	//이메일 중복체크
-	@Override
-	public int selectEmail(String email) {
-		String userEmail = memberMapper.selectEmail(email);
-		if(userEmail == null) {
-			return 0;			
-		}else {
-			return 1;
-		}
-	}
-	
-	//아이디 중복체크
-	@Override
 	public UserVO getUser(String userId) {
 		return memberMapper.getUser(userId);
 	}
