@@ -21,21 +21,18 @@ public class HospitalController {
 	
 	@GetMapping("/list")
 	public String hospitalList(Model model) {
-		//new ArrayList
-		ArrayList<HospitalVO> list = new ArrayList<HospitalVO>();
+		//new ArrayList?
+		List<HospitalVO> list = new ArrayList<HospitalVO>();
 		list = hospitalService.list();
-		System.out.println("여기요"+list);
-		model.addAllAttributes(list);
-		System.out.println("저기요"+list);
-		//all? attribute?
+		//all?
+		model.addAttribute("list",list);
 		return "hospitalList";
 	}
 	
 	@GetMapping("/search")
 	public String hospitalSearch(Model model, String hospitalName) {
-		ArrayList<HospitalVO> search = hospitalService.search(hospitalName);
+		List<HospitalVO> search = hospitalService.search(hospitalName);
 		model.addAttribute("search",search);
-		//all? attribute?
 		return "hospitalList";
 	}
 	
