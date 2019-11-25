@@ -16,7 +16,8 @@ public class HospitalServiceImpl implements HospitalService {
 	//병원 전체 리스트
 	@Override
 	public ArrayList<HospitalVO> list(){
-		ArrayList<HospitalVO> result = hospitalMapper.listHospital();
+		ArrayList<HospitalVO> result = new ArrayList<HospitalVO>();
+		result = hospitalMapper.listHospital();
 		return result;
 	};
 	

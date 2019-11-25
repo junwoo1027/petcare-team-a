@@ -1,6 +1,7 @@
 package com.petcare.web.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,12 @@ public class HospitalController {
 	
 	@GetMapping("/list")
 	public String hospitalList(Model model) {
-		ArrayList<HospitalVO> list = hospitalService.list();
-		model.addAttribute("list",list);
+		//new ArrayList
+		ArrayList<HospitalVO> list = new ArrayList<HospitalVO>();
+		list = hospitalService.list();
+		System.out.println("여기요"+list);
+		model.addAllAttributes(list);
+		System.out.println("저기요"+list);
 		//all? attribute?
 		return "hospitalList";
 	}

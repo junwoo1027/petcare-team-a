@@ -6,13 +6,13 @@
 		FROM HOSPITAL
 	</select>
 	
-	<select id="searchHospital" resultType="java.util.ArrayList">
+	<select id="searchHospital" parameterType="String" resultType="java.util.ArrayList">
 		SELECT *
 		FROM HOSPITAL
 		WHERE hospital_name = #{hospitalName} <!-- where 절 -->
 	</select>
 	
-	<select id="viewHospital" resultType="com.petcare.web.domain.HospitalVO">
+	<select id="viewHospital" parameterType="String" resultType="com.petcare.web.domain.HospitalVO">
 		SELECT *
 		FROM HOSPITAL
 		WHERE hospital_id = #{hospitalId}

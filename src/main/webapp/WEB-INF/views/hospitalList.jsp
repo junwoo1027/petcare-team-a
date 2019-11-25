@@ -11,7 +11,8 @@
 <!-- 검색창 상단, 결과 하단 -->
 <!-- Ajax 통신 -->
 <div>
-	<h1>동물병원 목록</h1>
+	<div>
+	<h3>동물병원 목록</h3>
 	<form method="get" action="/hospital/search">
 		<select>
 		  <option value="hospitalName">병원 이름</option>
@@ -24,7 +25,9 @@
 		  <input type="checkbox" name="choice4" value="hospitalHotel">애견호텔
 		<input type="submit" value="검색">
 	</form>
-	
+	</div>
+	<div>
+	<h3>검색 결과</h3>
 		<c:forEach items="${list}" var="list">
 			${list.hospitalName}<br>
 			${list.hospitalAddress}<br>
@@ -40,7 +43,7 @@
 			${list.hospitalPhoto}<br>
 			${list.hospitalIntro}<br>
 		</c:forEach>
-	
+	</div>
 </div>
 
 </body>

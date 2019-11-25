@@ -11,7 +11,9 @@
 <!-- 지도 -->
 <!-- 예약하기, 즐겨찾기 버튼 -->
 <!-- 리뷰 붙이기 -->
-	<ul>
+<div>
+	<div>
+	<h3>동물병원 보기</h3>
 		<c:forEach items="${view}" var="list">
 			${list.hospitalName}<br>
 			${list.hospitalAddress}<br>
@@ -27,6 +29,7 @@
 			${list.hospitalPhoto}<br>
 			${list.hospitalIntro}<br>
 		</c:forEach>
-	</ul>
+	</div>
+</div>
 </body>
 </html>
