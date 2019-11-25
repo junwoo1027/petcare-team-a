@@ -1,5 +1,7 @@
 package com.petcare.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,15 +23,15 @@ public class HospitalServiceImpl implements HospitalService {
 	
 	//병원 전체 리스트
 	@Override
-	public ArrayList<HospitalVO> list(){
-		ArrayList<HospitalVO> result = hospitalMapper.listHospital();
+	public List<HospitalVO> list(){
+		List<HospitalVO> result = hospitalMapper.listHospital();
 		return result;
 	};
 	
 	//병원 검색
 	@Override
-	public ArrayList<HospitalVO> search(String hospitalName){
-		ArrayList<HospitalVO> result = hospitalMapper.searchHospital(hospitalName);
+	public List<HospitalVO> search(String hospitalName){
+		List<HospitalVO> result = hospitalMapper.searchHospital(hospitalName);
 		return result;
 	};
 	

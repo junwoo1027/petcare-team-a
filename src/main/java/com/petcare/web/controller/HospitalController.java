@@ -1,6 +1,7 @@
 package com.petcare.web.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,17 +38,18 @@ public class HospitalController {
 	
 	@GetMapping("/list")
 	public String hospitalList(Model model) {
-		ArrayList<HospitalVO> list = hospitalService.list();
+		//new ArrayList?
+		List<HospitalVO> list = new ArrayList<HospitalVO>();
+		list = hospitalService.list();
+		//all?
 		model.addAttribute("list",list);
-		//all? attribute?
 		return "hospitalList";
 	}
 	
 	@GetMapping("/search")
 	public String hospitalSearch(Model model, String hospitalName) {
-		ArrayList<HospitalVO> search = hospitalService.search(hospitalName);
+		List<HospitalVO> search = hospitalService.search(hospitalName);
 		model.addAttribute("search",search);
-		//all? attribute?
 		return "hospitalList";
 	}
 	
