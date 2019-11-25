@@ -1,10 +1,11 @@
 package com.petcare.web.service;
-
 import java.util.ArrayList;
-
-import com.petcare.web.domain.HospitalVO;
+import com.petcare.web.domain.HospitalVo;
 
 public interface HospitalService {
+	
+	public HospitalVo get(String hospitalId);
+
 	//병원 전체 리스트
 	public ArrayList<HospitalVO> list();
 	//병원 검색
