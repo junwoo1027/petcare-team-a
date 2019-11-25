@@ -18,4 +18,5 @@
 		WHERE hospital_id = #{hospitalId}
 	</select>
 	
+	
 </mapper>

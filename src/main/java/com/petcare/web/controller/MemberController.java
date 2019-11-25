@@ -2,7 +2,7 @@ package com.petcare.web.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-//import java.util.List;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-//import org.springframework.validation.FieldError;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.service.MemberService;
 import com.petcare.web.validator.MemberValidator;
-
 
 @Controller
 @RequestMapping("/member")
@@ -49,13 +48,15 @@ public class MemberController {
 	
 	@PostMapping("/user")
 	public String register(@ModelAttribute("user") @Valid UserVO user, BindingResult result) {
-		//String msg = null;
+		String msg = null;
 		
 		if(result.hasErrors()) {
-			/*
-			 * List<FieldError> errors = result.getFieldErrors(); for(FieldError error :
-			 * errors) { msg = error.getDefaultMessage(); }
-			 */
+			
+			  List<FieldError> errors = result.getFieldErrors(); 
+			  for(FieldError error : errors) { 
+				  msg = error.getDefaultMessage(); 
+			  }
+			 
 			return "user/normalRegister";
 		}
 		MemberService.register(user);

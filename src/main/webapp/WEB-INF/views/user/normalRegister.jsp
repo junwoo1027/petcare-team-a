@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>유저 회원가입</title>
 <link href='<spring:url value="/resources/css/custom.css"/>' rel="stylesheet" />
-<script src='<spring:url value="/resources/js/user/userJoin.js"/>'></script>
+
 </head>
 <body>
 <div>

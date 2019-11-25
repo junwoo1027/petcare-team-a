@@ -1,14 +1,21 @@
 package com.petcare.web.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.petcare.web.domain.Hospital;
 import com.petcare.web.domain.HospitalVO;
+import com.petcare.web.domain.character;
 import com.petcare.web.service.HospitalService;
 
 @Controller
@@ -41,4 +48,8 @@ public class HospitalController {
 		return "hospitalView";
 	}
 	
+	@PostMapping("/Join")
+	public String register(Hospital hospital, character character, Redirect rttr, HttpServletRequest request) {
+		return "redirect:/index";
+	}
 }

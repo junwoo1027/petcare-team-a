@@ -2,6 +2,7 @@ package com.petcare.web.service;
 
 import java.util.ArrayList;
 
+import com.petcare.web.domain.Hospital;
 import com.petcare.web.domain.HospitalVO;
 
 public interface HospitalService {
@@ -11,4 +12,6 @@ public interface HospitalService {
 	public ArrayList<HospitalVO> search(String hospitalName);
 	//병원 보기
 	public HospitalVO view(String hospitalId);
+	//병원 회원가입
+	public void register(Hospital hospital);
 }

@@ -17,5 +17,7 @@
 		<typeAlias alias="ReservVO" type="com.petcare.web.domain.ReservVO"/>
 		<!-- 동물VO -->
 		<typeAlias alias="PetVO" type="com.petcare.web.domain.PetVO"/>
+		<!-- 병원VO -->
+		<typeAlias alias="Hospita" type="com.petcare.web.domain.Hospital"/>
 	</typeAliases>
 </configuration>

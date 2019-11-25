@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.petcare.web.domain.Hospital;
 import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.mapper.HospitalMapper;
 
@@ -32,6 +33,12 @@ public class HospitalServiceImpl implements HospitalService {
 	public HospitalVO view(String hospitalId) {
 		HospitalVO result = hospitalMapper.viewHospital(hospitalId);
 		return result;
+	}
+
+	//병원 회원가입
+	@Override
+	public void register(Hospital hospital) {
+		hospitalMapper.register(hospital);
 	};
 	
 }
