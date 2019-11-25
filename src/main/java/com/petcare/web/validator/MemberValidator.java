@@ -29,18 +29,18 @@ public class MemberValidator implements Validator {
 		//아이디 중복체크
 		if(savedUser != null)
 		{
-			errors.rejectValue("userId", "duplicateId", "이미 존재하는 아이디입니다.");
+			errors.rejectValue("userId", "duplicateId", "중복된 아이디입니다.");
 		}
 		
 		//이메일 중복체크
 		if(emailUser != null)
 		{
-			errors.rejectValue("userEmail", "duplicateEmail", "이미 존재하는 이메일입니다.");
+			errors.rejectValue("userEmail", "duplicateEmail", "중복된 이메일입니다.");
 		}
 		
 		//비밀번호 확인
 		if(!newUser.getUserPw().equals(newUser.getUserPw2())) {
-			errors.rejectValue("userPw", "misMatchUserPw", "비밀번호가 서로 일치하지 않습니다.");
+			errors.rejectValue("userPw", "misMatchUserPw", "비밀번호를 다시 확인해주세요.");
 		}
 		
 		
