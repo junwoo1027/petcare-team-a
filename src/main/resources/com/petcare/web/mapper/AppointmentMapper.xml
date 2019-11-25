@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.petcare.web.mapper.AppointmentMapper">
+	
+	<select id="getList" resultType="com.petcare.web.domain.AppointmentVo">
+		select appt_no, pet_no, user_id, hospital_id, appt_date, appt_time, appt_note, appt_status
+		from appointment
+		where appt_no > 0
+		order by appt_no asc
+		limit #{pageStart}, #{amount}
+	</select>
+	
+	<delete id="delete">
+		delete from appointment where appt_no = #{apptNo}
+	</delete>
+	
+	<update id="update">
+		update appointment
+		set appt_status=#{apptStatus}
+		where appt_no = #{apptNo}
+	</update>
+	
+	<select id="read" resultType="com.petcare.web.domain.AppointmentVo">
+		select * from appointment where appt_no = #{apptNo}
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+    	select count(*) from appointment where appt_no > 0
+    </select>
+</mapper>

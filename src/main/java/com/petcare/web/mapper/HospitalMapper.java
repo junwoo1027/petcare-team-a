@@ -1,8 +1,7 @@
 package com.petcare.web.mapper;
 
 import java.util.List;
-
-import com.petcare.web.domain.HospitalVO;
+import com.petcare.web.domain.HospitalVo;
 
 public interface HospitalMapper {
 	
@@ -10,4 +9,3 @@ public interface HospitalMapper {
 	public List<HospitalVO> searchHospital(String hospitalName); //병원 검색 리스트
 	public HospitalVO viewHospital(String hospitalId); //병원 정보
 
-}

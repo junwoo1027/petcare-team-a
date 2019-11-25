@@ -5,11 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.mapper.HospitalMapper;
 
 @Service
 public class HospitalServiceImpl implements HospitalService {
+	
+	@Override
+	public HospitalVo get(String hospitalId) {
+		return hospitalMapper.read(hospitalId);
+	}
+
 	@Autowired
 	private HospitalMapper hospitalMapper;
 	
