@@ -185,13 +185,13 @@ h4 {
 			<div class="left"></div>
 			<div class="right">
 				<div class="formBox">
-					<form:form id="login_form" modelAttribute="user" method="post" action="/member/loginPro">
+					<form:form id="login_form" modelAttribute="user" method="post" action="/loginPro">
 						<p>ID</p>
 						<form:input type="text" path="userId" class="id" placeholder="Your ID"/>
-						<form:errors path="userId"/>
+						<form:errors path="userId" cssClass="text-danger"/>
 						<p>Password</p>
 						<form:password path="userPw" class="password" placeholder="●●●●●●"/>
-						<form:errors path="userPw"/>
+						<form:errors path="userPw" cssClass="text-danger"/>
 						<button type="submit" class="login_btn">로그인</button>
 					</form:form>
 					<a href="#" class="help_btn">ID 또는 비밀번호를 잊으셨나요?</a>
