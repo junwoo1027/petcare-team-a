@@ -10,7 +10,7 @@ public class MemberVO {
 	private String userPhone;
 	private String userEmail;
 	private Date userJoindate;
-	private Date userlastLogin;
+	private Date userLastLogin;
 	private String userAuthority;
 	
 	public String getUserId() {
@@ -67,11 +67,11 @@ public class MemberVO {
 	}
 	
 	public Date getUserlastLogin() {
-		return userlastLogin;
+		return userLastLogin;
 	}
 	
 	public void setUserlastLogin(Date userlastLogin) {
-		this.userlastLogin = userlastLogin;
+		this.userLastLogin = userlastLogin;
 	}
 	
 	public String getUserAuthority() {
@@ -85,7 +85,7 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userAddress="
 				+ userAddress + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoindate="
-				+ userJoindate + ", userlastLogin=" + userlastLogin + ", userAuthority=" + userAuthority + "]";
+				+ userJoindate + ", userlastLogin=" + userLastLogin + ", userAuthority=" + userAuthority + "]";
 	}
 
 	
