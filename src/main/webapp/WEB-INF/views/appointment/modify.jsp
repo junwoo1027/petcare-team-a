@@ -7,11 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#status{margin-left:-15px; margin-bottom:15px; width:200px;}
+	.screen{margin-left:200px; margin-right:200px;}
+</style>
 </head>
 <body>
-<div>
-	<div>
-		<h1>예약정보</h1>
+<div class="screen">
+	<div class="panel panel-default">
+		<div class="panel-heading">예약정보</div>
 	</div>
 	
 	<form role="form" action="/appointment/modify" method="post">
@@ -19,27 +23,31 @@
 		<input type="hidden" name='pageNum' value="${cri.pageNum}">
 		<input type="hidden" name='amount' value="${cri.amount}">
 	
-		<div>
-			예약날짜 : <input value=<fmt:formatDate value="${appt.apptDate}" pattern="yyyy/MM/dd"/> readonly="readonly">
+		<div class="form-group">
+			<label>예약날짜</label> <input class="form-control" value=<fmt:formatDate value="${appt.apptDate}" pattern="yyyy/MM/dd"/> readonly="readonly">
 		</div>
-		<div>
-			예약시간 : <input value=<fmt:formatDate value="${appt.apptTime}" pattern="HH:mm"/> readonly="readonly">
+		<div class="form-group">
+			<label>예약시간</label> <input class="form-control" value=<fmt:formatDate value="${appt.apptTime}" pattern="HH:mm"/> readonly="readonly">
 		</div>
-		<div>
-			동물이름 : <input value="${appt.petNo}" readonly="readonly">
+		<div class="form-group">
+			<label>동물이름</label> <input class="form-control" value="${appt.petName}" readonly="readonly">
 		</div>
-		<div>
-			예약아이디 : <input value="${appt.userId}" readonly="readonly">
+		<div class="form-group">
+			<label>아이디</label> <input class="form-control" value="${appt.userId}" readonly="readonly">
 		</div>
-		<div>
-			예약상태<select name="apptStatus">
+		<div class="form-group">
+			<label>전화번호</label> <input class="form-control" value="${appt.userPhone}" readonly="readonly">
+		</div>
+		<div class="container" id="status">
+			<label>예약상태</label>
+			<select  class="form-control" name="apptStatus">
 				<option value="0" <c:if test="${appt.apptStatus == 0}">selected</c:if>>예약완료</option>
 				<option value="1" <c:if test="${appt.apptStatus == 1}">selected</c:if>>에약취소</option>
 			</select>
 		</div>
-			<button type="submit" data-oper='modify'>수정</button>
-			<button type="submit" data-oper='remove'>삭제</button>
-			<button type="submit" data-oper='list'>목록</button>
+			<button type="submit" data-oper='modify' class="btn btn-default">수정</button>
+			<button type="submit" data-oper='remove' class="btn btn-default">삭제</button>
+			<button type="submit" data-oper='list' class="btn btn-default">목록</button>
 		<div>
 		
 		</div>

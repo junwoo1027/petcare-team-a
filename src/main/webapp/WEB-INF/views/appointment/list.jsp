@@ -7,26 +7,42 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	a:hover{color:red;}
+	.screen{margin-left:200px; margin-right:200px;}
+</style>
 </head>
 <body>
 
 <form id="actionForm" action="/appointment/list" method="get">
 	<input type='hidden' name='pageNum' value = '${pageMaker.cri.pageNum}'>
 	<input type='hidden' name='amount' value = '${pageMaker.cri.amount}'>
+	<input type='hidden' name='searchType' value = '${pageMaker.cri.searchType}'>
+	<input type='hidden' name='keyword' value = '${pageMaker.cri.keyword}'>
 </form>
 
-<div>
-	<div>
-		<h1>예약내역</h1>
+<div class="screen">
+	<div class="panel panel-default">
+		<div class="panel-heading">예약내역</div>
 	</div>
 	
+	<div class="form-inline">
+		<select id="searchTypeSel" name="searchType">
+			<option value="">검색조건</option>
+			<option value="i">예약아이디</option>
+			<option value="p">동물이름</option>
+		</select>
+		<input class="form-control" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+		<button id="searchBtn" class="btn btn-primary">검색</button>
+	</div>
 	<div>
-		<table border="1">
+		<table class="table table-striped table-bordered table-hover">
 			<tr>
 				<th>예약날짜</th>
 				<th>예약시간</th>
 				<th>동물이름</th>
 				<th>예약아이디</th>
+				<th>전화번호</th>
 				<th>예약상태</th>
 			</tr>
 			
@@ -34,20 +50,31 @@
 				<tr>
 					<td><fmt:formatDate value="${apptList.apptDate}" pattern="yyyy/MM/dd"/></td>
 					<td><fmt:formatDate value="${apptList.apptTime}" pattern="HH:mm"/></td>
-					<td>${apptList.petNo}</td>
+					<td>${apptList.petName}</td>
 					<td>${apptList.userId}</td>
+					<td>${apptList.userPhone}</td>
 					<c:if test="${apptList.apptStatus == 0}">
 						<td><a class='move' href='<c:out value="${apptList.apptNo}"/>'>예약완료</a></td>
 					</c:if>
 					<c:if test="${apptList.apptStatus == 1}">
 						<td><a class='move' href='<c:out value="${apptList.apptNo}"/>'>예약취소</a></td>
 					</c:if>
-				</tr>
+				</tr>	
 			</c:forEach>
+			<tr>
+				<c:if test="${empty apptLists}">
+					<td>없음</td>
+					<td>없음</td>
+					<td>없음</td>
+					<td>없음</td>
+					<td>없음</td>
+					<td>없음</td>
+				</c:if>
+			</tr>
 		</table>
 		
-		<div>
-			<ul class="page">
+		<div class="text-center">
+			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li><a href="${pageMaker.startPage -1}">이전</a>
 					</li>
@@ -100,6 +127,36 @@ $(document).ready(function(){
 		actionForm.attr("action", "/appointment/modify");
 		actionForm.submit();
 	});
+	
+	setSearchTypeSelect();
+	
+	function setSearchTypeSelect(){
+		var $searchTypeSel = $('#searchTypeSel');
+		var $keyword = $('#keyword');
+		
+		$searchTypeSel.val('${pageMaker.cri.searchType}').prop("selected",true);
+		//검색 버튼이 눌리면
+		$('#searchBtn').on('click',function(){
+			var searchTypeVal = $searchTypeSel.val();
+			var keywordVal = $keyword.val();
+			//검색 조건 입력 안했으면 경고창 
+			if(!searchTypeVal){
+				alert("검색 조건을 선택하세요!");
+				$searchTypeSel.focus();
+				return;
+			//검색어 입력 안했으면 검색창
+			}else if(!keywordVal){
+				alert("검색어를 입력하세요!");
+				$('#keyword').focus();
+				return;
+			}
+			var url = "list?pageNum=1"
+					+ "&amount=" + "${pageMaker.cri.amount}"
+					+ "&searchType=" + searchTypeVal
+					+ "&keyword=" + encodeURIComponent(keywordVal);
+			window.location.href = url;
+		});
+	}
 });
 </script>
 </body>

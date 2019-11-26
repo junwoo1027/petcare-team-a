@@ -8,9 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	li{list-style-type:none;}
-
-.paginate_button{float:left; margin: 0 10px 0 10px;}
+	a:hover{color:red;}
+	.screen{margin-left:200px; margin-right:200px;}
 </style>
 </head>
 <body>
@@ -20,17 +19,14 @@
 	<input type='hidden' name='amount' value = '${pageMaker.cri.amount}'>
 </form>
 
-<div>
-	<div class="title">
-		<h1>${login.id}님의 반려동물</h1>
+<div class="screen">
+	<div class="panel panel-default">
+		<div class="panel-heading">${login.id} 반려동물
+			<button id="regBtn" class="btn btn-xs pull-right btn btn-primary">추가</button>
+		</div>
 	</div>
-
 	<div>
-		<input type="button" id="regBtn" class="regBtn" value="추가">
-	</div>
-
-	<div class="table">
-		<table border="1">
+		<table class="table table-striped table-bordered table-hover">
 			<tr class="top">
 				<th class="col1">등록일</th>
 				<th class="col2">이름</th>
@@ -46,8 +42,8 @@
 
 		</table>
 		
-		<div>
-			<ul class="page">
+		<div class="text-center">
+			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li><a href="${pageMaker.startPage -1}">이전</a>
 					</li>

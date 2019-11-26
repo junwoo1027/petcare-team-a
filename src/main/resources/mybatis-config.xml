@@ -15,6 +15,6 @@
 		<!-- 예약 -->
 		<typeAlias alias="ReservVO" type="com.petcare.web.domain.ReservVO"/>
 		<!-- 동물VO -->
-		<typeAlias alias="PetVO" type="com.petcare.web.domain.PetVO"/>
+		<typeAlias alias="PetVO" type="com.petcare.web.domain.PetVo"/>
 	</typeAliases>
 </configuration>

@@ -11,10 +11,10 @@ import com.petcare.web.mapper.HospitalMapper;
 @Service
 public class HospitalServiceImpl implements HospitalService {
 	
-	@Override
-	public HospitalVo get(String hospitalId) {
-		return hospitalMapper.read(hospitalId);
-	}
+//	@Override
+//	public HospitalVo get(String hospitalId) {
+//		return hospitalMapper.read(hospitalId);
+//	}
 
 	@Autowired
 	private HospitalMapper hospitalMapper;

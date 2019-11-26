@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.petcare.web.domain.PetVO;
+import com.petcare.web.domain.PetVo;
 import com.petcare.web.domain.ReservVO;
 import com.petcare.web.mapper.ReservMapper;
 
@@ -25,9 +25,9 @@ public class ReservService {
 		
 	}
 
-	public List<PetVO> getPets(String userId) {
+	public List<PetVo> getPets(String userId) {
 		
-		List<PetVO> pets = reservMapper.getPets(userId);
+		List<PetVo> pets = reservMapper.getPets(userId);
 		
 		return pets;
 	}

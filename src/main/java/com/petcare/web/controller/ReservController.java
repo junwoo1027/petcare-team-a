@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.petcare.web.domain.PetVO;
+import com.petcare.web.domain.PetVo;
 import com.petcare.web.domain.ReservVO;
 import com.petcare.web.service.ReservService;
 
@@ -33,7 +33,7 @@ public class ReservController {
 		
 		
 		//---------임의로 넣은 값 로그인 되면 삭제
-		List<PetVO> pets = new ArrayList<PetVO>();
+		List<PetVo> pets = new ArrayList<PetVo>();
 		pets = reservService.getPets("jiyoung");
 		System.out.println(pets);
 		
