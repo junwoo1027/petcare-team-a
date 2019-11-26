@@ -30,35 +30,28 @@ public class HospitalController {
 	@Autowired
 	private HospitalService hospitalService;
 	
+	//병원 정보
 	@GetMapping("/get")
-	public void get(@RequestParam("hospitalid") String hospitalId, Model model) {
+	public void get(@RequestParam("hospitalId") String hospitalId, Model model) {
 		model.addAttribute("hospital", hospitalService.view(hospitalId));
 	}
-
 	
-	
+	//병원 전체 리스트
 	@GetMapping("/list")
-	public String hospitalList(Model model) {
+	public void hospitalList(Model model) {
 		//new ArrayList?
 		List<HospitalVO> list = new ArrayList<HospitalVO>();
 		list = hospitalService.list();
 		//all?
 		model.addAttribute("list",list);
-		return "hospitalList";
 	}
 	
+	//병원 검색
 	@GetMapping("/search")
 	public String hospitalSearch(Model model, String hospitalName) {
 		List<HospitalVO> search = hospitalService.search(hospitalName);
 		model.addAttribute("search",search);
-		return "hospitalList";
-	}
-	
-	@GetMapping("/view")
-	public String hospitalView(Model model, String hospitalId) {
-		HospitalVO view = hospitalService.view(hospitalId);
-		model.addAttribute("view",view);
-		return "hospitalView";
+		return "list";
 	}
 	
 	@GetMapping("/register")
