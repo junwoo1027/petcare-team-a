@@ -3,8 +3,8 @@
 <mapper namespace="com.petcare.web.mapper.LoginMapper">
     <select id="findCorrectUser" resultType="com.petcare.web.domain.MemberVO">
         select *
-        from member
+        from user
         where user_id = #{userId}
-          and password = #{password}
+          and user_pw = #{userPw}
     </select>
 </mapper>

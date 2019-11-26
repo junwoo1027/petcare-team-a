@@ -1,4 +1,3 @@
-<%@ include file="../includes/header.jsp"%>
 <form action="faqInsert" method="post">
 	<div style="clear: both; width: 60%; margin: auto;">
 			<div>
@@ -54,4 +53,3 @@
 	border: 1px solid GREY;
 	}
 </style>
-<%@ include file="../includes/footer.jsp"%>

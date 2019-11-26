@@ -26,12 +26,12 @@ public class FaqController {
 	private FaqService faqService;
 	
 	//글 목록
-	@GetMapping("/notice")
-	public String FaqList(Model model) {
+	@GetMapping("/faqList")
+	public String FaqList(Model model, MemberVO member) {
 		List<Faq> faqList = faqService.faqList();
 		model.addAttribute("faqList", faqList);
 		
-		return "faq/notice";
+		return "faq/faqList";
 	}
 	
 	//글쓰기 페이지
@@ -44,10 +44,10 @@ public class FaqController {
 	@PostMapping("faq/faqInsert")
 	public String Insert(@ModelAttribute Faq faq, HttpSession session){
 		
-		/*
-		 * String userId = (String) session.getAttribute("userId");
-		 * faq.setUserId(userId); faqService.insert(faq);
-		 */
+		String userId = (String) session.getAttribute("member");
+		faq.setUserId(userId);
+		
+		faqService.insert(faq);
 		
 		return "redirect:faq/faqList";
 	}

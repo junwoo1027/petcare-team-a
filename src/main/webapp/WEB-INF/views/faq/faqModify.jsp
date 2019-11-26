@@ -1,4 +1,7 @@
-<%@ include file="../includes/header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <form action="faqModify">
 	<div style="clear: both; width: 60%; margin: auto;">
 		<input type="hidden" name="faqNo" value="${faqModify.faqNo}" />
@@ -61,4 +64,3 @@
 	border: 1px solid GREY;
 	}
 </style>
-<%@ include file="../includes/footer.jsp"%>

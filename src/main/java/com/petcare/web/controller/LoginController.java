@@ -1,5 +1,6 @@
 package com.petcare.web.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +28,16 @@ public class LoginController {
     }
 
     @PostMapping("/loginProcess")
-    public String loginProcess(@ModelAttribute MemberVO member, Model model, HttpSession session) {
-	
-		/*
-		 * String userId = (String)session.getAttribute("member");
-		 * member.setUserId(userId);
-		 */
+    public String loginProcess(@ModelAttribute MemberVO member, Model model, HttpSession session, HttpServletRequest request) {
+    	
+
+		String userId = (String)session.getAttribute("member");
+		member.setUserId(userId);
 
     	MemberVO saved = loginService.getCorrectMember(member);
         if (saved != null) {
             model.addAttribute("member", saved);
-            return "redirect:/login/loginForm";
+            return "redirect:/faq/faqList";
         }
 
         return "redirect:/login/loginForm";

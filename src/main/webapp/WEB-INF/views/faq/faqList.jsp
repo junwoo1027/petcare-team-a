@@ -1,102 +1,124 @@
-<%@ include file="../includes/header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
 <div class="container">
-<div class="page-header">
-    <h1>FAQ</h1>
-</div>
-
-<!-- Bootstrap FAQ - START -->
-<div class="container">
-    <div style="display: none;" class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    </div>
-    <c:choose>
-			<c:when test="${sessionScope.member.role == 1}">
-					<h4 class="panel-title"><a class="panel-title" style="" href="/faqForm">faq Write</a></h4>
-			</c:when>
-		    <c:otherwise>
-		     		<div hidden></div>
-		    </c:otherwise>
-    </c:choose>
-    <br />
-    <div class="panel-group" id="accordion">
-        <c:forEach items="${faqList}" var="faq">
-        <div class="panel panel-default">
-        	<div hidden>${faq.faqNo}</div>
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                   	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                   	${faq.faqTitle}
-                   	</a>
-                   	<c:choose>
-						<%-- <c:when test="${not empty sessionScope.member}"> --%>
-						<c:when test="${sessionScope.member.role == 1}">
+	<c:forEach items="${faqList}" var="faq">
+    <div class="notice notice-success">
+    	<div hidden>${faq.faqNo}</div>
+        <strong> Q </strong> ${faq.faqTitle} | ${faq.faqRegdate}
+        	<h1>
+        		<c:choose>
+					<c:when test="${sessionScope.member.userAuthority == 1}">
+							<a href="/faqForm">FAQ Write</a>
+					</c:when>
+				    <c:otherwise>
+				     		<div hidden></div>
+				    </c:otherwise>
+	    		</c:choose>
+        	</h1>
+        	<h5>
+        		<c:choose>
+						<c:when test="${sessionScope.member.userAuthority == 1}">
 							<a href="faqModify?faqNo=${faq.faqNo}">Edit</a>
 						</c:when>
 		    			<c:otherwise>
 		    				<div hidden></div>
 		    			</c:otherwise>
-    				</c:choose>
-                   	
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
-            	<div hidden>
-            		<div>${faq.userId}</div>
-            		<div>${faq.faqRegdate}</div>
-            	</div>
-                <div class="panel-body">
-                	${faq.faqContent}
-                </div>
-            </div>
+    			</c:choose>
+        	</h5>
+        	<h5>
+        		<a class="btn btn-default" href="faqDelete?faqNo=${faqModify.faqNo}">X</a>
+        	</h5>
+        	<span class="pull-right text-success readMore">Read</span>
+        <div class="desc">
+           <p>
+           		${faq.userId}
+                ${faq.faqContent}
+           </p>        
         </div>
-        </c:forEach>
     </div>
+    </c:forEach>
 </div>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".readMore").click(function(){
+	var This=$(this);    
+	$(this).next().toggle(function(){
+	    if(This.text()=="Read"){
+	      This.text("Hide") 
+	    }
+	    else{
+	        This.text("Read") 
+	    }
+	})
+});})
+</script>
+</body>
 <style>
-@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
-    .faqHeader {
-        font-size: 27px;
-        margin: 20px;
+.notice:first-child{
+    margin-top:10px;
     }
-
-    .panel-heading [data-toggle="collapse"]:after {
-        font-family: 'Glyphicons Halflings';
-        content: "\e072"; /* "play" icon */
-        float: right;
-        color: #F58723;
-        font-size: 18px;
-        line-height: 22px;
-        /* rotate "play" icon from > (right arrow) to down arrow */
-        -webkit-transform: rotate(-90deg);
-        -moz-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-        -o-transform: rotate(-90deg);
-        transform: rotate(-90deg);
+.notice {
+    padding: 15px;
+    background-color: #fafafa;
+    border-left: 6px solid #7f7f84;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+       -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+            box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+.notice-sm {
+    padding: 10px;
+    font-size: 80%;
+}
+.notice-lg {
+    padding: 35px;
+    font-size: large;
+}
+.notice-success {
+    border-color: #80D651;
+}
+.notice-success>strong {
+    color: #80D651;
+    font-size: 30px;
+}
+.notice-info {
+    border-color: #45ABCD;
+}
+.notice-info>strong {
+    color: #45ABCD;
+}
+.notice-warning {
+    border-color: #FEAF20;
+}
+.notice-warning>strong {
+    color: #FEAF20;
+}
+.notice-danger {
+    border-color: #d73814;
+}
+.notice-danger>strong {
+    color: #d73814;
+}
+.notice>.desc{
+    display:none;
     }
-
-    .panel-heading [data-toggle="collapse"].collapsed:after {
-        /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
-        -webkit-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
-        transform: rotate(90deg);
-        color: #454444;
-    }
-
-.btnSubmit{
-    font-weight: 600;
-    width: 50%;
-    color: #282726;
-    background-color: #fff;
-    border: none;
-    border-radius: 1.5rem;
-    padding:2%;
+.readMore{
+    cursor:pointer;
 }
 </style>
-
-<!-- Bootstrap FAQ - END -->
-
-</div>
-<%@ include file="../includes/footer.jsp"%>
+</html>
