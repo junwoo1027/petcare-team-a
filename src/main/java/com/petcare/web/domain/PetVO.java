@@ -11,7 +11,7 @@ import lombok.Data;
 
 //동물vo
 @Data
-public class PetVo {
+public class PetVO {
 
 	private int petNo; //동물번호
 	@NotEmpty(message ="이름을 입력해주세요.")
