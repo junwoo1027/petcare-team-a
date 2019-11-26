@@ -7,9 +7,6 @@ import com.petcare.web.domain.Hospital;
 import com.petcare.web.domain.HospitalVO;
 
 public interface HospitalService {
-	
-	public HospitalVo get(String hospitalId);
-
 	//병원 전체 리스트
 	public List<HospitalVO> list();
 	//병원 검색

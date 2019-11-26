@@ -11,7 +11,7 @@
     	(#{petName}, #{petGender}, #{petNeuter}, #{petWeight}, #{petSpecies}, #{petBreed}, #{petAge}, #{petPhoto}, #{userId})
     </insert>
     
-    <select id="getList" resultType="com.petcare.web.domain.PetVo">
+    <select id="getList" resultType="com.petcare.web.domain.PetVO">
     	select * from pet
     </select>
     
@@ -32,11 +32,11 @@
     	where pet_no = #{petNo}
     </update>
     
-    <select id="read" resultType="com.petcare.web.domain.PetVo">
+    <select id="read" resultType="com.petcare.web.domain.PetVO">
     	select * from pet where pet_no = #{petNo}
     </select>
     
-    <select id="getListWithPaging" resultType="com.petcare.web.domain.PetVo">
+    <select id="getListWithPaging" resultType="com.petcare.web.domain.PetVO">
     	select
     		pet_no, pet_name, pet_gender, pet_neuter, pet_weight, pet_species, pet_breed, pet_age, pet_regdate, user_id
     	from pet
