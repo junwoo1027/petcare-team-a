@@ -15,7 +15,7 @@ public class HospitalVO {
 	private String hospitalAddress;
 	private String hospitalPhone;
 	private String hospitalEmail;
-	private String hospitalOpen;
+	private String hospitalOpne;
 	private String hospitalClose;
 	private int hospitalNightcare;
 	private int hospitalEmergency;
