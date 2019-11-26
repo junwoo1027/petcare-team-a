@@ -51,7 +51,7 @@ public class HospitalController {
 	public String hospitalSearch(Model model, String hospitalName) {
 		List<HospitalVO> search = hospitalService.search(hospitalName);
 		model.addAttribute("search",search);
-		return "list";
+		return "hospital/list";
 	}
 	
 	@GetMapping("/register")

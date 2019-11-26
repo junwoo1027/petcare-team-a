@@ -30,7 +30,7 @@
 	<div>
 	<h3>전체 리스트</h3>
 		<c:forEach items="${list}" var="list">
-			이름: ${list.hospital_name}<br>
+		<a class='move' href='<c:out value="get?hospitalId=${list.hospital_id}"/>'>이름: ${list.hospital_name}</a><br>
 			주소: ${list.hospital_address}<br>
 			전화번호: ${list.hospital_phone}<br>
 			이메일: ${list.hospital_email}<br>
