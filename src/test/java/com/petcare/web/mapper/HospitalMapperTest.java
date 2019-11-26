@@ -19,6 +19,7 @@ public class HospitalMapperTest {
 	@Autowired
 	private HospitalMapper hospitalMapper;
 	
+	@Test
 	public void joinTest() {
 		Hospital hospital = new Hospital();
 		
@@ -39,8 +40,8 @@ public class HospitalMapperTest {
 	public void codeTest() {
 		Character character = new Character();
 		
-		character.setHospitalId("hos01");
-		character.setCCode(1);
+		character.setHospitalId("hos03");
+		character.setCCode(2);
 		
 		hospitalMapper.codeInsert(character);
 	}

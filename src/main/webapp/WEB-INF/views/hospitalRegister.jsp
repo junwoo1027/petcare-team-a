@@ -22,7 +22,7 @@
 </div>
 <div class="container">
 	<div class="col-lg-2"></div>
-	<div class="col-lg-8">
+	<div class="col-lg-10">
 		<div class="jumbotron" style="padding-top: 20px;">
 			<form id="hospitalJoin" action="/hospital/Join" method="post">
 				<div class="form-group">

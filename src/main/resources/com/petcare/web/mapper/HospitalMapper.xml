@@ -28,7 +28,7 @@
 										, hospital_email
 										, hospital_open
 										, hospital_close
-										, hospital_type
+										, hospital_species
 										, hospital_intro)
 					VALUES(#{hospitalId}
 										, #{hospitalPw}

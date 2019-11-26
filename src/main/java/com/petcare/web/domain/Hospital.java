@@ -27,7 +27,7 @@ public class Hospital {
 	
 	private String hospitalClose;
 	
-	private String hospitalType;
+	private String hospitalSpecies;
 	
 	private MultipartFile hospitalPhoto;
 	
