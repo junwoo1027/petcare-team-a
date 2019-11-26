@@ -18,17 +18,19 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
-                <ul class="nav navbar-nav" id="navbar-nav">
-                
-                                
-                </ul>
-                <ul class="nav navbar-nav navbar-right rightside-navbar">
-                    <li>
-                        <a href="submit-property.html" class="button">
-                            Submit Property
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="/reserv/go_reservation" tabindex="0"data-submenu="" aria-expanded="false">
+                            	예약하기
                         </a>
                     </li>
-                  
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="/hospital/search" tabindex="0"data-submenu="" aria-expanded="false">
+                            	검색하기
+                        </a>
+                    </li>
                 </ul>
             </div>
 
