@@ -72,7 +72,7 @@ public class HospitalServiceImpl implements HospitalService {
 
 	//병원 로그인
 	@Override
-	public HospitalVO loginPro2(HospitalVO hospitaluser) {
+	public Hospital loginPro2(Hospital hospitaluser) {
 		// TODO Auto-generated method stub
 		return hospitalMapper.loginPro2(hospitaluser);
 	}

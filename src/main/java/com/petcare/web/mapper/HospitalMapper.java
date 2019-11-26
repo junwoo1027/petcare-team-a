@@ -15,5 +15,5 @@ public interface HospitalMapper {
 	public void codeInsert (Character character);	//특성 삽입
 	public String selectID(String id); //아이디 중복체크(Juery Validator)
 	public String selectEmail(String email); //이메일 중복체크(Juery Validator)
-	public HospitalVO loginPro2(HospitalVO hospitaluser);	//병원회원 로그인
+	public Hospital loginPro2(Hospital hospitaluser);	//병원회원 로그인
 }
