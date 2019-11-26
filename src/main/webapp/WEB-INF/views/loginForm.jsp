@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -182,8 +183,7 @@ h4 {
 	</div>
 	<div class="jumbotron" style="padding-top: 20px;">
 		<div class="login_div" style="padding-top: 20px;">
-			<div class="left"></div>
-			<div class="right">
+			<div class="left">
 				<div class="formBox">
 					<form:form id="login_form" modelAttribute="user" method="post" action="/loginPro">
 						<p>ID</p>
@@ -192,6 +192,20 @@ h4 {
 						<p>Password</p>
 						<form:password path="userPw" class="password" placeholder="●●●●●●"/>
 						<form:errors path="userPw" cssClass="text-danger"/>
+						<button type="submit" class="login_btn">로그인</button>
+					</form:form>
+					<a href="#" class="help_btn">ID 또는 비밀번호를 잊으셨나요?</a>
+				</div>
+			</div>
+			<div class="right">
+				<div class="formBox">
+					<form:form id="login_form" modelAttribute="hospitaluser" method="post" action="/loginPro2">
+						<p>ID</p>
+						<form:input type="text" path="hospitalId" class="id" placeholder="Your ID"/>
+						<form:errors path="hospitalId" cssClass="text-danger"/>
+						<p>Password</p>
+						<form:password path="hospitalPw" class="password" placeholder="●●●●●●"/>
+						<form:errors path="hospitalPw" cssClass="text-danger"/>
 						<button type="submit" class="login_btn">로그인</button>
 					</form:form>
 					<a href="#" class="help_btn">ID 또는 비밀번호를 잊으셨나요?</a>

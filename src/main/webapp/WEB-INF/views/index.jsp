@@ -10,7 +10,7 @@
                 <img src="http://placehold.it/1920x550" alt="banner-slider-1">
                 <div class="carousel-caption banner-slider-inner banner-top-align">
                     <div class="text-center">
-                        <h1 data-animation="animated fadeInDown delay-05s"><span>Find your </span> Dream House</h1>
+                        <h1 data-animation="animated fadeInDown delay-05s"><span> Find your </span> Dream House</h1>
                         <p class="hidden-xs">Lorem ipsum dolor sit amet, conconsectetuer adipiscing elit</p>
                         <a href="#" class="btn button-md button-theme" data-animation="animated fadeInUp delay-05s">Get Started Now</a>
                         <a href="#" class="btn button-md border-button-theme" data-animation="animated fadeInUp delay-05s">Learn More</a>

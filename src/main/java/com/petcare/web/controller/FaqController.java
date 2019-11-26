@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.petcare.web.domain.Faq;
+import com.petcare.web.domain.FaqVO;
 import com.petcare.web.domain.MemberVO;
+import com.petcare.web.domain.UserVO;
 import com.petcare.web.service.FaqService;
 
 @Controller
@@ -28,7 +29,7 @@ public class FaqController {
 	//글 목록
 	@GetMapping("/faqList")
 	public String FaqList(Model model, MemberVO member) {
-		List<Faq> faqList = faqService.faqList();
+		List<FaqVO> faqList = faqService.faqList();
 		model.addAttribute("faqList", faqList);
 		
 		return "faq/faqList";
@@ -36,29 +37,33 @@ public class FaqController {
 	
 	//글쓰기 페이지
 	@GetMapping("/faqForm")
-	public String FaqForm(@ModelAttribute MemberVO member, HttpServletRequest req) {
+	public String FaqForm(@ModelAttribute UserVO user, HttpServletRequest req) {
 		return "faq/faqForm";
 	}
 	
 	//글쓰기 
-	@PostMapping("faq/faqInsert")
-	public String Insert(@ModelAttribute Faq faq, HttpSession session){
+	@PostMapping("/faqInsert")
+	public String Insert(@ModelAttribute FaqVO faq, HttpSession session, Model model){
 		
-		String userId = (String) session.getAttribute("member");
-		faq.setUserId(userId);
+		faq.setUserId("admin");
+		
+		
+		/*
+		 * String userId = (String) session.getAttribute("user"); faq.setUserId(userId);
+		 */
 		
 		faqService.insert(faq);
 		
-		return "redirect:faq/faqList";
+		return "redirect:/faq/faqList";
 	}
 	
 	//글 보기 페이지
 	@PostMapping("/faqView")
-	public String View(@ModelAttribute Faq faq, HttpServletRequest request, Model model){
+	public String View(@ModelAttribute FaqVO faq, HttpServletRequest request, Model model){
 		int faqNo = Integer.parseInt(request.getParameter("faqNo"));
 		faq.setFaqNo(faqNo);;
 		
-		Faq faqView = faqService.view(faq);
+		FaqVO faqView = faqService.view(faq);
 		model.addAttribute("view", faqView);
 		
 		return "faq/faqView";
@@ -66,12 +71,12 @@ public class FaqController {
 	
 	//글 수정 페이지
 	@RequestMapping("/faqModify")
-	public String faqModify(@ModelAttribute("faq") Faq faq, HttpServletRequest request, Model model) {
+	public String faqModify(@ModelAttribute("faq") FaqVO faq, HttpServletRequest request, Model model) {
 		
 		int faqNo = Integer.parseInt(request.getParameter("faqNo"));
 		faq.setFaqNo(faqNo);
 		
-		Faq faqModify = faqService.modifyView(faq);
+		FaqVO faqModify = faqService.modifyView(faq);
 		model.addAttribute("faqModify", faqModify);
 		
 		return "faq/faqModify";
@@ -79,19 +84,19 @@ public class FaqController {
 	
 	//글 수정
 	@RequestMapping("/modify")
-	public String modify(Faq faq) {
+	public String modify(FaqVO faq) {
 			
 		faqService.update(faq);
 			
-		return "redirect:faq/faqList";
+		return "redirect:/faq/faqList";
 		
-		}
+	}
 	
 	//글 삭제 페이지
-	@PostMapping("/faqDelete")
-	public String Delete(@ModelAttribute Faq faq){
+	@GetMapping("/delete")
+	public String Delete(@ModelAttribute FaqVO faq){
 		faqService.delete(faq);
-		return "redirect:faq/faqList";		
+		return "redirect:/faq/faqList";		
 	}
 
 }

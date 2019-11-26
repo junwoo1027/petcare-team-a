@@ -11,16 +11,16 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <ul class="top-social-media pull-right">
-                    <li>
-                        <a href="/login/loginForm" class="sign-in"><i class="fa fa-sign-in"></i> Login</a>
-                    </li>
-                    <li>
-                        <a href="/member/select" class="sign-in"><i class="fa fa-user"></i> Register</a>
-                    </li>
                 	<c:choose>
                 		<c:when test="${not empty sessionScope.user}">
                 			<li>
                 				${sessionScope.user.userName}님 환영합니다.
+                				<a href="/logout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
+                			</li>
+                		</c:when>
+                		<c:when test="${not empty sessionScope.hospitaluser}">
+                			<li>
+                				${sessionScope.hospitaluser.hospitalId}님 환영합니다.
                 				<a href="/logout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                 			</li>
                 		</c:when>

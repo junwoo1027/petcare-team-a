@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.domain.UserVO;
+import com.petcare.web.service.HospitalService;
 import com.petcare.web.service.MemberService;
 
 /**
@@ -20,6 +22,9 @@ public class HomeController {
 	
 	@Autowired
 	private MemberService MemberService;
+	
+	@Autowired
+	private HospitalService hospitalService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -32,6 +37,7 @@ public class HomeController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserVO());
+		model.addAttribute("hospitaluser", new HospitalVO());
 		return "loginForm";
 	}
 	
@@ -40,6 +46,16 @@ public class HomeController {
 		UserVO saved = MemberService.loginPro(user);
 		if (saved != null) {
 			model.addAttribute("user", saved);
+			return "redirect:/index";
+		}
+		return "redirect:/login";
+	}
+	
+	@PostMapping("/loginPro2")
+	public String loginProcess2(@ModelAttribute("hospitaluser") HospitalVO hospital, Model model) {
+		HospitalVO saved = hospitalService.loginPro2(hospital);
+		if (saved != null) {
+			model.addAttribute("hospitaluser", saved);
 			return "redirect:/index";
 		}
 		return "redirect:/login";

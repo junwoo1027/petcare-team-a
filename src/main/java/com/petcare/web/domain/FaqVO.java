@@ -8,7 +8,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @ToString
-public class Faq {
+public class FaqVO {
 	private Integer faqNo;
 	private String faqTitle;
 	private String faqContent;

@@ -69,6 +69,13 @@ public class HospitalServiceImpl implements HospitalService {
 			return 1;
 		}
 	}
+
+	//병원 로그인
+	@Override
+	public HospitalVO loginPro2(HospitalVO hospitaluser) {
+		// TODO Auto-generated method stub
+		return hospitalMapper.loginPro2(hospitaluser);
+	}
 	
 
 }

@@ -9,9 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
@@ -20,35 +20,29 @@
     <div class="notice notice-success">
     	<div hidden>${faq.faqNo}</div>
         <strong> Q </strong> ${faq.faqTitle} | ${faq.faqRegdate}
+        <a class="btn btn-default" href="delete?faqNo=${faq.faqNo}">X</a>
+		<c:choose>
+			<c:when test="${sessionScope.user.userAuthority == 1}">
+				<a href="modify?faqNo=${faq.faqNo}">Edit</a>
+			</c:when>
+ 			<c:otherwise>
+  				<div hidden></div>
+  			</c:otherwise>
+		</c:choose>
         	<h1>
         		<c:choose>
-					<c:when test="${sessionScope.member.userAuthority == 1}">
-							<a href="/faqForm">FAQ Write</a>
+					<c:when test="${sessionScope.user.userAuthority == 1}">
+							<a class="btn btn-default" href="/faqForm">FAQ Write</a>
 					</c:when>
 				    <c:otherwise>
 				     		<div hidden></div>
 				    </c:otherwise>
 	    		</c:choose>
         	</h1>
-        	<h5>
-        		<c:choose>
-						<c:when test="${sessionScope.member.userAuthority == 1}">
-							<a href="faqModify?faqNo=${faq.faqNo}">Edit</a>
-						</c:when>
-		    			<c:otherwise>
-		    				<div hidden></div>
-		    			</c:otherwise>
-    			</c:choose>
-        	</h5>
-        	<h5>
-        		<a class="btn btn-default" href="faqDelete?faqNo=${faqModify.faqNo}">X</a>
-        	</h5>
         	<span class="pull-right text-success readMore">Read</span>
         <div class="desc">
-           <p>
-           		${faq.userId}
-                ${faq.faqContent}
-           </p>        
+           <p>작성자: ${faq.userId}</p>
+           <pre><p>${faq.faqContent}</p></pre>    
         </div>
     </div>
     </c:forEach>
