@@ -9,9 +9,9 @@ public class MemberVO {
 	private String userAddress;
 	private String userPhone;
 	private String userEmail;
-	private Date userJoinDate;
-	private Date userLastlogin;
-	private int userAuthority;
+	private Date userJoindate;
+	private Date userlastLogin;
+	private String userAuthority;
 	
 	public String getUserId() {
 		return userId;
@@ -19,9 +19,11 @@ public class MemberVO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
 	public String getUserPw() {
 		return userPw;
 	}
+	
 	public void setUserPw(String userPw) {
 		this.userPw = userPw;
 	}
@@ -31,47 +33,59 @@ public class MemberVO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
 	public String getUserAddress() {
 		return userAddress;
 	}
+	
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
+	
 	public String getUserPhone() {
 		return userPhone;
 	}
+	
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
+	
 	public String getUserEmail() {
 		return userEmail;
 	}
+	
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public Date getUserJoinDate() {
-		return userJoinDate;
+	
+	public Date getUserJoindate() {
+		return userJoindate;
 	}
-	public void setUserJoinDate(Date userJoinDate) {
-		this.userJoinDate = userJoinDate;
+	
+	public void setUserJoindate(Date userJoindate) {
+		this.userJoindate = userJoindate;
 	}
-	public Date getUserLastlogin() {
-		return userLastlogin;
+	
+	public Date getUserlastLogin() {
+		return userlastLogin;
 	}
-	public void setUserLastlogin(Date userLastlogin) {
-		this.userLastlogin = userLastlogin;
+	
+	public void setUserlastLogin(Date userlastLogin) {
+		this.userlastLogin = userlastLogin;
 	}
-	public int getUserAuthority() {
+	
+	public String getUserAuthority() {
 		return userAuthority;
 	}
-	public void setUserAuthority(int userAuthority) {
+	
+	public void setUserAuthority(String userAuthority) {
 		this.userAuthority = userAuthority;
 	}
 	@Override
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPw=" + userPw + ", userName=" + userName + ", userAddress="
-				+ userAddress + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoinDate="
-				+ userJoinDate + ", userLastlogin=" + userLastlogin + ", userAuthority=" + userAuthority + "]";
+				+ userAddress + ", userPhone=" + userPhone + ", userEmail=" + userEmail + ", userJoindate="
+				+ userJoindate + ", userlastLogin=" + userlastLogin + ", userAuthority=" + userAuthority + "]";
 	}
 
 	
