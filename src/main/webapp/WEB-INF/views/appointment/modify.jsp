@@ -22,7 +22,9 @@
 		<input type='hidden' name='apptNo' value="${appt.apptNo}">
 		<input type="hidden" name='pageNum' value="${cri.pageNum}">
 		<input type="hidden" name='amount' value="${cri.amount}">
-	
+		<input type="hidden" name='searchType' value="${cri.searchType}">
+		<input type="hidden" name='keyword' value="${cri.keyword}">
+		
 		<div class="form-group">
 			<label>예약날짜</label> <input class="form-control" value=<fmt:formatDate value="${appt.apptDate}" pattern="yyyy/MM/dd"/> readonly="readonly">
 		</div>
@@ -69,10 +71,14 @@ $(document).ready(function(){
 			formObj.attr("action", "/appointment/list").attr("method", "get");
 			var pageNumTag = $("input[name='pageNum']").clone();
 			var amountTag = $("input[name='amount']").clone();
+			var searchTypeTag = $("input[name='searchType']").clone();
+			var keywordTag = $("input[name='keyword']").clone();
 			
 			formObj.empty();
 			formObj.append(pageNumTag);
 			formObj.append(amountTag);
+			formObj.append(searchTypeTag);
+			formObj.append(keywordTag);
 		}
 		
 		formObj.submit();

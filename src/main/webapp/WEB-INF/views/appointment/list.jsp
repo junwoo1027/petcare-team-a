@@ -10,6 +10,8 @@
 <style>
 	a:hover{color:red;}
 	.screen{margin-left:200px; margin-right:200px;}
+	#search{margin-bottom:15px;}
+	#null{text-align:center;}
 </style>
 </head>
 <body>
@@ -26,7 +28,7 @@
 		<div class="panel-heading">예약내역</div>
 	</div>
 	
-	<div class="form-inline">
+	<div id="search" class="form-inline">
 		<select id="searchTypeSel" name="searchType">
 			<option value="">검색조건</option>
 			<option value="i">예약아이디</option>
@@ -63,12 +65,7 @@
 			</c:forEach>
 			<tr>
 				<c:if test="${empty apptLists}">
-					<td>없음</td>
-					<td>없음</td>
-					<td>없음</td>
-					<td>없음</td>
-					<td>없음</td>
-					<td>없음</td>
+					<td colspan='6' id="null">예약된 내역이 없습니다.</td>
 				</c:if>
 			</tr>
 		</table>
@@ -141,12 +138,12 @@ $(document).ready(function(){
 			var keywordVal = $keyword.val();
 			//검색 조건 입력 안했으면 경고창 
 			if(!searchTypeVal){
-				alert("검색 조건을 선택하세요!");
+				alert("검색 조건을 선택하세요");
 				$searchTypeSel.focus();
 				return;
 			//검색어 입력 안했으면 검색창
 			}else if(!keywordVal){
-				alert("검색어를 입력하세요!");
+				alert("검색어를 입력하세요");
 				$('#keyword').focus();
 				return;
 			}
