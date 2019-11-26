@@ -21,14 +21,14 @@ public class MemberMapperTest {
 	@Test
 	public void joinTest() {
 		MemberVO member = new MemberVO();
-		member.setUserId("soul09");
-		member.setUserPw("1234");
-		member.setUserName("홍길동");
-		member.setUserAddress("서울시 동작구");
-		member.setUserPhone("010-1234-1234");
-		member.setUserEmail("soul09@naver.com");
+		/*
+		 * member.setUserId("soul09"); member.setUserPw("1234");
+		 * member.setUserName("홍길동"); member.setUserAddress("서울시 동작구");
+		 * member.setUserPhone("010-1234-1234");
+		 * member.setUserEmail("soul09@naver.com");
+		 */
 		
-		memberMapper.register(member);
+		//memberMapper.register(member);
 	}
 	
 }

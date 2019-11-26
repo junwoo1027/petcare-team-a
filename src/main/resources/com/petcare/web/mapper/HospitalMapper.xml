@@ -19,4 +19,43 @@
 		WHERE hospital_id = #{hospitalId}
 	</select>
 	
+	<insert id="register" parameterType="Hospital">
+		INSERT INTO HOSPITAL(hospital_id
+										, hospital_pw
+										, hospital_name
+										, hospital_address
+										, hospital_phone
+										, hospital_email
+										, hospital_open
+										, hospital_close
+										, hospital_species
+										, hospital_intro)
+					VALUES(#{hospitalId}
+										, #{hospitalPw}
+										, #{hospitalName}
+										, #{hospitalAddress}
+										, #{hospitalPhone}
+										, #{hospitalEmail}
+										, #{hospitalOpen}
+										, #{hospitalClose}
+										, 'HOSPITAL'
+										, #{hospitalIntro, jdbcType=VARCHAR})		
+	</insert>
+	
+	<insert id="codeInsert" parameterType="Character">
+		INSERT INTO H_CHARACTER(hospital_id, c_code)
+			   VALUES(#{hospitalId}, #{cCode})							
+	</insert>
+	
+	<select id="selectID" resultType="String">
+		SELECT hospital_id
+		FROM HOSPITAL
+		WHERE hospital_id = #{hospitalId}
+	</select>
+	
+	<select id="selectEmail" resultType="String">
+		SELECT hospital_email
+		FROM HOSPITAL
+		WHERE hospital_email = #{hospitalEmail}
+	</select>		
 </mapper>
