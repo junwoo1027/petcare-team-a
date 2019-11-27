@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Main header start -->
 <header class="main-header">
@@ -18,18 +19,6 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
-                <ul class="nav navbar-nav" id="navbar-nav">
-                
-                                
-                </ul>
-                <ul class="nav navbar-nav navbar-right rightside-navbar">
-                    <li>
-                        <a href="submit-property.html" class="button">
-                            Submit Property
-                        </a>
-                    </li>
-                  
-                </ul>
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="/hospital/search" tabindex="0" data-submenu="" aria-expanded="false">

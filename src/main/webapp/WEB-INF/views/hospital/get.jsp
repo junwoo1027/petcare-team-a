@@ -28,9 +28,24 @@
     </style>
 </head>
 <body>
-<div>
-	남궁성병원 입니다.<br>
-</div>
+
+	<div>
+	<h3>"<c:out value="${hospital.hospitalName}"/>" 병원</h3>
+			이름: <c:out value="${hospital.hospitalName}"/><br>
+			주소: <c:out value="${hospital.hospitalAddress}"/><br>
+			전화번호: <c:out value="${hospital.hospitalPhone}"/><br>
+			이메일: <c:out value="${hospital.hospitalEmail}"/><br>
+			영업시작: <c:out value="${hospital.hospitalOpen}"/><br>
+			영업마감: <c:out value="${hospital.hospitalClose}"/><br>
+			야간진료: <c:out value="${hospital.hospitalNightcare}"/><br>
+			응급실: <c:out value="${hospital.hospitalEmergency}"/><br>
+			특수동물: <c:out value="${hospital.hospitalSpecial}"/><br>
+			애견호텔: <c:out value="${hospital.hospitalHotel}"/><br>
+			종류: <c:out value="${hospital.hospitalSpecies}"/><br>
+			사진: <c:out value="${hospital.hospitalPhoto}"/><br>
+			소개: <c:out value="${hospital.hospitalIntro}"/><br><br><br>
+		
+	</div>
 
 <div class="row">
 	<div class="panel panel-default">

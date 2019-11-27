@@ -41,7 +41,7 @@ public class UserVO {
 	private Date userJoindate;
 	
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-	private Date userlastLogin;
+	private Date userLastLogin;
 	
 	private String userAuthority;
 }
