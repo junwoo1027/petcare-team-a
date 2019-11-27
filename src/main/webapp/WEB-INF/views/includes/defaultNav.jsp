@@ -30,6 +30,41 @@
                     </li>
                   
                 </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="/hospital/search" tabindex="0" data-submenu="" aria-expanded="false">
+                            	검색</a></li>
+                     <li class="dropdown">
+                        <a href="/faq/faqList" tabindex="0" data-submenu="" aria-expanded="false">
+                            	FAQ</a></li>
+                    <c:if test="${not empty sessionScope.user}">
+                        <li class="dropdown active">
+                        	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            	반려동물 관리<span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="/pet/register">반려동물 목록</a></li>
+	                            <li><a href="/pet/list">반려동물 등록</a></li>
+	                        </ul>
+                    	</li>
+                    	<li class="dropdown active">
+                        	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            	마이페이지<span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="/member/modifyForm">개인정보 수정</a></li>
+	                        </ul>
+                    	</li>
+              		</c:if>
+              		<c:if test="${not empty sessionScope.hospital}">
+                    	<li class="dropdown active">
+                        	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            	마이페이지<span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="#">개인정보 수정</a></li>
+	                        </ul>
+                    	</li>
+              		</c:if>                   
+                 </ul>     
+                 
             </div>
 
             <!-- /.navbar-collapse -->
