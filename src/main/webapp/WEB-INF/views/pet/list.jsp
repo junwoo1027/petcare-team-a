@@ -22,7 +22,7 @@
 
 <div>
 	<div class="title">
-		<h1>${login.id}님의 반려동물</h1>
+		<h1>${user.userId}님의 반려동물</h1>
 	</div>
 
 	<div>

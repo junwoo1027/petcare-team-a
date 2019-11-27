@@ -52,7 +52,7 @@
 	</div>
 	
 	<div>
-		<input type="hidden" name="userId" value="${login.id}">
+		<input type="hidden" name="userId" value="${user.userId}">
 	</div>
 	
 	<div>
