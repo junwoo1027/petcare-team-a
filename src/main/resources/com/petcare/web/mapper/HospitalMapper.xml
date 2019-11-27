@@ -57,5 +57,12 @@
 		SELECT hospital_email
 		FROM HOSPITAL
 		WHERE hospital_email = #{hospitalEmail}
+	</select>
+	
+	<select id="loginPro2" resultType="com.petcare.web.domain.HospitalVO">
+		SELECT *
+		FROM hospital
+		WHERE hospital_id = #{hospitalId}
+		AND hospital_pw = #{hospitalPw}
 	</select>		
 </mapper>

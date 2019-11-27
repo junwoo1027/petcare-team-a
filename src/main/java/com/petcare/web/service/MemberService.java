@@ -1,5 +1,6 @@
 package com.petcare.web.service;
 
+import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.domain.UserVO;
 
 public interface MemberService {

@@ -39,6 +39,7 @@ public class ServletConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SampleInterceptor());
         registry.addInterceptor(new LoginIntercepter()).addPathPatterns("/loginPro");
+        registry.addInterceptor(new LoginIntercepter()).addPathPatterns("/loginPro2");
         registry.addInterceptor(new LogoutInterceptor()).addPathPatterns("/logout");
     }
     
