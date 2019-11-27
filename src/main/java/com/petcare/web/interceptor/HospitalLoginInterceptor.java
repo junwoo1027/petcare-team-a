@@ -10,7 +10,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.petcare.web.domain.Hospital;
 import com.petcare.web.domain.HospitalVO;
 
-public class LoginInterceptor2 extends HandlerInterceptorAdapter {
+public class HospitalLoginInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
