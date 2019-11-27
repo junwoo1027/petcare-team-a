@@ -1,10 +1,12 @@
 package com.petcare.web.controller;
 
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,19 +47,16 @@ public class HomeController {
 	}
 	
 	@PostMapping("/loginPro")
-	public String loginProcess(@ModelAttribute("user") UserVO user, Model model) {
+	public void loginProcess(@ModelAttribute("user") UserVO user, Model model) {
 		UserVO saved = MemberService.loginPro(user);
 		if (saved != null) {
-			model.addAttribute("user", saved);
-			return "redirect:/index";
 		}
-		return "redirect:/login";
+		model.addAttribute("user", saved);
 	}
 	
 	@PostMapping("/loginPro2")
-	public String loginProcess2(@ModelAttribute("hospitaluser") Hospital hospitaluser, Model model, HttpSession session) {
+	public String loginProcess2(@ModelAttribute("hospitaluser") Hospital hospitaluser, Model model) {
 		Hospital saved = hospitalService.loginPro2(hospitaluser);
-		
 		if (saved != null) {
 			model.addAttribute("hospitaluser", saved);
 			return "redirect:/index";

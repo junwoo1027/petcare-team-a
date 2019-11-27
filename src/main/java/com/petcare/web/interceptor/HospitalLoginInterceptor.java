@@ -17,7 +17,6 @@ public class HospitalLoginInterceptor extends HandlerInterceptorAdapter {
         Hospital hospital = (Hospital) modelAndView.getModel().get("hospitaluser");
 
         if(hospital != null) {
-        	
             HttpSession session = request.getSession();
             session.setAttribute("hospitaluser", hospital);
         }

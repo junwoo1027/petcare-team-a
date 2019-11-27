@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,21 +14,24 @@ import lombok.Data;
 @Data
 public class PetVO {
 
-	private int petNo; //동물번호
-	@NotEmpty(message ="이름을 입력해주세요.")
-	private String petName; //동물이름
-	private String petGender; //동물성별
-	private String petNeuter; //중성화
-	@Min(value=1, message="숫자를 입력해주세요.")
-	private int petWeight; //동물 몸무게
-	@NotEmpty(message = "동물 종류를 입력해주세요.")
-	private String petSpecies; //동물 종류
-	@NotEmpty(message = "동물 품종을 입력해주세요.")
-	private String petBreed; //품종
-	@Min(value=1, message="숫자를 입력해주세요.")
-	private int petAge; //동물 나이
-	private MultipartFile petPhoto; //동물사진
-	private Date petRegdate; //등록일
-	private String userId;//동물주인
+	private int petNo;
+	@NotEmpty(message="이름을 입력해주세요.")
+	private String petName;
+	private String petGender;
+	private String petNeuter;
+	@Min(value=1, message="몸무게는 0 이상이어야 합니다.")
+	@NotNull(message="몸무게를 입력해주세요.")
+	private int petWeight;
+	@NotEmpty(message="종류를 입력해주세요.")
+	private String petSpecies;
+	@NotEmpty(message="품종을 입력해주세요.")
+	private String petBreed;
+	@Min(value=1, message="나이는 0 이상이어야 합니다.")
+	@NotNull(message="나이를 입력해주세요.")
+	private int petAge;
+	private byte[] petPhoto;
+	private String userId;
+	private Date petRegdate;
+	private Date treatRegdate;
 	
 }

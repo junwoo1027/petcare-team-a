@@ -1,46 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.screen{margin-left:200px; margin-right:200px;}
+</style>
 </head>
 <body>
-<h1>반려 동물 정보</h1>
-	<div>
-		이름 <input type="text" name="petName"  value="${pet.petName}" readonly="readonly">
+<div class="screen">
+	<div class="panel panel-default">
+		<div class="panel-heading">반려 동물 정보</div>
+	</div>
+	<div class="form-group">
+		<label>이름</label> <input class="form-control" type="text" name="petName"  value="${pet.petName}" readonly="readonly">
 	</div>
 
-	<div>
-		성별 <input type="text" name="petGender" value="${pet.petGender}" readonly="readonly">
+	<div class="form-group">
+		<label>성별</label> <input class="form-control" type="text" name="petGender" value="${pet.petGender}" readonly="readonly">
 	</div>
 
-	<div>
-		중성화 여부 <input type="text" name="petNeuter" value="${pet.petNeuter}" readonly="readonly">
+	<div class="form-group"> 
+		<label>중성화 여부</label> <input class="form-control" type="text" name="petNeuter" value="${pet.petNeuter}" readonly="readonly">
 	</div>
 		
-	<div>
-		몸무게 <input type="text" name="petWeight" value="${pet.petWeight}" readonly="readonly">
+	<div class="form-group">
+		<label>몸무게</label> <input class="form-control" type="text" name="petWeight" value="${pet.petWeight}" readonly="readonly">
+	</div>
+	
+	<div class="form-group">
+		<label>종류</label> <input class="form-control" type="text" name="petSpecies" value="${pet.petSpecies}" readonly="readonly">
+	</div>
+	
+	<div class="form-group">
+		<label>품종</label> <input class="form-control" type="text" name="petBreed" value="${pet.petBreed}" readonly="readonly">
+	</div>
+	
+	<div class="form-group">
+		<label>나이</label> <input class="form-control" type="text" name="petAge" value="${pet.petAge}" readonly="readonly">
+	</div>
+	
+	<div class="form-group">
+		<label>마지막 진료일</label> <input class="form-control" type="text" name="treatRegdate" value="<fmt:formatDate value="${pet.petRegdate}" pattern="yyyy/MM/dd"/>" readonly="readonly">
 	</div>
 	
 	<div>
-		종류 <input type="text" name="petSpecies" value="${pet.petSpecies}" readonly="readonly">
+		<button data-oper='modify' class="btn btn-default">수정</button>
+		<button data-oper='list' class="btn btn-default">목록</button>
 	</div>
-	
-	<div>
-		품종 <input type="text" name="petBreed" value="${pet.petBreed}" readonly="readonly">
-	</div>
-	
-	<div>
-		나이 <input type="text" name="petAge" value="${pet.petAge}" readonly="readonly">
-	</div>
-	
-	<div>
-		<button data-oper='modify'>수정</button>
-		<button data-oper='list'>목록</button>
-	</div>
-	
+</div>
 	<form id='operForm' action="/petl/modify" method="get">
 		<input type="hidden" id='petNo' name='petNo' value="${pet.petNo}">
 		<input type='hidden' name='pageNum' value="${cri.pageNum}">

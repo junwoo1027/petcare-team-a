@@ -3,6 +3,9 @@ package com.petcare.web.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.*;
@@ -11,7 +14,7 @@ import lombok.*;
 public class Hospital {
 
 	private String hospitalId;
-	
+
 	private String hospitalPw;
 	
 	private String hospitalPw2;
