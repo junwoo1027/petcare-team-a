@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	li{list-style-type:none;}
-
-.paginate_button{float:left; margin: 0 10px 0 10px;}
+	a:hover{color:red;}
+	.screen{margin-left:200px; margin-right:200px;}
+	#pets{text-align:center;}
 </style>
 </head>
 <body>
@@ -20,34 +20,40 @@
 	<input type='hidden' name='amount' value = '${pageMaker.cri.amount}'>
 </form>
 
-<div>
-	<div class="title">
-		<h1>${user.userId}님의 반려동물</h1>
+<div class="screen">
+	<div class="panel panel-default">
+		<div class="panel-heading">${login.id} 반려동물
+			<button id="regBtn" class="btn btn-xs pull-right btn btn-primary">추가</button>
+		</div>
 	</div>
-
 	<div>
-		<input type="button" id="regBtn" class="regBtn" value="추가">
-	</div>
-
-	<div class="table">
-		<table border="1">
-			<tr class="top">
-				<th class="col1">등록일</th>
-				<th class="col2">이름</th>
+		<table class="table table-striped table-bordered table-hover">
+			<tr>
+				<th>등록일</th>
+				<th>이름</th>
+				<th>마지막 진료일</th>
 			</tr>
 			
-			<!-- 로그인 했을 시 --> 
 			<c:forEach items="${list}" var="pet">
 			<tr>
 				<td><fmt:formatDate value="${pet.petRegdate}" pattern="yyyy/MM/dd"/></td>
 				<td><a class='move' href='<c:out value="${pet.petNo}"/>'>${pet.petName}</a></td>
-			</tr>	
+				<c:if test="${empty pet.treatRegdate}">
+					<td>없음</td>
+				</c:if>
+				<c:if test="${!empty pet.treatRegdate}">
+				<td><fmt:formatDate value="${pet.treatRegdate}" pattern="yyyy/MM/dd"/></td>
+				</c:if>
+			</tr>
 			</c:forEach>
 
+			<c:if test="${empty list}">
+			 	<td colspan="3" id="pets">등록된 동물이 없습니다.</td>
+			</c:if>
 		</table>
 		
-		<div>
-			<ul class="page">
+		<div class="text-center">
+			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li><a href="${pageMaker.startPage -1}">이전</a>
 					</li>
@@ -90,7 +96,6 @@ $(document).ready(function(){
 		
 		alert("회원정보를 수정했습니다.");
 	}
-
 	//동물삭제 alert
 	function checkRemove(remove){
 		
@@ -131,7 +136,6 @@ $(document).ready(function(){
 	$("#regBtn").on("click", function(){
 		self.location = "/pet/register";
 	});
-
 	var actionForm = $("#actionForm");
 	
 	$(".paginate_button a").on("click", function(e){
@@ -150,7 +154,6 @@ $(document).ready(function(){
 		actionForm.attr("action", "/pet/get");
 		actionForm.submit();
 	});
-
 });
 </script>
 </body>

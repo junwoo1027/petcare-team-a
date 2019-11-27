@@ -4,6 +4,8 @@ public class Criteria {
 
 	private int pageNum;
 	private int amount;
+	private String searchType;
+	private String keyword;
 	
 	public Criteria() {
 		this(1,10);
@@ -32,5 +34,21 @@ public class Criteria {
 
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 }
