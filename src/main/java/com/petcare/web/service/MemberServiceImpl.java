@@ -38,4 +38,16 @@ public class MemberServiceImpl implements MemberService {
 	public UserVO loginPro(UserVO user) {
 		return memberMapper.loginPro(user);
 	}
+	
+	//개인정보수정
+	@Override
+	public UserVO getList(UserVO user) {
+		return memberMapper.getList(user);
+	}
+	
+	//수정
+	@Override
+	public void update(UserVO user) {
+		memberMapper.update(user);
+	}
 }

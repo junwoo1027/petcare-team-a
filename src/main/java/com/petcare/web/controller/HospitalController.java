@@ -3,15 +3,19 @@ package com.petcare.web.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -104,5 +108,48 @@ public class HospitalController {
 		}else if(count == 1) {
 			out.print(false);
 		}
-	}	
+	}
+	
+	@GetMapping("/modifyForm")
+	public String modify(@ModelAttribute("hospital") Hospital hospital, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		hospital = (Hospital)session.getAttribute("hospital");
+		
+		String hospitalId = hospital.getHospitalId(); 
+		
+		Map<String, List<Character>> codeInfo = new HashMap<String, List<Character>>();
+		
+		List<Character> codeList = hospitalService.getCharacter(hospitalId);
+		
+		codeInfo.put("code", codeList);
+		
+		Hospital newhospital = hospitalService.getList(hospitalId);
+		model.addAttribute("list", newhospital);
+		System.out.println(codeList);
+		model.addAttribute("code", codeList);
+		
+		return "hospital/modify";
+	}
+	
+	@PostMapping("/modify")
+	public String update(Hospital hospital, HttpServletRequest request)
+	{
+		hospitalService.modify(hospital);
+		
+		String[] list = request.getParameterValues("cCode");
+		
+		if(list != null) {
+			for(int i = 0; i < list.length; i++) {
+				Character code = new Character();
+				code.setCCode(Integer.parseInt(list[i]));
+				code.setHospitalId(hospital.getHospitalId());
+				
+				hospitalService.codeInsert(code);
+			}
+		}
+		
+		return "redirect:/index";
+	}
+	
+	
 }
