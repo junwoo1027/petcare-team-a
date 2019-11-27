@@ -21,17 +21,30 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="/reserv/go_reservation" tabindex="0"data-submenu="" aria-expanded="false">
-                            	예약하기
+                            	예약
                         </a>
                     </li>
-                </ul>
-                <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <a href="/hospital/search" tabindex="0"data-submenu="" aria-expanded="false">
-                            	검색하기
+                            	검색
                         </a>
                     </li>
-                </ul>
+                     <li class="dropdown">
+                        <a href="/faq/faqList" tabindex="0"data-submenu="" aria-expanded="false">
+                            	FAQ
+                        </a>
+                    </li>
+                    <li class="dropdown active">
+                        <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            	마이페이지<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">개인정보 수정</a></li>
+                            <li><a href="/pet/register">반려동물 등록</a></li>
+                            <li><a href="/pet/list">반려동물 목록</a></li>
+                        </ul>
+                    </li>
+                </ul>                
             </div>
 
             <!-- /.navbar-collapse -->
