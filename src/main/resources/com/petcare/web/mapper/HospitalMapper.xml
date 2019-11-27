@@ -59,7 +59,7 @@
 		WHERE hospital_email = #{hospitalEmail}
 	</select>
 	
-	<select id="loginPro2" resultType="com.petcare.web.domain.HospitalVO">
+	<select id="loginPro2" resultType="com.petcare.web.domain.Hospital">
 		SELECT *
 		FROM hospital
 		WHERE hospital_id = #{hospitalId}
