@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Main header start -->
 <header class="main-header">
@@ -20,18 +21,39 @@
             <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="/reserv/go_reservation" tabindex="0"data-submenu="" aria-expanded="false">
-                            	예약하기
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a href="/hospital/search" tabindex="0"data-submenu="" aria-expanded="false">
-                            	검색하기
-                        </a>
-                    </li>
-                </ul>
+                        <a href="/hospital/search" tabindex="0" data-submenu="" aria-expanded="false">
+                            	검색</a></li>
+                     <li class="dropdown">
+                        <a href="/faq/faqList" tabindex="0" data-submenu="" aria-expanded="false">
+                            	FAQ</a></li>
+                    <c:if test="${not empty sessionScope.user}">
+                        <li class="dropdown active">
+                        	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            	반려동물 관리<span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="/pet/register">반려동물 목록</a></li>
+	                            <li><a href="/pet/list">반려동물 등록</a></li>
+	                        </ul>
+                    	</li>
+                    	<li class="dropdown active">
+                        	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            	마이페이지<span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="#">개인정보 수정</a></li>
+	                        </ul>
+                    	</li>
+              		</c:if>
+              		<c:if test="${not empty sessionScope.hospital}">
+                    	<li class="dropdown active">
+                        	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                            	마이페이지<span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                            <li><a href="#">개인정보 수정</a></li>
+	                        </ul>
+                    	</li>
+              		</c:if>                   
+                 </ul>     
+                 
             </div>
 
             <!-- /.navbar-collapse -->
