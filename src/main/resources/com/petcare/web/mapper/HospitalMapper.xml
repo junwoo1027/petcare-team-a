@@ -43,7 +43,7 @@
 	</insert>
 	
 	<insert id="codeInsert" parameterType="Character">
-		INSERT INTO CODENAME(hospital_id, c_code)
+		INSERT INTO H_CHARACTER(hospital_id, c_code)
 			   VALUES(#{hospitalId}, #{cCode})							
 	</insert>
 	
@@ -79,5 +79,18 @@
 		WHERE hospital_id = #{hospitalId}		
 	</select>
 	
+	<delete id="deleteCode">
+		DELETE FROM H_CHARACTER WHERE hospital_id = #{hospitalId}
+	</delete>
+	
+	<update id="update">
+		UPDATE HOSPITAL 
+		SET	hospital_pw = #{hospitalPw}
+			, hospital_address = #{hospitalAddress}
+			, hospital_phone = #{hospitalPhone}
+			, hospital_email = #{hospitalEmail}
+			, hospital_intro = #{hospitalIntro}
+		WHERE hospital_id = #{hospitalId}
+	</update>
 			
 </mapper>

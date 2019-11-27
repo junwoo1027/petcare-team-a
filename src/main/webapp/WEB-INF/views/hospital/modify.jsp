@@ -23,7 +23,7 @@
 	<div class="col-lg-2"></div>
 	<div class="col-lg-10">
 		<div class="jumbotron" style="padding-top: 20px;">
-			<form action="" method="post">
+			<form action="/hospital/modify" method="post">
 				<div class="form-group">
 					<label>아이디</label>
 					<input type="text" class="form-control" readonly="readonly" id="hospitalId" name="hospitalId" value="${list.hospitalId}">

@@ -132,8 +132,21 @@ public class HospitalController {
 	}
 	
 	@PostMapping("/modify")
-	public String update(Hospital hospital)
+	public String update(Hospital hospital, HttpServletRequest request)
 	{
+		hospitalService.modify(hospital);
+		
+		String[] list = request.getParameterValues("cCode");
+		
+		if(list != null) {
+			for(int i = 0; i < list.length; i++) {
+				Character code = new Character();
+				code.setCCode(Integer.parseInt(list[i]));
+				code.setHospitalId(hospital.getHospitalId());
+				
+				hospitalService.codeInsert(code);
+			}
+		}
 		
 		return "redirect:/index";
 	}

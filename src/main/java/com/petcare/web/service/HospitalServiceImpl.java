@@ -90,4 +90,13 @@ public class HospitalServiceImpl implements HospitalService {
 		List<Character> list = hospitalMapper.getCharacter(hospitalId);
 		return list;
 	}
+
+	//병원정보 수정하기
+	@Transactional
+	@Override
+	public void modify(Hospital hospital) {
+		hospitalMapper.deleteCode(hospital.getHospitalId());
+		
+		hospitalMapper.update(hospital);
+	}
 }
