@@ -96,7 +96,6 @@ $(document).ready(function(){
 		
 		alert("회원정보를 수정했습니다.");
 	}
-
 	//동물삭제 alert
 	function checkRemove(remove){
 		
@@ -137,7 +136,6 @@ $(document).ready(function(){
 	$("#regBtn").on("click", function(){
 		self.location = "/pet/register";
 	});
-
 	var actionForm = $("#actionForm");
 	
 	$(".paginate_button a").on("click", function(e){
@@ -156,7 +154,6 @@ $(document).ready(function(){
 		actionForm.attr("action", "/pet/get");
 		actionForm.submit();
 	});
-
 });
 </script>
 </body>
