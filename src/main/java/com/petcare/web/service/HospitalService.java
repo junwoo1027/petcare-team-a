@@ -21,4 +21,6 @@ public interface HospitalService {
 	public int selectID(String id);
 	//이메일중복체크
 	public int selectEmail(String email);
+	//병원회원 로그인
+	public Hospital loginPro2(Hospital hospitaluser);	
 }
