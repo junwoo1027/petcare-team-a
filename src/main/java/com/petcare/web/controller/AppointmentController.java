@@ -45,6 +45,8 @@ public class AppointmentController {
 
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/appointment/list";
 	}
@@ -57,6 +59,8 @@ public class AppointmentController {
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/appointment/list";
 	}

@@ -36,13 +36,12 @@ public class HomeController {
 	}
 	
 	@PostMapping("/loginPro")
-	public String loginProcess(@ModelAttribute("user") UserVO user, Model model) {
+	public void loginProcess(@ModelAttribute("user") UserVO user, Model model) {
 		UserVO saved = MemberService.loginPro(user);
-		if (saved != null) {
-			model.addAttribute("user", saved);
-			return "redirect:/index";
+		if (saved == null) {
+			return;
 		}
-		return "redirect:/login";
+		model.addAttribute("user", saved);
 	}
 	
 	@GetMapping("/logout")
