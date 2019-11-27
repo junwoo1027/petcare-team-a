@@ -14,6 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import com.petcare.web.interceptor.AuthInterceptor;
+import com.petcare.web.interceptor.HospitalLoginInterceptor;
 import com.petcare.web.interceptor.LoginIntercepter;
 import com.petcare.web.interceptor.LogoutInterceptor;
 import com.petcare.web.interceptor.SampleInterceptor;
@@ -39,8 +41,13 @@ public class ServletConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new SampleInterceptor());
         registry.addInterceptor(new LoginIntercepter()).addPathPatterns("/loginPro");
-        registry.addInterceptor(new LoginIntercepter()).addPathPatterns("/loginPro2");
+        registry.addInterceptor(new HospitalLoginInterceptor()).addPathPatterns("/loginPro2");
         registry.addInterceptor(new LogoutInterceptor()).addPathPatterns("/logout");
+        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/pet/register")
+        .addPathPatterns("/pet/get")
+        .addPathPatterns("/pet/modify")
+        .addPathPatterns("/pet/remove")
+        .addPathPatterns("/pet/list");
     }
     
     /**

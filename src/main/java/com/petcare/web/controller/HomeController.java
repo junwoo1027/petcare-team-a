@@ -1,6 +1,6 @@
 package com.petcare.web.controller;
 
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,26 +39,27 @@ public class HomeController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserVO());
+<<<<<<< HEAD
 		model.addAttribute("hospitaluser", new Hospital());
+=======
+		model.addAttribute("hospital", new Hospital());
+>>>>>>> 64e726cb80b0c581616cf6a3b645b56aa16e5492
 		return "loginForm";
 	}
 	
 	@PostMapping("/loginPro")
-	public String loginProcess(@ModelAttribute("user") UserVO user, Model model) {
+	public void loginProcess(@ModelAttribute("user") UserVO user, Model model) {
 		UserVO saved = MemberService.loginPro(user);
 		if (saved != null) {
-			model.addAttribute("user", saved);
-			return "redirect:/index";
 		}
-		return "redirect:/login";
+		model.addAttribute("user", saved);
 	}
 	
 	@PostMapping("/loginPro2")
-	public String loginProcess2(@ModelAttribute("hospitaluser") Hospital hospitaluser, Model model, HttpSession session) {
+	public String loginProcess2(@ModelAttribute("hospital") Hospital hospitaluser, Model model) {
 		Hospital saved = hospitalService.loginPro2(hospitaluser);
-		
 		if (saved != null) {
-			model.addAttribute("hospitaluser", saved);
+			model.addAttribute("hospital", saved);
 			return "redirect:/index";
 		}
 		return "redirect:/login";

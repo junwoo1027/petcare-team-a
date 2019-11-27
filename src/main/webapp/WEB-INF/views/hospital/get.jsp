@@ -68,7 +68,9 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<i class="fa fa-apple"></i> 병원 리뷰
-			<button id='addReviewBtn' class='btn btn-primary btn-xs pull-right'>리뷰 작성</button>
+			<c:if test="${!empty user}">
+				<button id='addReviewBtn' class='btn btn-primary btn-xs pull-right'>리뷰 작성</button>
+			</c:if>
 		</div>
 		
 		<ul class="chat">
@@ -113,10 +115,6 @@
   						<output for="star-input"><b>0</b>점</output>
 					</span>
 				</div>
-    			<div class = "form-group">
-     				<label>아이디</label>
-     				<input class = "form-control" name ='userId' value='userId'> 
-    			</div>
     			<div class ="form-group">
      				<label>내용</label>
      				<textarea class ="form-control" name='reviewContent' rows="3" style="resize: none;"></textarea>
@@ -163,7 +161,7 @@ $(document).ready(function(){
 			var str="";
 			
 			if(list == null || list.length == 0) {
-				reviewUL.html("");
+				reviewUL.html("등록된 리뷰가 없습니다.");
 				return;
 			}
 			
@@ -183,8 +181,11 @@ $(document).ready(function(){
 			       }
 
 			       str += "<strong id='rating'>"+list[i].reviewRating+"</strong>"
-			       str +="<sapn id='content'>"+list[i].reviewContent+"</span><span><a href=javascript:void(0) id='del_review' class='delete' data-no="+list[i].reviewNo+"><i class='fa fa-trash'></i></a></span></div>";
-			       str +=" <span id='userid' class='primary-font'>"+list[i].userId+"  |  ";
+			       str +="<sapn id='content'>"+list[i].reviewContent+"</span>";
+			       if(list[i].userId == "${user.userId}"){
+			       		str += "<span><a href=javascript:void(0) id='del_review' class='delete' data-no="+list[i].reviewNo+"><i class='fa fa-trash'></i></a>";
+			       }
+			       str +=" </span></div><span id='userid' class='primary-font'>"+list[i].userId+"  |  ";
 			       str +=" <small>"+reviewService.displayTime(list[i].reviewRegdate)+"</small></span>";
 			       str +="</div></li>";
 			}
@@ -252,8 +253,10 @@ $(document).ready(function(){
 	});
 
 	var modal = $(".modal");
-	//모달 아이디값
-	var modalInputUserid = modal.find("input[name='userId']");
+
+	//리뷰 등록 아이디
+	var user = "${user.userId}";
+
 	//모달 내용 입력값
 	var modalInputContent = modal.find("textarea[name='reviewContent']");
 
@@ -271,7 +274,6 @@ $(document).ready(function(){
 	//리뷰작성 버튼
 	$("#addReviewBtn").on("click", function(e){
 	        
-	 	modal.find("input[name='userId']").val("");
 	 	modal.find("output>b").text(0);
 	 	$("input:radio[name='reviewRating']").prop('checked', false);
 		modal.find("textarea").val("");	
@@ -287,7 +289,7 @@ $(document).ready(function(){
     	var rating = modal.find("input[name=reviewRating]:checked").val();
     	
     	var review = {
-    			userId : modalInputUserid.val(),
+    			userId : user,
     			reviewContent : modalInputContent.val(),
     			reviewRating : rating,
     			hospitalId:hospital
@@ -296,11 +298,6 @@ $(document).ready(function(){
     	
     	if(rating == null){
     		alert("평점을 선택해주세요.");
-    		return;
-    	}
-    	
-    	if(modalInputUserid.val() == ""){
-    		alert("아이디를 입력해주세요.");
     		return;
     	}
     	
@@ -331,9 +328,6 @@ $(document).ready(function(){
 		 }
 	});	
 });
-</script>
-<script>
-	var emptyCheck = /\s/g;
 </script>
 <script src="/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>

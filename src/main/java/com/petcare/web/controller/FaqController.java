@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.petcare.web.domain.FaqVO;
@@ -43,17 +44,8 @@ public class FaqController {
 	
 	//글쓰기 
 	@PostMapping("/faqInsert")
-	public String Insert(@ModelAttribute FaqVO faq, HttpSession session, Model model){
-		
-		faq.setUserId("admin");
-		
-		
-		/*
-		 * String userId = (String) session.getAttribute("user"); faq.setUserId(userId);
-		 */
-		
+	public String Insert(@ModelAttribute FaqVO faq){
 		faqService.insert(faq);
-		
 		return "redirect:/faq/faqList";
 	}
 	

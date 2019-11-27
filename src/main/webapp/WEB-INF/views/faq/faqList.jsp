@@ -16,35 +16,33 @@
 </head>
 <body>
 <div class="container">
-	<c:forEach items="${faqList}" var="faq">
-    <div class="notice notice-success">
-    	<div hidden>${faq.faqNo}</div>
-        <strong> Q </strong> ${faq.faqTitle} | ${faq.faqRegdate}
-        <a class="btn btn-default" href="delete?faqNo=${faq.faqNo}">X</a>
-		<c:choose>
-			<c:when test="${sessionScope.user.userAuthority == 1}">
-				<a href="modify?faqNo=${faq.faqNo}">Edit</a>
+	<c:choose>
+			<c:when test="${sessionScope.user.userAuthority == 'ADMIN'}">
+					<a class="btn btn-default" href="faqForm">FAQ Write</a>
 			</c:when>
- 			<c:otherwise>
-  				<div hidden></div>
-  			</c:otherwise>
-		</c:choose>
-        	<h1>
-        		<c:choose>
-					<c:when test="${sessionScope.user.userAuthority == 1}">
-							<a class="btn btn-default" href="/faqForm">FAQ Write</a>
-					</c:when>
-				    <c:otherwise>
-				     		<div hidden></div>
-				    </c:otherwise>
-	    		</c:choose>
-        	</h1>
-        	<span class="pull-right text-success readMore">Read</span>
-        <div class="desc">
-           <p>작성자: ${faq.userId}</p>
-           <pre><p>${faq.faqContent}</p></pre>    
-        </div>
-    </div>
+		    <c:otherwise>
+		     		<div hidden></div>
+		    </c:otherwise>
+	</c:choose>
+	<c:forEach items="${faqList}" var="faq">
+	    <div class="notice notice-success">
+	    	<div hidden>${faq.faqNo}</div>
+	        <strong> Q </strong> ${faq.faqTitle} | ${faq.faqRegdate}
+			<c:choose>
+				<c:when test="${sessionScope.user.userAuthority == 'ADMIN'}">
+					<a class="btn btn-default" href="faqModify?faqNo=${faq.faqNo}">Edit</a>
+					<a class="btn btn-default" href="delete?faqNo=${faq.faqNo}">X</a>
+				</c:when>
+	 			<c:otherwise>
+	  				<div hidden></div>
+	  			</c:otherwise>
+			</c:choose>
+	        	<span class="pull-right text-success readMore">Read</span>
+	        <div class="desc">
+	           <p>작성자: ${faq.userId}</p>
+	           <pre><p>${faq.faqContent}</p></pre>    
+	        </div>
+	    </div>
     </c:forEach>
 </div>
 <script type="text/javascript">

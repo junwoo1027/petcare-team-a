@@ -9,16 +9,15 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.petcare.web.domain.Hospital;
 
-public class LoginInterceptor2 extends HandlerInterceptorAdapter {
+public class HospitalLoginInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        Hospital hospital = (Hospital) modelAndView.getModel().get("hospitaluser");
+        Hospital hospital = (Hospital) modelAndView.getModel().get("hospital");
 
         if(hospital != null) {
-        	
             HttpSession session = request.getSession();
-            session.setAttribute("hospitaluser", hospital);
+            session.setAttribute("hospital", hospital);
         }
 
     }

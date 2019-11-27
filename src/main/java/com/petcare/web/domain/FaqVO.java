@@ -2,6 +2,7 @@ package com.petcare.web.domain;
 
 import java.sql.Timestamp;
 
+
 import lombok.*;
 
 @Setter

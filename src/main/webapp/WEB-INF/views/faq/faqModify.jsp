@@ -7,7 +7,7 @@
 		<input type="hidden" name="faqNo" value="${faqModify.faqNo}" />
 			<div hidden>
 				<label>id</label>
-				<input type="text" class="form-control" name="userId" value="" readonly />
+				<input type="text" class="form-control" name="userId" value="${faqModify.userId}" readonly />
 			</div>
 			<div>
 				<label>title</label>

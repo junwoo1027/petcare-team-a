@@ -10,7 +10,7 @@ import lombok.*;
 public class Hospital {
 
 	private String hospitalId;
-	
+
 	private String hospitalPw;
 	
 	private String hospitalPw2;
@@ -30,7 +30,7 @@ public class Hospital {
 	private String hospitalSpecies;
 	
 	private MultipartFile hospitalPhoto;
-	
+		
 	private String hospitalIntro;
 	
 	private Date hospitalJoindate;
