@@ -2,10 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.petcare.web.mapper.AppointmentMapper">
 	
+	<sql id="searchCondition">
+		<if test="searchType != null">
+			<if test="searchType == 'i'.toString()">
+				and a.user_id like concat('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'p'.toString()">
+				and p.pet_name like concat('%', #{keyword}, '%')
+			</if>
+		</if>
+	</sql>
+	
 	<select id="getList" resultType="com.petcare.web.domain.AppointmentVo">
-		select appt_no, pet_no, user_id, hospital_id, appt_date, appt_time, appt_note, appt_status
-		from appointment
-		where appt_no > 0
+		select a.appt_no, a.pet_no, a.user_id, a.hospital_id, a.appt_date, a.appt_time, a.appt_note, a.appt_status, p.pet_name, u.user_phone
+		from appointment a join pet p join user u
+		where a.pet_no = p.pet_no and a.user_id = u.user_id
+		<include refid="searchCondition"></include>
 		order by appt_no asc
 		limit #{pageStart}, #{amount}
 	</select>
@@ -21,10 +33,15 @@
 	</update>
 	
 	<select id="read" resultType="com.petcare.web.domain.AppointmentVo">
-		select * from appointment where appt_no = #{apptNo}
+		select a.appt_no, a.pet_no, a.user_id, a.hospital_id, a.appt_date, a.appt_time, a.appt_note, a.appt_status, p.pet_name, u.user_phone
+		from appointment a join pet p join user u
+		where a.pet_no = p.pet_no and a.user_id = u.user_id and appt_no = #{apptNo}
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-    	select count(*) from appointment where appt_no > 0
+    	select count(*)
+		from appointment a join pet p join user u
+		where a.pet_no = p.pet_no and a.user_id = u.user_id and appt_no > 0
+    	<include refid="searchCondition"></include>
     </select>
 </mapper>

@@ -33,15 +33,17 @@
     </update>
     
     <select id="read" resultType="com.petcare.web.domain.PetVO">
-    	select * from pet where pet_no = #{petNo}
+    	select  p.pet_no, p.pet_name, p.pet_gender, p.pet_neuter, p.pet_weight, p.pet_species, p.pet_breed, p.pet_age, p.pet_regdate, p.user_id, t.treat_regdate
+		from pet p
+		left outer join treatment t on p.pet_no = t.pet_no
+    	where p.pet_no = #{petNo}
     </select>
     
     <select id="getListWithPaging" resultType="com.petcare.web.domain.PetVO">
-    	select
-    		pet_no, pet_name, pet_gender, pet_neuter, pet_weight, pet_species, pet_breed, pet_age, pet_regdate, user_id
-    	from pet
-    	where pet_no > 0
-    	order by pet_no desc
+		select  p.pet_no, p.pet_name, p.pet_gender, p.pet_neuter, p.pet_weight, p.pet_species, p.pet_breed, p.pet_age, p.pet_regdate, p.user_id, t.treat_regdate
+		from pet p
+		left outer join treatment t on p.pet_no = t.pet_no
+		order by p.pet_no asc
     	limit #{pageStart}, #{amount}
     </select>
     
