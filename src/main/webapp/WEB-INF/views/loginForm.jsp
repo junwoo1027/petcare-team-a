@@ -34,8 +34,8 @@
 .left {
 	float: left;
 	width: 50%;
-	height: 56vh;
-	background: url("/resources/images/warren-wong-323107-unsplash.jpg");
+	/* height: 56vh; */
+	/* background: url("/resources/images/warren-wong-323107-unsplash.jpg"); */
 	background-size: cover;
 	z-index: 10;
 }
@@ -43,15 +43,16 @@
 .right {
 	float: right;
 	width: 50%;
-	height: 56vh;
+	/* height: 56vh; */
 	box-sizing: border-box;
 }
 
 .formBox {
 	width: 100%;
-	padding: 80px 40px;
+	padding: 0px 40px;
+	/* padding: 80px 40px; */
 	box-sizing: border-box;
-	height: 56vh;
+	/* height: 56vh; */
 	background: #fff;
 }
 
@@ -186,6 +187,7 @@ h4 {
 			<div class="left">
 				<div class="formBox">
 					<form:form id="login_form" modelAttribute="user" method="post" action="/loginPro">
+						<p>일반회원</p>
 						<p>ID</p>
 						<form:input type="text" path="userId" class="id" placeholder="Your ID"/>
 						<form:errors path="userId" cssClass="text-danger"/>
@@ -200,6 +202,7 @@ h4 {
 			<div class="right">
 				<div class="formBox">
 					<form:form id="login_form" modelAttribute="hospitaluser" method="post" action="/loginPro2">
+						<p>병원회원</p>
 						<p>ID</p>
 						<form:input type="text" path="hospitalId" class="id" placeholder="Your ID"/>
 						<form:errors path="hospitalId" cssClass="text-danger"/>
