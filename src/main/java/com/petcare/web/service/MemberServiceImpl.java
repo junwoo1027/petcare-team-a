@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.mapper.MemberMapper;
 

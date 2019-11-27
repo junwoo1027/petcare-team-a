@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petcare.web.domain.PetVO;
 import com.petcare.web.domain.ReservVO;
@@ -28,7 +29,7 @@ public class ReservController {
 	
 	//예약 홈페이지 가기
 	@GetMapping("/go_reservation")
-	public String goReservaion(HttpSession session, Model model) {
+	public String goReservaion(HttpSession session, @RequestParam("hospitalId") String hospitalId, Model model) {
 		
 		//사용자 동물 값 갖고오기
 		UserVO user = (UserVO) session.getAttribute("user");
@@ -39,17 +40,18 @@ public class ReservController {
 		System.out.println(pets);
 		
 		model.addAttribute("pets", pets);
-		
+		model.addAttribute("hospitalId",hospitalId);
+		System.out.println(hospitalId);
 		return "reservation";
 	}
 	
 	//예약진행
 	@PostMapping("/reservationForm")
-	public String reservationForm(@ModelAttribute ReservVO reservoVO) {
+	public String reservationForm(HttpSession session, @RequestParam("hospitalId") String hospitalId, @ModelAttribute ReservVO reservoVO) {
+		UserVO user = (UserVO) session.getAttribute("user");
+		reservoVO.setUserId(user.getUserId());
+		reservoVO.setHospitalId(hospitalId);
 		System.out.println(reservoVO+"@@@@@@@@@@@@@@@");
-		reservoVO.setPetNo("3");
-		reservoVO.setUserId("hannncrystal");
-		reservoVO.setHospitalId("hanhosp");
 		reservService.reservationForm(reservoVO);
 		
 		return "redirect:/";

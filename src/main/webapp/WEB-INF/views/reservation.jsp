@@ -29,8 +29,7 @@
 			<h4>예약할 날짜를 입력해주세요</h4>
 			<p>예약이 확정되면 유선상으로 알려드립니다.</p>
 			<form id="reserve" action="/reserv/reservationForm" method="post" onsubmit="return goconfirm(this);">
-				<input type="hidden" id="userId" value="jiyoung">
-				<input type="hidden" id="hospital" value="misa_hospital">
+				<input type="hidden" name="hospitalId" value="${hospitalId}">
 				<select id="petNo" name="petNo">
 				<c:forEach items="${pets}"  var="pet">
 					<option value="${pet.pet_no}">${pet.pet_name} </option>

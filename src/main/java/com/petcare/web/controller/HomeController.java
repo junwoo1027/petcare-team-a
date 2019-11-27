@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.petcare.web.domain.Hospital;
-import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.service.HospitalService;
 import com.petcare.web.service.MemberService;
@@ -40,7 +39,7 @@ public class HomeController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserVO());
-		model.addAttribute("hospitaluser", new HospitalVO());
+		model.addAttribute("hospitaluser", new Hospital());
 		return "loginForm";
 	}
 	

@@ -37,14 +37,31 @@
 			이메일: <c:out value="${hospital.hospitalEmail}"/><br>
 			영업시작: <c:out value="${hospital.hospitalOpen}"/><br>
 			영업마감: <c:out value="${hospital.hospitalClose}"/><br>
-			야간진료: <c:out value="${hospital.hospitalNightcare}"/><br>
-			응급실: <c:out value="${hospital.hospitalEmergency}"/><br>
-			특수동물: <c:out value="${hospital.hospitalSpecial}"/><br>
-			애견호텔: <c:out value="${hospital.hospitalHotel}"/><br>
 			종류: <c:out value="${hospital.hospitalSpecies}"/><br>
 			사진: <c:out value="${hospital.hospitalPhoto}"/><br>
-			소개: <c:out value="${hospital.hospitalIntro}"/><br><br><br>
-		
+			소개: <c:out value="${hospital.hospitalIntro}"/><br>
+			전문분야: <c:forEach items="${codename}" var="codename">
+					${codename} <!-- HSJ 아이콘으로 교체 -->
+			</c:forEach><br>
+			
+			<form method="get" action="/favorite/register">
+				<input type=hidden name="hospitalId" value="${hospital.hospitalId}">
+				<input type="submit" value="즐겨찾기">
+				즐겨찾기 상태 (추가 안함 0/ 추가함 1): <c:out value="${check}"/>
+				<!-- HSJ 즐겨찾기 on/off 기능
+					1. 자바스크립트 이용
+					2. 0이면 OFF 버튼, 비활성화
+						1이면 ON 버튼			-->
+			</form>
+			
+			<form method="get" action="/reserv/go_reservation">
+				<input type=hidden name="hospitalId" value="${hospital.hospitalId}">
+				<input type="submit" value="예약">
+				<!-- HSJ 예약 버튼 -->
+			</form>
+			
+			
+			
 	</div>
 
 <div class="row">
