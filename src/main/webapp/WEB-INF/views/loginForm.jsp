@@ -36,6 +36,7 @@
 	width: 50%;
 	/* height: 56vh; */
 	/* background: url("/resources/images/warren-wong-323107-unsplash.jpg"); */
+	/* 수정*/
 	background-size: cover;
 	z-index: 10;
 }
