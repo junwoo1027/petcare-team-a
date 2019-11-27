@@ -43,15 +43,7 @@ public class FaqController {
 	
 	//글쓰기 
 	@PostMapping("/faqInsert")
-	public String Insert(@ModelAttribute FaqVO faq, HttpSession session, Model model){
-		
-		faq.setUserId("admin");
-		
-		
-		/*
-		 * String userId = (String) session.getAttribute("user"); faq.setUserId(userId);
-		 */
-		
+	public String Insert(@ModelAttribute FaqVO faq, HttpSession session, Model model, HttpServletRequest request){
 		faqService.insert(faq);
 		
 		return "redirect:/faq/faqList";
