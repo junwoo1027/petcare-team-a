@@ -7,11 +7,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,7 +58,7 @@ public class HospitalController {
 	
 	@GetMapping("/register")
 	public String hospital(Model model) {
-		model.addAttribute("hospital", new Hospital());
+		model.addAttribute("hospitaluser", new Hospital());
 		return "hospitalRegister";
 	}
 	
@@ -104,5 +106,16 @@ public class HospitalController {
 		}else if(count == 1) {
 			out.print(false);
 		}
+	}
+	
+	@GetMapping("/modifyForm")
+	public String modify(@ModelAttribute("hospitaluser") Hospital hospital, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		hospital = (Hospital)session.getAttribute("hospitaluser");
+		
+		Hospital newhospital = hospitalService.getList(hospital.getHospitalId());
+		model.addAttribute("list", newhospital);
+		
+		return "hospital/modify";
 	}
 }

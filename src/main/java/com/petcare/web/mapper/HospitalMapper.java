@@ -16,4 +16,6 @@ public interface HospitalMapper {
 	public String selectID(String id); //아이디 중복체크(Juery Validator)
 	public String selectEmail(String email); //이메일 중복체크(Juery Validator)
 	public Hospital loginPro2(Hospital hospitaluser);	//병원회원 로그인
+	public List<Character> getCharacter(String hospitalId); 	//특성 가져오기
+	public Hospital getList(String hospitalId);		//병원정보 가져오기
 }

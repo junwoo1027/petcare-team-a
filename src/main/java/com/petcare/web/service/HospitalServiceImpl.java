@@ -77,5 +77,16 @@ public class HospitalServiceImpl implements HospitalService {
 		return hospitalMapper.loginPro2(hospitaluser);
 	}
 	
-
+	//병원 개인정보
+	@Override
+	public Hospital getList(String hospitalId) {
+		
+		List<Character> list = hospitalMapper.getCharacter(hospitalId);
+		
+		Hospital hospital = hospitalMapper.getList(hospitalId);
+		
+		hospital.setCharacters(list);
+		
+		return hospital;
+	}
 }

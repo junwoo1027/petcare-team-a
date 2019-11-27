@@ -43,7 +43,7 @@
 	</insert>
 	
 	<insert id="codeInsert" parameterType="Character">
-		INSERT INTO H_CHARACTER(hospital_id, c_code)
+		INSERT INTO CODENAME(hospital_id, c_code)
 			   VALUES(#{hospitalId}, #{cCode})							
 	</insert>
 	
@@ -64,5 +64,20 @@
 		FROM hospital
 		WHERE hospital_id = #{hospitalId}
 		AND hospital_pw = #{hospitalPw}
-	</select>		
+	</select>
+	
+	<select id="getCharacter" resultType="Character">
+		SELECT hc.c_code AS c_code, c.c_name AS c_name 
+		FROM h_character hc, codename c
+		WHERE hc.c_code = c.c_code
+		AND hc.hospital_id = #{hospitalId}
+	</select>
+	
+	<select id="getList" resultType="Hospital">
+		SELECT *
+		FROM hospital
+		WHERE hospital_id = #{hospitalId}		
+	</select>
+	
+			
 </mapper>
