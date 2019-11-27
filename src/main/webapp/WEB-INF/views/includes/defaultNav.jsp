@@ -27,15 +27,15 @@
                         <a href="/faq/faqList" tabindex="0" data-submenu="" aria-expanded="false">
                             	FAQ</a></li>
                     <c:if test="${not empty sessionScope.user}">
-                        <li class="dropdown active">
+                        <li class="dropdown">
                         	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             	반려동물 관리<span class="caret"></span></a>
 	                        <ul class="dropdown-menu">
-	                            <li><a href="/pet/register">반려동물 목록</a></li>
-	                            <li><a href="/pet/list">반려동물 등록</a></li>
+	                            <li><a href="/pet/list">반려동물 목록</a></li>
+	                            <li><a href="/pet/register">반려동물 등록</a></li>
 	                        </ul>
                     	</li>
-                    	<li class="dropdown active">
+                    	<li class="dropdown">
                         	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             	마이페이지<span class="caret"></span></a>
 	                        <ul class="dropdown-menu">
@@ -44,7 +44,7 @@
                     	</li>
               		</c:if>
               		<c:if test="${not empty sessionScope.hospital}">
-                    	<li class="dropdown active">
+                    	<li class="dropdown">
                         	<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
                             	마이페이지<span class="caret"></span></a>
 	                        <ul class="dropdown-menu">
