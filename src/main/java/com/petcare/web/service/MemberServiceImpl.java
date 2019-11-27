@@ -37,4 +37,9 @@ public class MemberServiceImpl implements MemberService {
 	public UserVO loginPro(UserVO user) {
 		return memberMapper.loginPro(user);
 	}
+
+	@Override
+	public UserVO getList(UserVO user) {
+		return memberMapper.getList(user);
+	}
 }

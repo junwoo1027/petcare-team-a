@@ -111,5 +111,5 @@ public class HospitalController {
 		}else if(count == 1) {
 			out.print(false);
 		}
-	}	
+	}
 }

@@ -40,4 +40,10 @@
 		WHERE user_id = #{userId}
 		AND user_pw = #{userPw}
 	</select>
+	
+	<select id="getList" resultType="UserVO">
+		SELECT *
+		FROM USER
+		WHERE user_id = #{userId}
+	</select>
 </mapper>

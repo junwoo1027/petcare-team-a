@@ -2,6 +2,8 @@ package com.petcare.web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +60,15 @@ public class MemberController {
 		return "redirect:/index";
 	}
 	
-
+	@GetMapping("/modifyForm")
+	public String modify(@ModelAttribute("user") UserVO user, HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		user = (UserVO)session.getAttribute("user");
+		user.setUserId(user.getUserId());
+		
+		UserVO newuser = MemberService.getList(user);
+		model.addAttribute("list", newuser);
+		
+		return "user/modify";
+	}
 }
