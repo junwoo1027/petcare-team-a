@@ -49,7 +49,15 @@
 					<input type="text" class="form-control" id="hospitalAddress" name="hospitalAddress" value="${list.hospitalAddress}">
 				</div>
 				
-				<div class="row">
+				<div class="form-group">
+						<label style="font-weight: bold;">문여는 시간</label>
+						<input class="form-control" id="hospitalOpen" name="hospitalOpen" value="${list.hospitalOpen}" readonly="readonly">
+				</div>
+				<div class="form-group">
+						<label style="font-weight: bold;">문닫는 시간</label>
+						<input class="form-control" id="hospitalOpen" name="hospitalOpen" value="${list.hospitalClose}" readonly="readonly">
+				</div>				
+<%-- 				<div class="row">
 					<div class="form-group col-md-6">
 						<label style="font-weight: bold;">문여는 시간</label>
 						<select class="form-control" id="hospitalOpen" name="hospitalOpen" value="${list.hospitalOpen}">
@@ -57,7 +65,7 @@
 								<c:if test="${hour < 10 }">
 									<c:set value="0${hour}" var="hour"></c:set>
 								</c:if>
-								<option>${hour}:00</option>
+								<option value="${hour}" selected="<c:if test="${fn:contains(list.hospitalOpen,hour)}">selected</c:if>">${hour}:00</option>
 							</c:forEach>
 						</select>						
 					</div>
@@ -72,7 +80,7 @@
 							</c:forEach>
 						</select>						
 					</div>
-				</div>
+				</div> --%>
 				
 				<div class="form-group">
 					<p style="font-weight: bold;">특성을 골라주세요.</p>
