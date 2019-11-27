@@ -63,7 +63,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label style="font-weight: bold;">문닫는 시간</label>
-						<select class="form-control" id="hospitalClose" name="hospitalClose" value='<c:out value="${list.hospitalClose}"/>'>
+						<select class="form-control" id="hospitalClose" name="hospitalClose" value="${list.hospitalClose}">
 							<c:forEach begin="0" end="24" step="1" var="hour">
 								<c:if test="${hour < 10 }">
 									<c:set value="0${hour}" var="hour"></c:set>
@@ -76,29 +76,41 @@
 				
 				<div class="form-group">
 					<p style="font-weight: bold;">특성을 골라주세요.</p>
-					<c:forEach items="${list}" var="list">
-						<c:if test="${list.characters.cCode == 1}">
-							<c:set value="1" var="code"></c:set>
-							<input type="checkbox" class="form-check-input" name="cCode" id="cCode1" value="${code}">야간진료
-						</c:if>
-						<c:if test="${list.characters.cCode == 2}">
-							<c:set value="2" var="code"></c:set>
-							<input type="checkbox" class="form-check-input" name="cCode" id="cCode2" value="${code}">특수동물취급
-						</c:if>
-						<c:if test="${list.characters.cCode == 3}">
-							<c:set value="3" var="code"></c:set>
-							<input type="checkbox" class="form-check-input" name="cCode" id="cCode3" value="${code}">응급실
-						</c:if>
-						<c:if test="${list.characters.cCode == 4}">
-							<c:set value="4" var="code"></c:set>
-							<input type="checkbox" class="form-check-input" name="cCode" id="cCode4" value="${code}">수술전문
-						</c:if>
-					<div class="form-check form-check-inline col-md-3">
-						<label class="form-check-label" for="cCode1">
-							
-						</label>
-					</div>																		
-					</c:forEach>
+					<c:forEach items="${code}" var="code">
+						<%-- <c:out value="${code.c_code}"></c:out> --%>
+						<c:choose>
+							<c:when test="${code.c_code == 1}">
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode1" value="1" checked="checked">야간진료
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode1" value="1">야간진료
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${code.c_code == 2}">
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode2" value="2" checked="checked">특수동물취급
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode2" value="2">특수동물취급
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${code.c_code == 3}">
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode3" value="3" checked="checked">응급실
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode3" value="3">응급실
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${code.c_code == 4}">
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode4" value="4" checked="checked">수술전문
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" class="form-check-input" name="cCode" id="cCode4" value="1">수술전문
+							</c:otherwise>
+						</c:choose>														
+					</c:forEach>																	
 <!-- 					<div class="form-check form-check-inline col-md-3">
 						<label class="form-check-label" for="cCode1">
 							<input type="checkbox" class="form-check-input" name="cCode" id="cCode1" value="1">야간진료

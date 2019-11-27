@@ -25,4 +25,6 @@ public interface HospitalService {
 	public Hospital loginPro2(Hospital hospitaluser);
 	//병원개인정보
 	public Hospital getList(String hospitalId);
+	//특성 가져오기
+	public List<Character> getCharacter(String hospitalId); 	
 }

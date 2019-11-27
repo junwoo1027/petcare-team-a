@@ -3,7 +3,9 @@ package com.petcare.web.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,7 +60,7 @@ public class HospitalController {
 	
 	@GetMapping("/register")
 	public String hospital(Model model) {
-		model.addAttribute("hospitaluser", new Hospital());
+		model.addAttribute("hospital", new Hospital());
 		return "hospitalRegister";
 	}
 	
@@ -109,12 +111,22 @@ public class HospitalController {
 	}
 	
 	@GetMapping("/modifyForm")
-	public String modify(@ModelAttribute("hospitaluser") Hospital hospital, HttpServletRequest request, Model model) {
+	public String modify(@ModelAttribute("hospital") Hospital hospital, HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
-		hospital = (Hospital)session.getAttribute("hospitaluser");
+		hospital = (Hospital)session.getAttribute("hospital");
 		
-		Hospital newhospital = hospitalService.getList(hospital.getHospitalId());
+		String hospitalId = hospital.getHospitalId(); 
+		
+		Map<String, List<Character>> codeInfo = new HashMap<String, List<Character>>();
+		
+		List<Character> codeList = hospitalService.getCharacter(hospitalId);
+		
+		codeInfo.put("code", codeList);
+		
+		Hospital newhospital = hospitalService.getList(hospitalId);
 		model.addAttribute("list", newhospital);
+		System.out.println(codeList);
+		model.addAttribute("code", codeList);
 		
 		return "hospital/modify";
 	}

@@ -5,8 +5,6 @@ package com.petcare.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.petcare.web.domain.Hospital;
-import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.service.HospitalService;
 import com.petcare.web.service.MemberService;
@@ -42,7 +39,7 @@ public class HomeController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserVO());
-		model.addAttribute("hospitaluser", new HospitalVO());
+		model.addAttribute("hospital", new Hospital());
 		return "loginForm";
 	}
 	
@@ -55,10 +52,10 @@ public class HomeController {
 	}
 	
 	@PostMapping("/loginPro2")
-	public String loginProcess2(@ModelAttribute("hospitaluser") Hospital hospitaluser, Model model) {
+	public String loginProcess2(@ModelAttribute("hospital") Hospital hospitaluser, Model model) {
 		Hospital saved = hospitalService.loginPro2(hospitaluser);
 		if (saved != null) {
-			model.addAttribute("hospitaluser", saved);
+			model.addAttribute("hospital", saved);
 			return "redirect:/index";
 		}
 		return "redirect:/login";

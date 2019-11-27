@@ -61,21 +61,21 @@
 	
 	<select id="loginPro2" resultType="Hospital">
 		SELECT *
-		FROM hospital
+		FROM HOSPITAL
 		WHERE hospital_id = #{hospitalId}
 		AND hospital_pw = #{hospitalPw}
 	</select>
 	
-	<select id="getCharacter" resultType="Character">
+	<select id="getCharacter" resultType="map">
 		SELECT hc.c_code AS c_code, c.c_name AS c_name 
-		FROM h_character hc, codename c
+		FROM H_CHARACTER hc, CODENAME c
 		WHERE hc.c_code = c.c_code
 		AND hc.hospital_id = #{hospitalId}
 	</select>
 	
 	<select id="getList" resultType="Hospital">
 		SELECT *
-		FROM hospital
+		FROM HOSPITAL
 		WHERE hospital_id = #{hospitalId}		
 	</select>
 	
