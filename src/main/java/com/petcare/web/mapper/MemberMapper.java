@@ -9,4 +9,5 @@ public interface MemberMapper {
 	public UserVO getEmail(String userEmail); //이메일 중복체크(Spring Validator)
 	public UserVO loginPro(UserVO user); 	//로그인
 	public UserVO getList(UserVO user);		//개인정보수정
+	public void update(UserVO user); //수정
 }

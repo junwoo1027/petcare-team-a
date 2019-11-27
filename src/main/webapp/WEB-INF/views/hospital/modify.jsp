@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>병원 정보수정</title>
 <link href='<spring:url value="/resources/css/custom.css"/>' rel="stylesheet" />
+<script src='<spring:url value="/resources/js/user/update.js"/>'></script>
 </head>
 <body>
 <div>
@@ -25,27 +26,27 @@
 			<form action="" method="post">
 				<div class="form-group">
 					<label>아이디</label>
-					<input type="text" class="form-control" readonly="readonly" value="${list.hospitalId}">
+					<input type="text" class="form-control" readonly="readonly" id="hospitalId" name="hospitalId" value="${list.hospitalId}">
 				</div>
 				<div class="form-group">
 					<label>비밀번호</label>
-					<input type="password" class="form-control" value="${list.hospitalPw}">
+					<input type="password" class="form-control" id="hospitalPw" name="hospitalPw" value="${list.hospitalPw}">
 				</div>
 				<div class="form-group">
 					<label>이름</label>
-					<input type="text" class="form-control" readonly="readonly" value="${list.hospitalName}">
+					<input type="text" class="form-control" readonly="readonly" id="hospitalName" name="hospitalName" value="${list.hospitalName}">
 				</div>				
 				<div class="form-group">
 					<label>이메일</label>
-					<input type="email" class="form-control" value="${list.hospitalEmail}">
+					<input type="email" class="form-control" id="hospitalEmail" name="hospitalEmail" value="${list.hospitalEmail}">
 				</div>
 				<div class="form-group">
 					<label>전화번호</label>
-					<input type="text" class="form-control" value="${list.hospitalPhone}">
+					<input type="text" class="form-control" id="hospitalPhone" name="hospitalPhone" value="${list.hospitalPhone}">
 				</div>
 				<div class="form-group">
 					<label>주소</label>
-					<input type="text" class="form-control" value="${list.hospitalAddress}">
+					<input type="text" class="form-control" id="hospitalAddress" name="hospitalAddress" value="${list.hospitalAddress}">
 				</div>
 				
 				<div class="row">
@@ -122,7 +123,7 @@
 
 				<div class="form-group">
 					<label style="font-weight: bold;">세부사항</label>
-					<textarea class="form-control" maxlength="2048" style="height: 350px;" >${list.hospitalIntro}</textarea>
+					<textarea class="form-control" maxlength="2048" style="height: 350px;" name="hospitalIntro" id="hospitalIntro">${list.hospitalIntro}</textarea>
 				</div>
 				
 				<div class="col text-center">

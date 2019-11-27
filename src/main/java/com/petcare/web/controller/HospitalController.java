@@ -118,4 +118,13 @@ public class HospitalController {
 		
 		return "hospital/modify";
 	}
+	
+	@PostMapping("/modify")
+	public String update(Hospital hospital)
+	{
+		
+		return "redirect:/index";
+	}
+	
+	
 }

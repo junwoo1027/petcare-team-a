@@ -71,4 +71,11 @@ public class MemberController {
 		
 		return "user/modify";
 	}
+	
+	@PostMapping("/modify")
+	public String update(@ModelAttribute("user") UserVO user)
+	{
+		MemberService.update(user);
+		return "redirect:/index";
+	}
 }
