@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.petcare.web.domain.Hospital;
-import com.petcare.web.domain.HospitalVO;
 
 public class HospitalLoginInterceptor extends HandlerInterceptorAdapter {
 

@@ -9,7 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.petcare.web.config.RootConfig;
 import com.petcare.web.domain.Hospital;
-import com.petcare.web.domain.Character;
+import com.petcare.web.domain.Codename;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -38,11 +38,11 @@ public class HospitalMapperTest {
 	
 	@Test
 	public void codeTest() {
-		Character character = new Character();
+		Codename codename = new Codename();
 		
-		character.setHospitalId("hos03");
-		character.setCCode(2);
+		codename.setHospitalId("hos03");
+		codename.setCCode(2);
 		
-		hospitalMapper.codeInsert(character);
+		hospitalMapper.codeInsert(codename);
 	}
 }
