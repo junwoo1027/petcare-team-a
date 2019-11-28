@@ -3,7 +3,6 @@ package com.petcare.web.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -116,16 +115,12 @@ public class HospitalController {
 		hospital = (Hospital)session.getAttribute("hospital");
 		
 		String hospitalId = hospital.getHospitalId(); 
-		
-		Map<String, List<Character>> codeInfo = new HashMap<String, List<Character>>();
-		
-		List<Character> codeList = hospitalService.getCharacter(hospitalId);
-		
-		codeInfo.put("code", codeList);
+				
+		List<Map<String, String>> codeList = hospitalService.getCharacter(hospitalId);
+		System.out.println(codeList);
 		
 		Hospital newhospital = hospitalService.getList(hospitalId);
 		model.addAttribute("list", newhospital);
-		System.out.println(codeList);
 		model.addAttribute("code", codeList);
 		
 		return "hospital/modify";
