@@ -13,15 +13,15 @@
 	<div>
 	<h3>동물병원 목록</h3>
 	<form method="get" action="/hospital/search">
-		<select>
+		<select name="searchValue">
 		  <option value="name">병원 이름</option>
 		  <option value="address">병원 주소</option>
 		</select>
-		<input type="text" name="hospitalName" placeholder="검색어를 입력하세요"><br>
-		  <input type="checkbox" name="choice1" value="hospitalNightcare">야간진료
-		  <input type="checkbox" name="choice2" value="hospitalEmergency">응급실
-		  <input type="checkbox" name="choice3" value="hospitalSpecial">특수동물
-		  <input type="checkbox" name="choice4" value="hospitalHotel">애견호텔
+		<input type="text" name="searchWord" placeholder="검색어를 입력하세요"><br>
+		  <input type="checkbox" name="choice" value="1">야간진료
+		  <input type="checkbox" name="choice" value="2">특수동물
+		  <input type="checkbox" name="choice" value="3">응급실
+		  <input type="checkbox" name="choice" value="4">애견호텔
 		<input type="submit" value="검색">
 	</form>
 	</div>
@@ -67,7 +67,7 @@
 				</c:if>
 			</c:forEach><br><br><br>
 		</c:forEach>
-	</c:if>>
+	</c:if>
 	</div>
 </div>
 

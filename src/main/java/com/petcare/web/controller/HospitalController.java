@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.petcare.web.domain.Codename;
 import com.petcare.web.domain.Hospital;
@@ -53,26 +52,6 @@ public class HospitalController {
 		model.addAttribute("hospital", hospitalService.view(hospitalId));
 		model.addAttribute("codename", hospitalService.codename(hospitalId));
 	}
-	
-//	//병원 정보(비회원)
-//	@GetMapping("/get")
-//	public String getForEveryone(HttpSession session, String hospitalId, Model model) throws IOException {
-//		model.addAttribute("hospital", hospitalService.view(hospitalId));
-//		model.addAttribute("codename", hospitalService.codename(hospitalId));
-//		return "hospital/get";
-//	}
-//	//병원 정보(회원)
-//	@GetMapping("/getId")
-//	public String get(HttpSession session, String userId, String hospitalId, Model model) throws IOException {
-//		UserVO user = (UserVO) session.getAttribute("user");
-//		userId = user.getUserId();
-//		//즐겨찾기 등록 여부 검사
-//		String check = favoriteService.check(userId,hospitalId);
-//		model.addAttribute("check",check);
-//		model.addAttribute("hospital", hospitalService.view(hospitalId));
-//		model.addAttribute("codename", hospitalService.codename(hospitalId));
-//		return "hospital/get";
-//	}
 
 	//병원 전체 리스트
 	@GetMapping("/list")
@@ -88,22 +67,38 @@ public class HospitalController {
 		}
 		//all?
 		model.addAttribute("list",list);
-		System.out.println(list);
 		model.addAttribute("codename",codename);
 	}
 	
 	//병원 검색
 	@GetMapping("/search")
-	public String hospitalSearch(Model model, String hospitalName) {
-		List<Hospital> search = hospitalService.search(hospitalName);
-		for(int i=0; i<search.size(); i++){
-			Map<String, String> map = (Map)search.get(i);
-			String hid = (String)map.get("hospital_id");
-			cn = hospitalService.codename(hid);
-			codename.put(hid, cn);
+	public String hospitalSearch(Model model, String choice, String searchValue, String searchWord) {
+		System.out.println(searchValue);
+		System.out.println(searchWord);
+		System.out.println(choice);
+		List<Hospital> search = new ArrayList<Hospital>();
+		if(searchValue.equals("name")) {
+			search = hospitalService.searchName(searchWord);
+			for(int i=0; i<search.size(); i++){
+				Map<String, String> map = (Map)search.get(i);
+				String hid = (String)map.get("hospital_id");
+				cn = hospitalService.codename(hid);
+				codename.put(hid, cn);
+				System.out.println("1번"+search);
+			}
+		}else if(searchValue.equals("address")) {
+			search = hospitalService.searchAddress(searchWord);
+			for(int i=0; i<search.size(); i++){
+				Map<String, String> map = (Map)search.get(i);
+				String hid = (String)map.get("hospital_id");
+				cn = hospitalService.codename(hid);
+				codename.put(hid, cn);
+			}
+		}else if(!choice.isEmpty()) {
+			System.out.println(choice);
+			//선택지 검색
 		}
 		model.addAttribute("search",search);
-		System.out.println(search);
 		model.addAttribute("codename",codename);
 		return "hospital/list";
 	}
