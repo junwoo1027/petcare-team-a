@@ -3,21 +3,22 @@ package com.petcare.web.service;
 import java.util.List;
 import java.util.Map;
 
-import com.petcare.web.domain.Character;
+import com.petcare.web.domain.Codename;
 import com.petcare.web.domain.Hospital;
-import com.petcare.web.domain.HospitalVO;
 
 public interface HospitalService {
+	//코드네임 불러오기
+	public List<String> codename(String hospitalId);
 	//병원 전체 리스트
-	public List<HospitalVO> list();
+	public List<Hospital> list();
 	//병원 검색
-	public List<HospitalVO> search(String hospitalName);
+	public List<Hospital> search(String hospitalName);
 	//병원 보기
-	public HospitalVO view(String hospitalId);
+	public Hospital view(String hospitalId);
 	//병원 회원가입
 	public void register(Hospital hospital);
 	//특성 삽입
-	public void codeInsert (Character character);
+	public void codeInsert (Codename codename);
 	//아이디중복체크
 	public int selectID(String id);
 	//이메일중복체크

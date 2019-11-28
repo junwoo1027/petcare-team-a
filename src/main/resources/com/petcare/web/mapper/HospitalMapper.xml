@@ -6,19 +6,36 @@
 		<result column="c_code" property="cCode"/>
 		<result column="c_name" property="cName"/>
 	</resultMap>
+  
+  	<select id="listCode" parameterType="String" resultType="java.util.HashMap">
+		SELECT a.c_code 
+		FROM H_CHARACTER a LEFT JOIN HOSPITAL b 
+		ON a.hospital_id = b.hospital_id 
+		WHERE a.hospital_id = #{hospitalId}; 
+	</select>
 	
-  <select id="listHospital" resultType="java.util.HashMap">
+  	<select id="listCodename" parameterType="String" resultType="String">
+		SELECT c.c_name
+		FROM H_CHARACTER a
+        LEFT JOIN HOSPITAL b 
+		ON a.hospital_id = b.hospital_id 
+		LEFT JOIN CODENAME c 
+		ON a.c_code = c.c_code
+		WHERE a.hospital_id = #{hospitalId};
+	</select>
+			
+  	<select id="listHospital" resultType="java.util.HashMap">
 		SELECT *
-		FROM HOSPITAL
+		FROM HOSPITAL 
 	</select>
 	
 	<select id="searchHospital" parameterType="String" resultType="java.util.HashMap">
 		SELECT *
 		FROM HOSPITAL
-		WHERE hospital_name = #{hospitalName} <!-- where 절 -->
+		WHERE hospital_name like CONCAT('%', #{hospitalName}, '%')
 	</select>
 	
-	<select id="viewHospital" parameterType="String" resultType="com.petcare.web.domain.HospitalVO">
+	<select id="viewHospital" parameterType="String" resultType="com.petcare.web.domain.Hospital">
 		SELECT *
 		FROM HOSPITAL
 		WHERE hospital_id = #{hospitalId}
@@ -47,7 +64,7 @@
 										, #{hospitalIntro, jdbcType=VARCHAR})		
 	</insert>
 	
-	<insert id="codeInsert" parameterType="Character">
+	<insert id="codeInsert" parameterType="com.petcare.web.domain.Codename">
 		INSERT INTO H_CHARACTER(hospital_id, c_code)
 			   VALUES(#{hospitalId}, #{cCode})							
 	</insert>

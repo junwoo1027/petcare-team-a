@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.petcare.web.domain.Character;
+import com.petcare.web.domain.Codename;
 import com.petcare.web.domain.Hospital;
-import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.mapper.HospitalMapper;
 
 @Service
@@ -17,24 +16,31 @@ public class HospitalServiceImpl implements HospitalService {
 	@Autowired
 	private HospitalMapper hospitalMapper;
 	
+	//코드네임 불러오기
+	@Override
+	public List<String> codename(String hospitalId){
+		List<String> result = hospitalMapper.listCodename(hospitalId);
+		return result;
+	}
+	
 	//병원 전체 리스트
 	@Override
-	public List<HospitalVO> list(){
-		List<HospitalVO> result = hospitalMapper.listHospital();
+	public List<Hospital> list(){
+		List<Hospital> result = hospitalMapper.listHospital();
 		return result;
 	};
 	
 	//병원 검색
 	@Override
-	public List<HospitalVO> search(String hospitalName){
-		List<HospitalVO> result = hospitalMapper.searchHospital(hospitalName);
+	public List<Hospital> search(String hospitalName){
+		List<Hospital> result = hospitalMapper.searchHospital(hospitalName);
 		return result;
 	};
 	
 	//병원 보기
 	@Override
-	public HospitalVO view(String hospitalId) {
-		HospitalVO result = hospitalMapper.viewHospital(hospitalId);
+	public Hospital view(String hospitalId) {
+		Hospital result = hospitalMapper.viewHospital(hospitalId);
 		return result;
 	}
 
@@ -47,8 +53,8 @@ public class HospitalServiceImpl implements HospitalService {
 	
 	//특성 삽입
 	@Override
-	public void codeInsert(Character character) {
-		hospitalMapper.codeInsert(character);
+	public void codeInsert(Codename codename) {
+		hospitalMapper.codeInsert(codename);
 	}
 
 	@Override
