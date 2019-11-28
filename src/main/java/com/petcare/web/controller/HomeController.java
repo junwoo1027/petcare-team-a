@@ -39,11 +39,8 @@ public class HomeController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserVO());
-<<<<<<< HEAD
 		model.addAttribute("hospitaluser", new Hospital());
-=======
 		model.addAttribute("hospital", new Hospital());
->>>>>>> 64e726cb80b0c581616cf6a3b645b56aa16e5492
 		return "loginForm";
 	}
 	
