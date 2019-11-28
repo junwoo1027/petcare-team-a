@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.petcare.web.domain.Codename;
 import com.petcare.web.domain.Hospital;
@@ -42,14 +43,36 @@ public class HospitalController {
 	//병원 정보
 	@GetMapping("/get")
 	public void get(HttpSession session, String userId, String hospitalId, Model model) throws IOException {
+		if(session.getAttribute("user") != null) {
 		UserVO user = (UserVO) session.getAttribute("user");
 		userId = user.getUserId();
 		//즐겨찾기 등록 여부 검사
 		String check = favoriteService.check(userId,hospitalId);
 		model.addAttribute("check",check);
+		}else; 
 		model.addAttribute("hospital", hospitalService.view(hospitalId));
 		model.addAttribute("codename", hospitalService.codename(hospitalId));
 	}
+	
+//	//병원 정보(비회원)
+//	@GetMapping("/get")
+//	public String getForEveryone(HttpSession session, String hospitalId, Model model) throws IOException {
+//		model.addAttribute("hospital", hospitalService.view(hospitalId));
+//		model.addAttribute("codename", hospitalService.codename(hospitalId));
+//		return "hospital/get";
+//	}
+//	//병원 정보(회원)
+//	@GetMapping("/getId")
+//	public String get(HttpSession session, String userId, String hospitalId, Model model) throws IOException {
+//		UserVO user = (UserVO) session.getAttribute("user");
+//		userId = user.getUserId();
+//		//즐겨찾기 등록 여부 검사
+//		String check = favoriteService.check(userId,hospitalId);
+//		model.addAttribute("check",check);
+//		model.addAttribute("hospital", hospitalService.view(hospitalId));
+//		model.addAttribute("codename", hospitalService.codename(hospitalId));
+//		return "hospital/get";
+//	}
 
 	//병원 전체 리스트
 	@GetMapping("/list")

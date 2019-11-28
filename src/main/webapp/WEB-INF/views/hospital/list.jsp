@@ -8,8 +8,7 @@
 <title>병원 검색</title>
 </head>
 <body>
-<!-- HSJ 선택지 검색기능 -->
-<!-- HSJ 전체리스트 / 검색결과 on/off -->
+<!-- HSJ 주소, 선택지, species 검색기능 -->
 <div>
 	<div>
 	<h3>동물병원 목록</h3>
@@ -27,6 +26,7 @@
 	</form>
 	</div>
 	<div>
+	<c:if test="${!empty list}">
 	<h3>전체 리스트</h3>
 		<c:forEach items="${list}" var="list">
 		<a href='<c:out value="get?hospitalId=${list.hospital_id}"/>'>이름: ${list.hospital_name}</a><br>
@@ -45,8 +45,10 @@
 				</c:if>
 			</c:forEach><br><br><br>
 		</c:forEach>
+	</c:if>
 	</div>
 	<div>
+	<c:if test="${!empty search}">
 	<h3>검색 결과</h3>
 		<c:forEach items="${search}" var="list">
 		<a href='<c:out value="get?hospitalId=${list.hospital_id}"/>'>이름: ${list.hospital_name}</a><br>
@@ -65,6 +67,7 @@
 				</c:if>
 			</c:forEach><br><br><br>
 		</c:forEach>
+	</c:if>>
 	</div>
 </div>
 
