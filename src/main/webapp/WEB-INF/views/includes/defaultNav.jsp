@@ -23,6 +23,16 @@
                     <li class="dropdown">
                         <a href="/hospital/search" tabindex="0" data-submenu="" aria-expanded="false">
                             	검색</a></li>
+                	 <c:if test="${not empty sessionScope.user}">
+                	<li class="dropdown">
+                        <a href="/favorite/foruser" tabindex="0" data-submenu="" aria-expanded="false">
+                            	즐겨찾기</a></li>
+                      </c:if>  
+                	 <c:if test="${not empty sessionScope.hospital}">
+                	<li class="dropdown">
+                        <a href="/favorite/forhospital" tabindex="0" data-submenu="" aria-expanded="false">
+                            	즐겨찾기</a></li>
+                      </c:if>      	
                      <li class="dropdown">
                         <a href="/faq/faqList" tabindex="0" data-submenu="" aria-expanded="false">
                             	FAQ</a></li>

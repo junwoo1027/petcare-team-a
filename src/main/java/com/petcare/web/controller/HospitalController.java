@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.petcare.web.domain.Codename;
-import com.petcare.web.domain.FavoriteVO;
 import com.petcare.web.domain.Hospital;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.service.FavoriteService;
@@ -169,7 +167,7 @@ public class HospitalController {
 		
 		if(list != null) {
 			for(int i = 0; i < list.length; i++) {
-				Character code = new Character();
+				Codename code = new Codename();
 				code.setCCode(Integer.parseInt(list[i]));
 				code.setHospitalId(hospital.getHospitalId());
 				
