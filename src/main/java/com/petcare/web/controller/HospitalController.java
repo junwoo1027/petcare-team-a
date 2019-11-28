@@ -3,6 +3,7 @@ package com.petcare.web.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -164,7 +165,7 @@ public class HospitalController {
 		
 		if(list != null) {
 			for(int i = 0; i < list.length; i++) {
-				Character code = new Character();
+				Codename code = new Codename();
 				code.setCCode(Integer.parseInt(list[i]));
 				code.setHospitalId(hospital.getHospitalId());
 				
