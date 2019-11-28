@@ -40,6 +40,7 @@
                             	마이페이지<span class="caret"></span></a>
 	                        <ul class="dropdown-menu">
 	                            <li><a href="/member/modifyForm">개인정보 수정</a></li>
+	                            <li><a href="/userAppointment/list">예약내역 목록</a></li>
 	                        </ul>
                     	</li>
               		</c:if>
@@ -49,6 +50,7 @@
                             	마이페이지<span class="caret"></span></a>
 	                        <ul class="dropdown-menu">
 	                            <li><a href="/hospital/modifyForm">개인정보 수정</a></li>
+	                            <li><a href="/appointment/list">예약내역 목록</a></li>
 	                        </ul>
                     	</li>
               		</c:if>                   
