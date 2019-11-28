@@ -55,19 +55,19 @@ public class HomeController {
 	}
 	
 	@PostMapping("/loginPro2")
-	public String loginProcess2(@ModelAttribute("hospitaluser") Hospital hospitaluser, Model model, HttpSession session, HttpServletRequest request) {
+	public String loginProcess2(@ModelAttribute("hospital") Hospital hospitaluser, Model model, HttpSession session, HttpServletRequest request) {
 		
 		String returnURL ="";
-        if ( session.getAttribute("hospitaluser") != null ){
+        if ( session.getAttribute("hospital") != null ){
             // 기존에 hospitaluser라는 세션 값이 존재한다면
-            session.removeAttribute("hospitaluser"); // 기존값을 제거해 준다.
+            session.removeAttribute("hospital"); // 기존값을 제거해 준다.
         }
          
         // 로그인이 성공하면 Hospital 객체를 반환함.
         Hospital hospital = hospitalService.loginPro2(hospitaluser);
          
         if ( hospital != null ){ // 로그인 성공
-            session.setAttribute("hospitaluser", hospital); // 세션에 hospitaluser란 이름으로 Hospital 객체를 저장해 놈.
+            session.setAttribute("hospital", hospital); // 세션에 hospital인이란 이름으로 Hospital 객체를 저장해 놈.
             returnURL ="redirect:/index"; // 로그인 성공시 index로 바로 이동하도록 하고
         }else { // 로그인에 실패한 경우
             returnURL ="redirect:/login"; // 로그인 폼으로 다시 가도록 함
@@ -76,9 +76,8 @@ public class HomeController {
         return returnURL; // 위에서 설정한 returnURL 을 반환, 이동
 	}
 	
-	@GetMapping("/logout")
-	public String logout() {
-		return "redirect:/index";
+	@GetMapping("/logout") public String logout() {
+	return "redirect:/index";
 	}
 	
 	@GetMapping("/select")
@@ -86,11 +85,4 @@ public class HomeController {
 		return "user/registerSelect";
 
 	}
-	
-	// 로그아웃 하는 부분
-    @RequestMapping(value="/hologout")
-    public String logout(HttpSession session) {
-        session.invalidate(); // 세션 전체를 날려버림
-        return "redirect:/index"; // 로그아웃 후 index로 이동
-    }
 }
