@@ -1140,7 +1140,7 @@ $.extend( $.validator, {
 		},
 		
 		phone: function(value, element) {
-			return this.optional(element) || /^\d{2,3}-\d{3,4}-\d{4}$/i.test(value);
+			return this.optional(element) || /^[0-9]{10,11}/i.test(value);
 		},
 
 

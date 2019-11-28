@@ -2,9 +2,6 @@ package com.petcare.web.domain;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.*;
@@ -33,7 +30,7 @@ public class Hospital {
 	private String hospitalSpecies;
 	
 	private MultipartFile hospitalPhoto;
-	
+		
 	private String hospitalIntro;
 	
 	private Date hospitalJoindate;

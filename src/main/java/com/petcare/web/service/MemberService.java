@@ -11,4 +11,8 @@ public interface MemberService {
 	public UserVO getEmail(String userEmail);
 	//로그인
 	public UserVO loginPro(UserVO user);
+	//개인정보수정
+	public UserVO getList(UserVO user);
+	//수정
+	public void update(UserVO user);
 }

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.mapper.MemberMapper;
 
@@ -37,5 +36,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public UserVO loginPro(UserVO user) {
 		return memberMapper.loginPro(user);
+	}
+	
+	//개인정보수정
+	@Override
+	public UserVO getList(UserVO user) {
+		return memberMapper.getList(user);
+	}
+	
+	//수정
+	@Override
+	public void update(UserVO user) {
+		memberMapper.update(user);
 	}
 }

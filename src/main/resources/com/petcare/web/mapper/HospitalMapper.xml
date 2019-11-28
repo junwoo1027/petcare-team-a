@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.petcare.web.mapper.HospitalMapper">
+  
+  	<select id="listCode" parameterType="String" resultType="java.util.HashMap">
+		SELECT a.c_code 
+		FROM H_CHARACTER a LEFT JOIN HOSPITAL b 
+		ON a.hospital_id = b.hospital_id 
+		WHERE a.hospital_id = #{hospitalId}; 
+	</select>
 	
-  <select id="listHospital" resultType="java.util.HashMap">
+  	<select id="listCodename" parameterType="String" resultType="String">
+		SELECT c.c_name
+		FROM H_CHARACTER a
+        LEFT JOIN HOSPITAL b 
+		ON a.hospital_id = b.hospital_id 
+		LEFT JOIN CODENAME c 
+		ON a.c_code = c.c_code
+		WHERE a.hospital_id = #{hospitalId};
+	</select>
+			
+  	<select id="listHospital" resultType="java.util.HashMap">
 		SELECT *
-		FROM HOSPITAL
+		FROM HOSPITAL 
 	</select>
 	
 	<select id="searchHospital" parameterType="String" resultType="java.util.HashMap">
 		SELECT *
 		FROM HOSPITAL
-		WHERE hospital_name = #{hospitalName} <!-- where 절 -->
+		WHERE hospital_name like CONCAT('%', #{hospitalName}, '%')
 	</select>
 	
-	<select id="viewHospital" parameterType="String" resultType="com.petcare.web.domain.HospitalVO">
+	<select id="viewHospital" parameterType="String" resultType="com.petcare.web.domain.Hospital">
 		SELECT *
 		FROM HOSPITAL
 		WHERE hospital_id = #{hospitalId}
@@ -42,7 +59,7 @@
 										, #{hospitalIntro, jdbcType=VARCHAR})		
 	</insert>
 	
-	<insert id="codeInsert" parameterType="Character">
+	<insert id="codeInsert" parameterType="com.petcare.web.domain.Codename">
 		INSERT INTO H_CHARACTER(hospital_id, c_code)
 			   VALUES(#{hospitalId}, #{cCode})							
 	</insert>
@@ -61,8 +78,36 @@
 	
 	<select id="loginPro2" resultType="Hospital">
 		SELECT *
-		FROM hospital
+		FROM HOSPITAL
 		WHERE hospital_id = #{hospitalId}
 		AND hospital_pw = #{hospitalPw}
-	</select>		
+	</select>
+	
+	<select id="getCharacter" resultType="map">
+		SELECT hc.c_code AS c_code, c.c_name AS c_name 
+		FROM H_CHARACTER hc, CODENAME c
+		WHERE hc.c_code = c.c_code
+		AND hc.hospital_id = #{hospitalId}
+	</select>
+	
+	<select id="getList" resultType="Hospital">
+		SELECT *
+		FROM HOSPITAL
+		WHERE hospital_id = #{hospitalId}		
+	</select>
+	
+	<delete id="deleteCode">
+		DELETE FROM H_CHARACTER WHERE hospital_id = #{hospitalId}
+	</delete>
+	
+	<update id="update">
+		UPDATE HOSPITAL 
+		SET	hospital_pw = #{hospitalPw}
+			, hospital_address = #{hospitalAddress}
+			, hospital_phone = #{hospitalPhone}
+			, hospital_email = #{hospitalEmail}
+			, hospital_intro = #{hospitalIntro}
+		WHERE hospital_id = #{hospitalId}
+	</update>
+			
 </mapper>

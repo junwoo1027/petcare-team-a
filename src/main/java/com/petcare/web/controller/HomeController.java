@@ -8,8 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.petcare.web.domain.Hospital;
-import com.petcare.web.domain.HospitalVO;
 import com.petcare.web.domain.UserVO;
 import com.petcare.web.service.HospitalService;
 import com.petcare.web.service.MemberService;
@@ -45,7 +42,7 @@ public class HomeController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserVO());
-		model.addAttribute("hospitaluser", new Hospital());
+		model.addAttribute("hospital", new Hospital());
 		return "loginForm";
 	}
 	
@@ -70,7 +67,7 @@ public class HomeController {
         Hospital hospital = hospitalService.loginPro2(hospitaluser);
          
         if ( hospital != null ){ // 로그인 성공
-            session.setAttribute("hospitaluser", hospital); // 세션에 login인이란 이름으로 Hospital 객체를 저장해 놈.
+            session.setAttribute("hospitaluser", hospital); // 세션에 hospitaluser란 이름으로 Hospital 객체를 저장해 놈.
             returnURL ="redirect:/index"; // 로그인 성공시 index로 바로 이동하도록 하고
         }else { // 로그인에 실패한 경우
             returnURL ="redirect:/login"; // 로그인 폼으로 다시 가도록 함
@@ -79,8 +76,19 @@ public class HomeController {
         return returnURL; // 위에서 설정한 returnURL 을 반환, 이동
 	}
 	
+	@GetMapping("/logout")
+	public String logout() {
+		return "redirect:/index";
+	}
+	
+	@GetMapping("/select")
+	public String registerS() {
+		return "user/registerSelect";
+
+	}
+	
 	// 로그아웃 하는 부분
-    @RequestMapping(value="/logout")
+    @RequestMapping(value="/hologout")
     public String logout(HttpSession session) {
         session.invalidate(); // 세션 전체를 날려버림
         return "redirect:/index"; // 로그아웃 후 index로 이동

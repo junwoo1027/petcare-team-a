@@ -18,9 +18,9 @@
                 				<a href="/logout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                 			</li>
                 		</c:when>
-                		<c:when test="${not empty sessionScope.hospitaluser}">
+                		<c:when test="${not empty sessionScope.hospital}">
                 			<li>
-                				${sessionScope.hospitaluser.hospitalId}님 환영합니다.
+                				${sessionScope.hospital.hospitalId}님 환영합니다.
                 				<a href="/logout" class="sign-in"><i class="fa fa-sign-in"></i> Logout</a>
                 			</li>
                 		</c:when>

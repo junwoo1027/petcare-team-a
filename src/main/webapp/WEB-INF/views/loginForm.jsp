@@ -202,7 +202,7 @@ h4 {
 			</div>
 			<div class="right">
 				<div class="formBox">
-					<form:form id="login_form" modelAttribute="hospitaluser" method="post" action="/loginPro2">
+					<form:form id="login_form" modelAttribute="hospital" method="post" action="/loginPro2">
 						<p>병원회원</p>
 						<p>ID</p>
 						<form:input type="text" path="hospitalId" class="id" placeholder="Your ID"/>
