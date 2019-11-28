@@ -28,7 +28,7 @@
 		<div class="panel-heading">예약내역</div>
 	</div>
 	
-	<div id="search" class="form-inline">
+<%-- 	<div id="search" class="form-inline">
 		<select id="searchTypeSel" name="searchType">
 			<option value="">검색조건</option>
 			<option value="i">예약아이디</option>
@@ -36,7 +36,7 @@
 		</select>
 		<input class="form-control" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
 		<button id="searchBtn" class="btn btn-primary">검색</button>
-	</div>
+	</div> --%>
 	<div>
 		<table class="table table-striped table-bordered table-hover">
 			<tr>
