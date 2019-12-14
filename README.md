@@ -1,4 +1,4 @@
-### PET CLINIC(반려동물 병원 예약 시스템)
+## PET CLINIC(반려동물 병원 예약 시스템)
 
 ### 팀원
 
@@ -23,8 +23,8 @@
 8. 즐겨찾는 병원 등록/ 관리
 9. 병원 마이페이지 예약자 조회
 
-###메인화면
-![main](./image/main.png)
+### 메인화면
+![main](./image/main.PNG)
 
-###로그인화면
-![login](./image/login.png)
+### 로그인화면
+![login](./image/login.PNG)
