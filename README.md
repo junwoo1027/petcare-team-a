@@ -37,7 +37,7 @@
 
 
 ### 반려동물등록
-![petRegister](./image/petRegister)
+![petRegister](./image/petRegister.PNG)
 
 
 ### 반려동물 목록
@@ -50,7 +50,7 @@
 
 
 ### 병원예약 화면
-![reserve](./image/reserce.PNG)
+![reserve](./image/reserve.PNG)
 
 
 ### 예약조회 화면
